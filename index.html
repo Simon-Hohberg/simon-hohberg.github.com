@@ -1,6 +1,214 @@
-<head>
-<title>Simon Hohberg's Web page</title>
-</head>
-<body>
-<p>No content yet...</p>
-</body>
+<html>
+  <head>
+    <title>Simon Hohberg's Web page</title>
+    <style type="text/css">
+      td.score {
+        color: white;
+        background: black;
+        font-family: monospace, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 4px;
+      }
+    </style>
+    <script type="text/javascript">
+    
+      var running = false;
+      var canvas = null;
+      var ballX = 200;
+      var ballY = 150;
+      var speedX = 10;
+      var speedY = 5;
+      var radius = 8;
+      var playerY = 150;
+      var pcY = 150;
+      var level = 4;
+      var batWidth = 10;
+      var batHeight = 80;
+      var humanScore = 0;
+      var pcScore = 0;
+      var mouseX, mouseY;
+      var animation;
+      
+      function clickEventHandler(event) {
+        if (!running && mouseX > 150 && mouseX < 250 && mouseY > 180 && mouseY < 205) {
+          var context = canvas.getContext('2d');
+          running = true;
+          context.clearRect(140,170,120,40);
+          animation = setInterval(animate, 50);
+          canvas.style.cursor = 'none';
+        }
+      }
+      
+      function getMousePosition(event) {      
+        var context = canvas.getContext('2d');
+        if (event.offsetY) {
+          mouseX = event.offsetX;
+          mouseY = event.offsetY;
+        } else if (event.layerY) {
+          mouseX = event.layerX;
+          mouseY = event.layerY;
+        }
+        
+        playerY = mouseY;
+        
+        if (!running) {
+          if (mouseX > 150 && mouseX < 250 && mouseY > 180 && mouseY < 205) {
+            canvas.style.cursor = 'pointer';
+            context.fillStyle = 'rgb(0, 0, 0)';
+            context.fillRect(150,175,100,30);
+            context.fillStyle = 'rgb(255, 255, 255)';
+            context.fillText('Start', 200, 200);
+          } else {
+            canvas.style.cursor = 'default';
+            context.clearRect(140,170,120,40);
+            context.strokeRect(150,175,100,30);
+            context.fillStyle = 'rgb(0, 0, 0)';
+            context.fillText('Start', 200, 200);
+          }
+        }
+      }
+      
+      function animate() {
+        var context = canvas.getContext('2d');
+        context.clearRect(0,0,400,300);
+        context.fillStyle = 'rgb(0, 0, 0)';
+        ballX += speedX;
+        ballY += speedY;
+        var speed = Math.sqrt(speedX * speedX + speedY * speedY);
+        
+        //border collision
+        
+        //left
+        if (ballX - radius <= 0) {
+          speedX = -speedX;
+          //ballX = -(ballX - radius) + radius;
+          ballX = 0 + radius;
+          pcScore++;
+          level--;
+          document.getElementById('pcScore').innerHTML = pcScore;
+          running = false;
+          clearInterval(animation);
+          reset();
+        }
+        
+        //right
+        if (ballX + radius >= 400) {
+          speedX = -speedX;
+          //ballX = 2*400 - (ballX + radius) - radius;
+          ballX = 400 - radius;
+          humanScore++;
+          level++;
+          document.getElementById('humanScore').innerHTML = humanScore;
+          running = false;
+          setInterval(null,0);
+          clearInterval(animation);
+          reset();
+        }
+        
+        //top
+        if (ballY - radius <= 0) {
+          speedY = -speedY;
+          //ballY = -(ballY - radius) + radius;
+          ballY = 0 + radius;
+        }
+        
+        //bottom
+        if (ballY + radius >= 300) {
+          speedY = -speedY;
+          //ballY = 2*300 - (ballY + radius) - radius;
+          ballY = 300 - radius;
+        }
+        
+        if (ballY > pcY) {
+          pcY += level/2;
+        } else {
+          pcY -= level/2;
+        }
+        
+        //move bats
+        if (playerY - batHeight/2 <= 0) {
+          context.fillRect(40 - batWidth, 0, batWidth, batHeight);
+        } else if (playerY + batHeight/2 >= 300) {
+          context.fillRect(40 - batWidth, 300 - batHeight, batWidth, batHeight);
+        } else {
+          context.fillRect(40 - batWidth, playerY - batHeight/2, batWidth, batHeight);
+        }
+        
+        if (pcY - batHeight/2 <= 0) {
+          context.fillRect(360, 0, batWidth, batHeight);
+        } else if (pcY + batHeight/2 >= 300) {
+          context.fillRect(360, 300 - batHeight, batWidth, batHeight);
+        } else {
+          context.fillRect(360, pcY - batHeight/2, batWidth, batHeight);
+        }
+        
+        
+        //collision with bats
+        if (ballX + radius >= 360 && ballY + radius >= pcY - batHeight/2 && ballY <= pcY + batHeight/2) {
+          speedX = -speedX;
+          ballX = 360 - radius;
+        }
+        
+        if (ballX - radius <= 40 && ballY + radius >= playerY - batHeight/2 && ballY <= playerY + batHeight/2) {
+          speedX = -speedX;
+          ballX = 40 + radius;
+        } 
+        
+        context.beginPath();
+        context.arc(ballX, ballY, radius, 0, Math.PI*2, true);
+        context.fill();
+      }
+      
+      function reset() {
+        var context = canvas.getContext('2d');
+        context.clearRect(0,0,400,300);
+        ballX = 200;
+        ballY = 150;
+        speedX = 10 + level;
+        speedY = 5;
+        radius = 8;
+        playerY = 150;
+        pcY = 150;
+        context.fillStyle = 'rgb(0, 0, 0)';
+        context.fillRect( 40 - batWidth, 110, batWidth, batHeight);
+        context.fillRect(360, 110, batWidth, batHeight);
+        context.beginPath();
+        context.arc(ballX, ballY, radius, 0, Math.PI*2, true);
+        context.fill();
+        context.font = '30px Monospace';
+        context.textAlign = 'center';
+        context.fillText('Start', 200, 200);
+        context.strokeRect(150,175,100,30);
+      }
+    
+      function init() {
+        canvas = document.getElementById('pong');
+        canvas.onmousemove = getMousePosition;
+        canvas.onclick = clickEventHandler;
+        if (canvas.getContext) {
+          var context = canvas.getContext('2d');
+          context.fillStyle = 'rgb(0, 0, 0)';
+          context.fillRect( 40 - batWidth, 110, batWidth, batHeight);
+          context.fillRect(360, 110, batWidth, batHeight);
+          context.beginPath();
+          context.arc(ballX, ballY, radius, 0, Math.PI*2, true);
+          context.fill();
+          context.font = '30px Monospace';
+          context.textAlign = 'center';
+          context.fillText('Start', 200, 200);
+          context.strokeRect(150,175,100,30);
+        }
+      }
+    </script>
+    </head>
+  <body onload="init();">
+    <table style="border: 0px">
+      <tr>
+        <td class="score">You:</td><td id="humanScore" class="score">0</td><td class="score">Machine:</td><td id="pcScore" class="score">0</td>
+      </tr>
+        <td colspan="4">
+          <canvas id="pong" name="pong" width="400" height="300" style="border: solid 1px; position: relative; cursor: default"><p>I'm sorry, your browser doesn't support Html canvas.</p></canvas>
+        </td>
+  </body>
+</html>
