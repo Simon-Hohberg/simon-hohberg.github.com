@@ -18,8 +18,9 @@
       var ballX = 200;
       var ballY = 150;
       var speedX = 10;
-      var speedY = 5;
+      var speedY = Math.round(2 + Math.random()*5);
       var radius = 8;
+      var playerYold = 150;
       var playerY = 150;
       var pcY = 150;
       var level = 4;
@@ -28,14 +29,13 @@
       var humanScore = 0;
       var pcScore = 0;
       var mouseX, mouseY;
-      var animation;
       
       function clickEventHandler(event) {
         if (!running && mouseX > 150 && mouseX < 250 && mouseY > 180 && mouseY < 205) {
           var context = canvas.getContext('2d');
           running = true;
           context.clearRect(140,170,120,40);
-          animation = setInterval(animate, 50);
+          setTimeout(animate, 50);
           canvas.style.cursor = 'none';
         }
       }
@@ -50,6 +50,7 @@
           mouseY = event.layerY;
         }
         
+        playerYold = playerY;
         playerY = mouseY;
         
         if (!running) {
@@ -76,33 +77,29 @@
         ballX += speedX;
         ballY += speedY;
         var speed = Math.sqrt(speedX * speedX + speedY * speedY);
+        var playerBatSpeed = playerY - playerYold;
         
         //border collision
         
         //left
         if (ballX - radius <= 0) {
           speedX = -speedX;
-          //ballX = -(ballX - radius) + radius;
           ballX = 0 + radius;
           pcScore++;
           level--;
           document.getElementById('pcScore').innerHTML = pcScore;
           running = false;
-          clearInterval(animation);
           reset();
         }
         
         //right
         if (ballX + radius >= 400) {
           speedX = -speedX;
-          //ballX = 2*400 - (ballX + radius) - radius;
           ballX = 400 - radius;
           humanScore++;
           level++;
           document.getElementById('humanScore').innerHTML = humanScore;
           running = false;
-          setInterval(null,0);
-          clearInterval(animation);
           reset();
         }
         
@@ -121,9 +118,17 @@
         }
         
         if (ballY > pcY) {
-          pcY += level/2;
+          if (ballY >= pcY + level) {
+            pcY += level;
+          } else {
+            pcY = ballY;
+          }
         } else {
-          pcY -= level/2;
+          if (ballY <= pcY - level) {
+            pcY -= level;
+          } else {
+            pcY = ballY;
+          }
         }
         
         //move bats
@@ -152,12 +157,16 @@
         
         if (ballX - radius <= 40 && ballY + radius >= playerY - batHeight/2 && ballY <= playerY + batHeight/2) {
           speedX = -speedX;
+          speedY += playerBatSpeed;
           ballX = 40 + radius;
         } 
         
         context.beginPath();
         context.arc(ballX, ballY, radius, 0, Math.PI*2, true);
         context.fill();
+        if (running) {
+          setTimeout(animate, 50);
+        }
       }
       
       function reset() {
@@ -166,9 +175,10 @@
         ballX = 200;
         ballY = 150;
         speedX = 10 + level;
-        speedY = 5;
+        speedY = Math.round(2 + Math.random()*7);
         radius = 8;
         playerY = 150;
+        playerYold = 150;
         pcY = 150;
         context.fillStyle = 'rgb(0, 0, 0)';
         context.fillRect( 40 - batWidth, 110, batWidth, batHeight);
