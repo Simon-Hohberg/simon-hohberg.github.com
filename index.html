@@ -11,6 +11,13 @@
       var clickX, clickY;
       var windows = new Object;
       
+      function preload() {
+        pongBright = new Image();
+        pongBright.src = 'images/pongLogoBright.png';
+        pongPressed = new Image();
+        pongPressed.src = 'images/pongLogoPressed.png';
+      }
+      
       function windowMouseDown(event) {
         dragged = this.parentNode.parentNode.parentNode;
         clickX = mouseX;
@@ -128,7 +135,7 @@
         
     </script>
     </head>
-  <body id="indexBody" onScroll="scrollToolbar()">
+  <body id="indexBody" onScroll="scrollToolbar()" onLoad="preload()">
     <div id="toolbar" style="z-index: 3; position: absolute; left: -4; width: 70; height: 200; background-color: white; border: 4px solid">
       <img src="images/pongLogo.png" id="pongLogo" style="position: absolute; top: 10; left: 10; width:50; height: 50" onmouseover="changeImage(this, 'images/pongLogoBright.png')" onmouseout="changeImage(this, 'images/pongLogo.png')" onmousedown="changeImage(this, 'images/pongLogoPressed.png')" onmouseup="changeImage(this, 'images/pongLogoBright.png')" onCLick="createWindow('pong', 'pong.html', 100, 100, 350, 420)" />
     </div><script type="text/javascript">var toolbar = document.getElementById('toolbar'); toolbar.style.top = window.innerHeight/2 - parseInt(toolbar.style.height)/2;</script>
