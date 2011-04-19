@@ -1,0 +1,16 @@
+.toolbar {
+  z-index: 3;
+  position: fixed;
+  left: 0px; top: 0px;
+  width: 300;
+  height: 60;
+  background-image: url('../images/toolbar.png');
+}
+
+.icon {
+  position: absolute;
+  top: 2;
+  left: 10;
+  width:50;
+  height: 50;
+}

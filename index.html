@@ -1,141 +1,21 @@
 <html>
   <head>
     <title>Simon Hohberg's Web page</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script type="text/javascript" src="js/window.js"></script>
     <script type="text/javascript">
-    
-      document.onmousemove = mouseMove;
-      document.onmouseup = mouseUp;
-    
-      var mouseX, mouseY;
-      var dragged = null;
-      var clickX, clickY;
-      var windows = new Object;
       
       function preload() {
         pongBright = new Image();
         pongBright.src = 'images/pongLogoBright.png';
         pongPressed = new Image();
         pongPressed.src = 'images/pongLogoPressed.png';
-      }
-      
-      function windowMouseDown(event) {
-        dragged = this.parentNode.parentNode.parentNode;
-        clickX = mouseX;
-        clickY = mouseY;
-      }
-      
-      function mouseUp(event) {
-        dragged = null;
-      }
-      
-      function mouseMove(event) {  
-        if (event.offsetY) {
-          mouseX = event.offsetX;
-          mouseY = event.offsetY;
-        } else if (event.layerY) {
-          mouseX = event.layerX;
-          mouseY = event.layerY;
-        }
-        
-        if (dragged) {
-          dragged.style.position = 'absolute';
-          var left = parseInt(dragged.style.left);
-          var top = parseInt(dragged.style.top);
-          dragged.style.left = left + mouseX - clickX;
-          dragged.style.top = top + mouseY - clickY;
-        }        
-      }
-      
-      function changeImage(image, src) {
-        image.src = src;
-      }
-      
-      function killWindow(event) {
-        var id = this.parentNode.parentNode.parentNode.id;
-        windows[id] = null;
-        document.getElementById('indexBody').removeChild(this.parentNode.parentNode.parentNode);
-      }
-      
-      function createWindow(id, src, top, left, height, width) {
-        
-        //create windows only once
-        if (windows[id]) {
-          return;
-        }
-        
-        windows[id] = id;
-        
-        var newWindow = document.createElement('div');
-        document.getElementById('indexBody').appendChild(newWindow);
-        newWindow.style.zIndex = 1;
-        newWindow.style.position = 'absolute';
-        newWindow.style.top = top + 'px';
-        newWindow.style.left = left + 'px';
-        newWindow.style.fontFamily = 'Monospace, Arial';
-        newWindow.style.fontSize = '12px';
-        newWindow.id = id;
-        var frame = document.createElement('table');
-        newWindow.appendChild(frame);
-        frame.cellPadding = 0;
-        frame.cellSpacing = 0;
-        frame.style.border = 'solid 3px';
-        
-        var row1 = document.createElement('tr');
-        frame.appendChild(row1);
-        var cell1 = document.createElement('td');
-        row1.appendChild(cell1);
-        cell1.width = width - 20;
-        cell1.style.backgroundColor = 'black';
-        cell1.onmousedown = windowMouseDown;
-        cell1.onmouseout = mouseUp;
-        var cell2 = document.createElement('td');
-        row1.appendChild(cell2);
-        cell2.width = 20;
-        cell2.style.backgroundColor = 'black'
-        cell2.style.color = 'white';
-        cell2.style.textAlign = 'center';
-        cell2.style.verticalAlign = 'middle';
-        cell2.style.fontWeight = 'bold';
-        cell2.innerHTML = 'X';
-        cell2.onmouseover = function () {
-          this.style.color = 'red';
-          this.style.cursor = 'pointer';
-        };
-        cell2.onmouseout = function () {
-          this.style.color = 'white';
-        };
-        cell2.onclick = killWindow;
-        
-        var row2 = document.createElement('tr');
-        frame.appendChild(row2);
-        var iframeCell = document.createElement('td');
-        row2.appendChild(iframeCell);
-        iframeCell.colSpan = 2;
-        var iframe = document.createElement('iframe');
-        iframeCell.appendChild(iframe);
-        iframe.src = src;
-        iframe.height = height;
-        iframe.width = width;
-        iframe.scrolling = 'no';
-        iframe.style.border = 'solid 0px';
-      }
-      
-      function scrollToolbar() {
-        var toolbar = document.getElementById('toolbar');
-        var body = document.getElementById('indexBody');
-        toolbar.style.top = body.scrollTop;
-        toolbar.style.left = body.scrollLeft;
-      }
-      
-      window.onresize = function(event) {
-        var toolbar = document.getElementById('toolbar');
-        toolbar.style.top = window.innerHeight/2 - parseInt(toolbar.style.height)/2;
-      }
-        
+      }       
+       
     </script>
     </head>
-  <body id="indexBody" onScroll="scrollToolbar()" onLoad="preload()">
-    <div id="toolbar" style="z-index: 3; position: absolute; left: 0; top: 0; width: 300; height: 60; background-image: url('images/toolbar.png')">
-      <img src="images/pongLogo.png" id="pongLogo" style="position: absolute; top: 2; left: 10; width:50; height: 50" onmouseover="changeImage(this, 'images/pongLogoBright.png')" onmouseout="changeImage(this, 'images/pongLogo.png')" onmousedown="changeImage(this, 'images/pongLogoPressed.png')" onmouseup="changeImage(this, 'images/pongLogoBright.png')" onCLick="createWindow('pong', 'pong.html', 100, 100, 350, 420)" />
+  <body id="indexBody" onLoad="preload()">
+    <div id="toolbar" class="toolbar">
+      <img src="images/pongLogo.png" class="icon" id="pongLogo" onmouseover="this.src='images/pongLogoBright.png'" onmouseout="this.src='images/pongLogo.png'" onmousedown="this.src='images/pongLogoPressed.png'" onmouseup="this.src='images/pongLogoBright.png'" onCLick="var pongWindow = new Window('pong', 'indexBody', 'pong.html', 100, 100, 420, 350)" />
   </body>
 </html>
