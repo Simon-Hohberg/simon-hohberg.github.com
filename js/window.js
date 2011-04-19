@@ -32,7 +32,7 @@ function Window (id, bodyId, src, top, left, width, height) {
   frame.appendChild(row1);
   var cell1 = document.createElement("td");
   row1.appendChild(cell1);
-  cell1.width = width - 20;
+  cell1.width = (width - 20) + "px";
   cell1.style.backgroundColor = "black";
   cell1.onmousedown = function (event) {
     var mouse = getMousePos(event);
@@ -50,8 +50,8 @@ function Window (id, bodyId, src, top, left, width, height) {
       var mouse = getMousePos(event);
       var left = parseInt(dragged.object.style.left);
       var top = parseInt(dragged.object.style.top);
-      dragged.object.style.left = left + mouse.x - dragged.mouseLastX;
-      dragged.object.style.top = top + mouse.y - dragged.mouseLastY;
+      dragged.object.style.left = (left + mouse.x - dragged.mouseLastX) + "px";
+      dragged.object.style.top = (top + mouse.y - dragged.mouseLastY) + "px";
       dragged.mouseLastX = mouse.x;
       dragged.mouseLastY = mouse.y;
     }
@@ -64,7 +64,7 @@ function Window (id, bodyId, src, top, left, width, height) {
   
   var cell2 = document.createElement("td");
   row1.appendChild(cell2);
-  cell2.width = 20;
+  cell2.width = "20px";
   cell2.style.backgroundColor = "black"
   cell2.style.color = "white";
   cell2.style.textAlign = "center";

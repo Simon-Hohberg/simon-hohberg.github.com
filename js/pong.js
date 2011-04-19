@@ -190,8 +190,8 @@ function init(canvasId, bodyId) {
     countdownDiv.style.fontWeight = "bold";
     countdownDiv.style.fontFamily = "Monospace, Arial";
     countdownDiv.style.position = "absolute";
-    countdownDiv.style.left = 190;
-    countdownDiv.style.top = 90;
+    countdownDiv.style.left = "190px";
+    countdownDiv.style.top = "90px";
     countdownDiv.style.zIndex = 2;
     
     startButton = document.createElement("div");
@@ -199,9 +199,9 @@ function init(canvasId, bodyId) {
     startButton.className = "button";
     startButton.innerHTML = "Start";
     startButton.style.position = "absolute";
-    startButton.style.left = 165;
-    startButton.style.top = 250;
-    startButton.style.width = 80;
+    startButton.style.left = "165px";
+    startButton.style.top = "250px";
+    startButton.style.width = "80px";
     startButton.style.zIndex = 2;
     startButton.onmouseover = function (event) {
       this.style.color = "white";
