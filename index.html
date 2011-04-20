@@ -2,8 +2,10 @@
 <html>
   <head>
     <title>Simon Hohberg's Web page</title>
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script type="text/javascript" src="js/window.js"></script>
+    <script type="text/javascript" src="js/constants.js"></script>
     <script type="text/javascript">
       
       function preload() {
@@ -11,13 +13,18 @@
         pongBright.src = 'images/pongLogoBright.png';
         pongPressed = new Image();
         pongPressed.src = 'images/pongLogoPressed.png';
-      }       
+      }
        
     </script>
     </head>
   <body id="indexBody" onLoad="preload()">
     <div id="toolbar" class="toolbar">
-      <img src="images/pongLogo.png" class="icon" id="pongLogo" onmouseover="this.src='images/pongLogoBright.png'" onmouseout="this.src='images/pongLogo.png'" onmousedown="this.src='images/pongLogoPressed.png'" onmouseup="this.src='images/pongLogoBright.png'" onCLick="var pongWindow = new Window('pong', 'indexBody', 'pong.html', 100, 100, 420, 350)" />
+      <img src="images/pongLogo.png" class="icon" id="pongIcon" onmouseover="this.src='images/pongLogoBright.png'" onmouseout="this.src='images/pongLogo.png'" onmousedown="this.src='images/pongLogoPressed.png'" onmouseup="this.src='images/pongLogoBright.png'" />
+      <script type="text/javascript">
+        document.getElementById("pongIcon").onclick = function (event) {
+          var p = new Window('pong', 'indexBody', 'pong.html', 100, 100, pongWindow.width, pongWindow.height, 1);
+        }
+      </script>
     </div>
   </body>
 </html>

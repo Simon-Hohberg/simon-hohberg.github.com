@@ -33,13 +33,7 @@ td.options {
 
 /*style of options div and upgrades div*/
 .overlayDiv {
-  position: absolute;
-  width: 395px;
-  height: 295px;
-  left: 15px;
-  top: 40px;
   background-color: black;
-  visibility: hidden;
   z-index: 3;
   filter: alpha(opacity=90); /*for IE < 9*/
   opacity: 0.9;
