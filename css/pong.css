@@ -1,7 +1,7 @@
 td.score {
   color: white;
   background-color: black;
-  font-family: Monospace, Arial;
+  font-family: Monospace, Courier New;
   font-size: 14px;
   font-weight: bold;
   padding: 4px;
@@ -11,7 +11,7 @@ td.score {
 td.options {
   color: white;
   background-color: black;
-  font-family: Monospace, Arial;
+  font-family: Monospace, Courier New;
   font-size: 14px;
   font-weight: bold;
   padding: 4px;
@@ -22,7 +22,7 @@ td.options {
 .button {
   color: black;
   background-color: white;
-  font-family: Monospace, Arial;
+  font-family: Monospace, Courier New;
   font-size: 24px;
   font-weight: bold;
   padding: 4px;
@@ -34,7 +34,6 @@ td.options {
 /*style of options div and upgrades div*/
 .overlayDiv {
   background-color: black;
-  z-index: 3;
   filter: alpha(opacity=90); /*for IE < 9*/
   opacity: 0.9;
 }

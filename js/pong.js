@@ -1,4 +1,3 @@
-var running = false;
 var canvas;
 var ballX = 200;
 var ballY = 150;
@@ -17,11 +16,9 @@ var turn = 0;
 var startButton;
 var countdown = 3;
 var countdownDiv;
-var optionsDiv;
-var upgradesDiv;
-var upgrades;
 var width;
 var height;
+var options = new Object();
 
 function getMousePosition(event) {      
   var context = canvas.getContext("2d");
@@ -152,7 +149,7 @@ function reset() {
   context.fillRect(20, height/2 - batHeight/2, batWidth, batHeight);
   context.fillRect(width - batWidth - 20, height/2 - batHeight/2, batWidth, batHeight);
   context.beginPath();
-  context.arc(ballX, ballY, radius, 0, Math.PI*2, true);
+  context.arc(width/2, height/2, radius, 0, Math.PI*2, true);
   context.fill();
 }
 
@@ -169,10 +166,34 @@ function setCountdown() {
   }
 }
 
+function createOptions(bodyId, width, height) {
+  var optionsDiv = document.createElement("div");
+  document.getElementById(bodyId).appendChild(optionsDiv);
+  optionsDiv.id = "optionsDiv";
+  optionsDiv.className = "overlayDiv";
+  optionsDiv.style.visibility = "hidden";
+  optionsDiv.style.position = "absolute";
+  optionsDiv.style.width = (width - 10) + "px";
+  optionsDiv.style.height = (height - 10) + "px";
+  optionsDiv.style.top = 35 + "px";
+  optionsDiv.style.left = 9 + "px";
+  optionsDiv.style.zIndex = 3;
+  
+  var form = document.createElement("form");
+  optionsDiv.appendChild(form);
+  form.name = "options";
+  form.className = "normalText";
+  form.style.position = "absolute";
+  form.style.left = 10 + "px";
+  form.style.top = 10 + "px";
+  
+  form.innerHTML = "<input type='checkbox' id='countdownOption'/> Disable countdown before start<br />";
+}
+
 function init(canvasId, bodyId) {
   canvas = document.getElementById(canvasId);
   width = parseInt(pongWindow.width) - 5*3 - 8;
-  height = parseInt(pongWindow.height) - 3*3 - 22;
+  height = parseInt(pongWindow.height) - 3*3 - 23;
   canvas.width = width;
   canvas.height = height;
   
@@ -186,27 +207,19 @@ function init(canvasId, bodyId) {
     context.arc(width/2, height/2, radius, 0, Math.PI*2, true);
     context.fill();
     
-    optionsDiv = document.createElement("div");
-    document.getElementById(bodyId).appendChild(optionsDiv);
-    optionsDiv.className = "overlayDiv";
-    optionsDiv.style.visibility = "hidden";
-    optionsDiv.style.position = "absolute";
-    optionsDiv.style.width = (width - 10) + "px";
-    optionsDiv.style.height = (height - 10) + "px";
-    optionsDiv.style.top = 35 + "px";
-    optionsDiv.style.left = 9 + "px";
-    optionsDiv.style.zIndex = 3;
-    optionsDiv.innerHTML = "huhu";
+    createOptions(bodyId, width, height);
     
     countdownDiv = document.createElement("div");
     document.getElementById(bodyId).appendChild(countdownDiv);
     countdownDiv.style.color = "black";
     countdownDiv.style.fontSize = "80px";
+    countdownDiv.style.align = "center";
     countdownDiv.style.fontWeight = "bold";
-    countdownDiv.style.fontFamily = "Monospace, Arial";
+    countdownDiv.style.fontFamily = "Monospace, Courier New";
     countdownDiv.style.position = "absolute";
-    countdownDiv.style.left = 180 + "px";
-    countdownDiv.style.top = 100 + "px";
+    countdownDiv.style.width = 80 + "px";
+    countdownDiv.style.left = 168 + "px";
+    countdownDiv.style.top = 80 + "px";
     countdownDiv.style.zIndex = 2;
     
     var buttonWidth = 100;
@@ -231,15 +244,20 @@ function init(canvasId, bodyId) {
       reset();
       this.style.visibility = "hidden";
       canvas.style.cursor = "none";
-      setCountdown();
+      if (!document.options.elements[0].checked) {
+        setCountdown();
+      } else {
+        setTimeout(animate, 50);
+      }
     }
   }
 }
 
-function showOptions() {
-  if (optionsDiv.style.visibility == "hidden") {
-    optionsDiv.style.visibility = "visible";
+function toggleDivVisibility(divId) {
+  var div = document.getElementById(divId);
+  if (div.style.visibility == "hidden") {
+    div.style.visibility = "visible";
   } else {
-    optionsDiv.style.visibility = "hidden";
+    div.style.visibility = "hidden";
   }
 }

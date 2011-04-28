@@ -7,3 +7,9 @@ div {
   margin: 0px;
   padding: 0px;
 }
+
+.normalText {
+  color: white;
+  font-family: Monospace, Courier New;
+  font-size: 16px;
+}
