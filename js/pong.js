@@ -81,7 +81,7 @@ function animate() {
     ballY = height - radius;
   }
   
-  //the four is the basic movement speed of the pc
+  //four is the basic movement speed of the pc
   if (ballY > pcY) {
     if (ballY >= pcY + score/2 + 4) {
       pcY += score/2 + 4;
