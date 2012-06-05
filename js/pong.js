@@ -21,7 +21,6 @@ var height;
 var options = new Object();
 
 function getMousePosition(event) {      
-  var context = canvas.getContext("2d");
   if (event.offsetY) {
     mouseX = event.offsetX;
     mouseY = event.offsetY;
@@ -38,7 +37,6 @@ function animate() {
   var context = canvas.getContext("2d");
   ballX += speedX;
   ballY += speedY;
-  var speed = Math.sqrt(speedX * speedX + speedY * speedY);
   var playerBatSpeed = playerY - playerYold;
   
   //border collision
@@ -235,11 +233,11 @@ function init(canvasId, bodyId) {
     startButton.onmouseover = function (event) {
       this.style.color = "white";
       this.style.backgroundColor = "black";
-    }
+    };
     startButton.onmouseout = function (event) {
       this.style.color = "black";
       this.style.backgroundColor = "white";
-    }
+    };
     startButton.onclick = function (event) {
       reset();
       this.style.visibility = "hidden";
@@ -249,7 +247,7 @@ function init(canvasId, bodyId) {
       } else {
         setTimeout(animate, 50);
       }
-    }
+    };
   }
 }
 

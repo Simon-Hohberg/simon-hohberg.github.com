@@ -12,9 +12,43 @@
     <script type="text/javascript" src="js/engine3D/cube.js"></script>
     <script type="text/javascript" src="js/engine3D/camera.js"></script>
     <script type="text/javascript" src="js/engine3D/renderingPipeline.js"></script>
+    <script type="text/javascript" src="js/engine3D/sphere.js"></script>
+    <script type="text/javascript" src="js/engine3D/directLight.js"></script>
+    <script type="text/javascript" src="js/engine3D/texture.js"></script>
 
   </head>
   <body id="indexBody" onLoad="initRender('renderCanvas');">
-    <canvas id="renderCanvas" name="render" style="border: solid 1px; position: absolute; left: 100px; top: 100px; cursor: default">I'm sorry your browser doesn't support HTML canvas.</canvas>
+    <table style="position: absolute; left: 100px; top: 100px">
+    <tr>
+       <td colspan = "2"><canvas id="renderCanvas" name="render" style="border: solid 1px; cursor: default">I'm sorry your browser doesn't support HTML canvas.</canvas></td>
+    </tr>
+    <tr>
+       <td>Camera</td>
+       <td>Cube</td>
+    </tr>
+    <tr>
+       <td>x <input type="text" id = "cameraX" size = "4">, y <input type="text" id = "cameraY" size = "4">, z <input type="text" id = "cameraZ" size = "4"></td>
+       <td>x <input type="text" id = "cubeX" size = "4">, y <input type="text" id = "cubeY" size = "4">, z <input type="text" id = "cubeZ" size = "4"></td>
+    </tr>
+    <tr>
+       <td>nX <input type="text" id = "nX" size = "4">, nY <input type="text" id = "nY" size = "4">, nZ <input type="text" id = "nZ" size = "4"></td>
+      <!--  <td>rotX <input type="text" id = "rotX" size = "4">, rotY <input type="text" id = "rotY" size = "4">, rotZ <input type="text" id = "rotZ" size = "4"></td> -->
+    </tr>
+    <tr>
+       <td>nNear <input type="text" id = "nNear"></td>
+    </tr>
+    <tr>
+       <td>nFar <input type="text" id = "nFar"></td>
+    </tr>
+    <tr>
+       <td>openingAngleH <input type="text" id = "openingAngleH"></td>
+    </tr>
+    <tr>
+       <td>openingAngleV <input type="text" id = "openingAngleV"></td>
+    </tr>
+    <tr>
+       <td><input type="button" onclick="updateParameters();" value = "update"></td>
+    </tr>
+    </table>
   </body>
 </html>

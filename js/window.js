@@ -64,7 +64,7 @@ function Window (id, bodyId, src, top, left, width, height, zIndex) {
   var cell2 = document.createElement("td");
   row1.appendChild(cell2);
   cell2.width = "20px";
-  cell2.style.backgroundColor = "black"
+  cell2.style.backgroundColor = "black";
   cell2.style.color = "white";
   cell2.style.textAlign = "center";
   cell2.style.verticalAlign = "middle";
@@ -81,7 +81,7 @@ function Window (id, bodyId, src, top, left, width, height, zIndex) {
     var id = this.parentNode.parentNode.parentNode.id;
     registeredWindows[id] = null;
     document.getElementById(bodyId).removeChild(this.parentNode.parentNode.parentNode);
-  }
+  };
   
   var row2 = document.createElement("tr");
   frame.appendChild(row2);
