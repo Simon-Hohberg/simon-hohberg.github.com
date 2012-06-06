@@ -182,3 +182,10 @@ Rect.prototype.getPositionOfTexturePixel = function (x, y) {
 	//the resulting vector to the position of the texture
 	return toCartesian(this.translation.multiply(this.transform.multiply(toHomogeneous(this.upperPoints[x].add(this.leftPoints[y]).add(upperLeftVertex)))));
 };
+
+
+function Line(startVec, endVec, id) {
+	this.startVec = startVec;
+	this.endVec = endVec;
+	this.id = id;
+}

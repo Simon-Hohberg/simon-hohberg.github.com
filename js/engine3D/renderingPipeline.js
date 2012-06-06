@@ -9,6 +9,7 @@ var rotation = 2;
 var cube;
 var sphere;
 var light;
+var line1, line2, line3;
 
 var mouseX = canvasWidth/2;
 var mouseY = canvasHeight/2;
@@ -43,6 +44,11 @@ function initRender(canvasID) {
     cube.attachTexture("left", dice6Texture);
     
     cube.rotateZ(-45);
+    
+    line1 = new Line(Vector.create([-10, 0, 20]), Vector.create([0, 0, 20]), "line1");
+    line2 = new Line(Vector.create([-1, 0, 18]), Vector.create([5, 0, 26]), "line2");
+    line3 = new Line(Vector.create([7, 0, 20]), Vector.create([7, 0, 30]), "line3");
+    
 //    cube.attachTexture("top", chessTexture5x5);
     
 //    var spherePos = Vector.create([5, 0, 0]);
@@ -102,11 +108,15 @@ function render() {
 //    cube.rotateZ(rotation);
     
     //render cube
-    var sides = cube.sides;
+//    var sides = cube.sides;
+//    
+//    for (var side in sides) {
+//        renderRect(sides[side], context);
+//    }
     
-    for (var side in sides) {
-        renderRect(sides[side], context);
-    }
+    renderLine(line1);
+    renderLine(line2);
+    renderLine(line3);
     
 //    renderSphere(sphere, context);
 //    setTimeout(render, 50);
@@ -184,6 +194,88 @@ function renderRect(rect, context) {
 			}
 		}
 	}
+}
+
+function renderLine(line) {
+	var startVecNDC = camera.transform(toHomogeneous(line.startVec));
+	var endVecNDC = camera.transform(toHomogeneous(line.endVec));
+	
+	var startPoint = raster(startVecNDC);
+	var endPoint = raster(endVecNDC);
+	
+	var fromX = startPoint[0];
+	var fromY = startPoint[1];
+	var toX = endPoint[0];
+	var toY = endPoint[1];
+	var off;
+	
+	//bresenham
+	
+	//change x and y if slope is greater than 1
+	var inverse = false;
+	if (Math.abs((toY - fromY)/ (toX - fromX)) > 1) {
+		var tempX = toX;
+		toX = toY;
+		toY = tempX;
+		var tempFromX = fromX;
+		fromX = fromY;
+		fromY = tempFromX;
+		inverse = true;
+	}
+	
+	//translate starting point to origin
+	if (fromX < toX) {
+		off = [fromX, fromY];
+		toX -= off[0];
+		toY -= off[1];
+	} else {
+		off = [toX, toY];
+		toX = fromX - off[0];
+		toY = fromY - off[1];
+	}
+	
+	var s = 2 * toY;
+	var error = 0;
+	var y = 0;	//start at origin
+	//step in screen coordinates
+	var step = 1.0/toX;
+	//step in world coordinates
+	var stepVec = (line.endVec.subtract(line.startVec)).multiply(1.0/toX);
+
+	context.fillStyle = "rgb(0, 0, 0)";
+	if (inverse) {
+		context.fillRect(off[1], off[0], 1, 1);
+		context.strokeText(line.id, off[1], off[0]);
+	} else {
+		context.fillRect(off[0], off[1], 1, 1);
+		context.strokeText(line.id, off[0], off[1]);
+	}
+	for (var x = 1; x <= toX; x++) {
+		context.fillStyle = "rgb(" + (Math.round(255 * step * x)) + ", " + (Math.round(255* step * x)) + ", " + (Math.round(255 * step * x)) + ")";
+		if (x == Math.round(toX/2.0)) {
+			//calculate corresponding vector in world coordinates
+			var vec = line.startVec.add(stepVec.multiply(x));
+			//calculate the intensity
+			var I = length(line.startVec.subtract(vec)) / length(line.startVec.subtract(line.endVec));
+			console.log(line.id + ": " + Math.abs(I - x * step));
+		}
+		error += s;
+		if (Math.abs(error) >= toX) {
+			y = error > 0 ? y + 1 : y - 1;
+			error = error > 0 ? error - 2 * toX : error + 2 * toX;
+		}
+		if (inverse) {
+			context.fillRect(y + off[1], x + off[0], 1, 1);
+		} else {
+			context.fillRect(x + off[0], y + off[1], 1, 1);
+		};
+	};
+	
+//	context.beginPath();
+//	context.moveTo(startPoint[0], startPoint[1]);
+//	context.lineTo(endPoint[0], endPoint[1]);
+//	context.closePath();
+//	context.stroke();
 }
 
 function renderSphere(sphere, context) {

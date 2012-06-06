@@ -2,9 +2,9 @@
 var mouseSens = 5;
 
 function Camera() {
-    this.distNear = 6;
-    this.distFar  = 14;
-    this.hOpeningAngle = degToRad(30);
+    this.distNear = 1;
+    this.distFar  = 100;
+    this.hOpeningAngle = degToRad(60);
     this.n = Vector.create([-1, 0, 0]);
     this.position = Vector.create([0, 0, 0]);
     
