@@ -33,9 +33,9 @@ function initRender(canvasID) {
     canvas.width = canvasWidth;
     canvas.height = canvasHeight;
 
-    var chessTexture5x5 = new Texture("js/engine3D/textures/chessboard5x5.png");
-    var chessTexture4x4 = new Texture("js/engine3D/textures/chessboard4x4.png");
-    var dice6Texture = new Texture("js/engine3D/textures/dice6.png");
+    var chessTexture5x5 = new Texture("./js/engine3D/textures/chessboard5x5.png");
+    var chessTexture4x4 = new Texture("./js/engine3D/textures/chessboard4x4.png");
+    var dice6Texture = new Texture("./js/engine3D/textures/dice6.png");
     
     var cubePos = Vector.create([10, 0, 0]);
     cube = new Cube(2, cubePos);

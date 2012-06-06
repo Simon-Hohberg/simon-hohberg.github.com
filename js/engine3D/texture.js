@@ -7,17 +7,20 @@ var textureMap = {};
  * @returns
  */
 function Texture(filename) {
+	var self = this;
 	//load image and draw it on a new canvas
-	var img = new Image();
-	img.src = filename;
+	var img = document.createElement("img");
 	var canvas = document.createElement("canvas");
 	canvas.setAttribute("id", filename);
+	this.context = canvas.getContext("2d");
+	img.onload = function (e) {
+		self.context.drawImage(img, 0, 0);
+	};
+	img.src = filename;
 	canvas.setAttribute("width", img.width);
 	canvas.setAttribute("height", img.height);
 	this.width = img.width;
 	this.height = img.height;
-	this.context = canvas.getContext("2d");
-	this.context.drawImage(img, 0, 0);
 	
 	//add to texture map
 	textureMap[filename] = this.context;
