@@ -182,7 +182,6 @@ function renderRect(rect, context) {
 function renderLine(line) {
 	var startVecNDC = camera.transform(toHomogeneous(line.startVec));
 	var endVecNDC = camera.transform(toHomogeneous(line.endVec));
-	
 	var startPoint = raster(startVecNDC);
 	var endPoint = raster(endVecNDC);
 	
@@ -220,10 +219,18 @@ function renderLine(line) {
 	var s = 2 * toY;
 	var error = 0;
 	var y = 0;	//start at origin
-	//step in screen coordinates
-	var step = 1.0/toX;
+	
 	//step in world coordinates
 	var stepVec = (line.endVec.subtract(line.startVec)).multiply(1.0/toX);
+	
+	//step in NDC
+	var stepVecNDC = (endVecNDC.subtract(startVecNDC)).multiply(1.0/toX);
+	
+	//line length in world coordinates
+	var lengthWorld = length(line.endVec.subtract(line.startVec));
+	
+	//line length in NDC
+	var lengthNDC = length(endVecNDC.subtract(startVecNDC));
 
 	context.fillStyle = "rgb(0, 0, 0)";
 	if (inverse) {
@@ -233,15 +240,22 @@ function renderLine(line) {
 		context.fillRect(off[0], off[1], 1, 1);
 		context.strokeText(line.id, off[0], off[1]);
 	}
+	
 	for (var x = 1; x <= toX; x++) {
-		context.fillStyle = "rgb(" + (Math.round(255 * step * x)) + ", " + (Math.round(255* step * x)) + ", " + (Math.round(255 * step * x)) + ")";
+		
+		//intensity in NDC
+		var colorIntensNDC = Math.round(255.0 * (length(stepVecNDC.multiply(x))/lengthNDC));
+		
+		//intensity in world coordinates
+		var colorIntens = Math.round(255.0 * (length(stepVec.multiply(x))/lengthWorld));
+		
+		context.fillStyle = "rgb(" + colorIntensNDC + ", " + colorIntensNDC + ", " + colorIntensNDC + ")";
+		
+		//compare intensities for middle point
 		if (x == Math.round(toX/2.0)) {
-			//calculate corresponding vector in world coordinates
-			var vec = line.startVec.add(stepVec.multiply(x));
-			//calculate the intensity
-			var I = length(line.startVec.subtract(vec)) / length(line.startVec.subtract(line.endVec));
-			console.log(line.id + ": " + Math.abs(I - x * step));
+			document.getElementById(line.id + "Error").value = Math.abs(colorIntens - colorIntensNDC);
 		}
+		
 		error += s;
 		if (Math.abs(error) >= toX) {
 			y = error > 0 ? y + 1 : y - 1;
