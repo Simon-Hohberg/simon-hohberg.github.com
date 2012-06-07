@@ -14,11 +14,11 @@ function Texture(filename) {
 	canvas.setAttribute("id", filename);
 	this.context = canvas.getContext("2d");
 	img.onload = function (e) {
+		canvas.setAttribute("width", img.width);
+		canvas.setAttribute("height", img.height);
 		self.context.drawImage(img, 0, 0);
 	};
 	img.src = filename;
-	canvas.setAttribute("width", img.width);
-	canvas.setAttribute("height", img.height);
 	this.width = img.width;
 	this.height = img.height;
 	

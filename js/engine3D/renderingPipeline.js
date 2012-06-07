@@ -498,8 +498,8 @@ function loadTask(task) {
 		line1 = null;
 		line2 = null;
 		line3 = null;
-		var chessTexture4x4 = new Texture("./js/engine3D/textures/chessboard4x4.png");
-	    var dice6Texture = new Texture("./js/engine3D/textures/dice6.png");
+		var chessTexture4x4 = new Texture("http://simon-hohberg.de/js/engine3D/textures/chessboard4x4.png");
+	    var dice6Texture = new Texture("http://simon-hohberg.de/js/engine3D/textures/dice6.png");
 	    var cubePos = Vector.create([0, 1, 6]);
 	    cube = new Cube(2, cubePos);
 	    cube.attachTexture("front", chessTexture4x4);
