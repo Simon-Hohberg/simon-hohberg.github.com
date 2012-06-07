@@ -34,7 +34,7 @@ function initRender(canvasID) {
     canvas.width = canvasWidth;
     canvas.height = canvasHeight;
     
-    setTimeout(render, 50);
+    render();
 }
 
 function render() {
@@ -468,7 +468,7 @@ function updateParameters() {
 	
 	camera.calculate();
 	
-	setTimeout(render, 50);
+	render();
 }
 
 function loadTask(task) {
@@ -498,30 +498,32 @@ function loadTask(task) {
 		line1 = null;
 		line2 = null;
 		line3 = null;
-		var chessTexture4x4 = new Texture("./js/engine3D/textures/chessboard4x4.png");
-	    var dice6Texture = new Texture("./js/engine3D/textures/dice6.png");
-	    var cubePos = Vector.create([0, 1, 6]);
-	    cube = new Cube(2, cubePos);
-	    cube.attachTexture("front", chessTexture4x4);
-	    cube.attachTexture("left", dice6Texture);
-	    cube.rotateX(-90);
-	    cube.rotateZ(45);
-	    
-	    document.getElementById("cameraX").value = 0;
-		document.getElementById("cameraY").value = 0;
-		document.getElementById("cameraZ").value = 0;
-		document.getElementById("nX").value = 0;
-		document.getElementById("nY").value = 0.0001;
-		document.getElementById("nZ").value = -1;
-		document.getElementById("nNear").value = 1;
-		document.getElementById("nFar").value = 100;
-		document.getElementById("openingAngleH").value = 60;
-		document.getElementById("openingAngleV").value = 60;
-		document.getElementById("cubeX").value = cube.position.e(1);
-		document.getElementById("cubeY").value = cube.position.e(2);
-		document.getElementById("cubeZ").value = cube.position.e(3);
-	    
-	    updateParameters();
+		var chessTexture4x4 = new Texture("./js/engine3D/textures/chessboard4x4.png", 
+				function() { var dice6Texture = new Texture("./js/engine3D/textures/dice6.png", 
+						function () { 
+							var cubePos = Vector.create([0, 1, 6]);
+						    cube = new Cube(2, cubePos);
+						    cube.attachTexture("left", dice6Texture);
+						    cube.attachTexture("front", chessTexture4x4);
+						    cube.rotateX(-90);
+							cube.rotateZ(45);
+						    
+							document.getElementById("cameraX").value = 0;
+							document.getElementById("cameraY").value = 0;
+							document.getElementById("cameraZ").value = 0;
+							document.getElementById("nX").value = 0;
+							document.getElementById("nY").value = 0.0001;
+							document.getElementById("nZ").value = -1;
+							document.getElementById("nNear").value = 1;
+							document.getElementById("nFar").value = 100;
+							document.getElementById("openingAngleH").value = 60;
+							document.getElementById("openingAngleV").value = 60;
+							document.getElementById("cubeX").value = cube.position.e(1);
+							document.getElementById("cubeY").value = cube.position.e(2);
+							document.getElementById("cubeZ").value = cube.position.e(3);
+						    
+						    updateParameters();
+				}); });
 		break;
 	default:
 		break;

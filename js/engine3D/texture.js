@@ -6,7 +6,7 @@ var textureMap = {};
  * @param filename
  * @returns
  */
-function Texture(filename) {
+function Texture(filename, callback) {
 	var self = this;
 	//load image and draw it on a new canvas
 	var img = document.createElement("img");
@@ -17,6 +17,7 @@ function Texture(filename) {
 		canvas.setAttribute("width", img.width);
 		canvas.setAttribute("height", img.height);
 		self.context.drawImage(img, 0, 0);
+		callback();
 	};
 	img.src = filename;
 	this.width = img.width;
