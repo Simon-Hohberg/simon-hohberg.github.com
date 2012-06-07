@@ -16,15 +16,13 @@ function Texture(filename, callback) {
 	img.onload = function (e) {
 		canvas.setAttribute("width", img.width);
 		canvas.setAttribute("height", img.height);
+		textureMap[filename] = this.context;
+		self.width = img.width;
+		self.height = img.height;
 		self.context.drawImage(img, 0, 0);
 		callback();
 	};
 	img.src = filename;
-	this.width = img.width;
-	this.height = img.height;
-	
-	//add to texture map
-	textureMap[filename] = this.context;
 }
 
 /**
