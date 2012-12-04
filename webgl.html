@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>WebGL</title>
+    
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    
+    <!-- Shader -->
+    <script id="shader-fs" type="x-shader/x-fragment">  
+        void main(void) {
+            gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+        }
+	</script>
+    <script id="shader-vs" type="x-shader/x-vertex">  
+        attribute vec3 aVertexPosition;  
+  
+        uniform mat4 uMVMatrix;  
+        uniform mat4 uPMatrix;  
+    
+        void main(void) {  
+            gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);  
+        }
+    </script>
+    
+    <!-- 3D Rendering -->
+    <script type="text/javascript" src="js/engine3D/sylvester.js"></script>
+    <script type="text/javascript" src="js/glUtils.js"></script>
+    <script type="text/javascript" src="js/webgl.js"></script>
+
+  </head>
+  <body id="webglBody" onLoad="initRendering()">
+    <canvas id="renderCanvas" style="position: absolute; top: 50px; left: 50px; width: 640px; height: 480px; border: solid 1px; cursor: default">I'm sorry your browser doesn't support HTML canvas.</canvas>
+  </body>
+</html>
