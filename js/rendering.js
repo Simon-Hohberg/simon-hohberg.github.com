@@ -30,7 +30,8 @@ onDocumentMouseMove = function(event) {
 
 init = function() {
   var ambient, canvas, directionalLight;
-  robot = new Robot('js/rdf/robot2012/Robot2012.js');
+  robot = new Robot();
+  robot.loadRdf('js/rdf/robot2012/Robot2012.js');
   canvas = document.getElementById('robotCanvas');
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(width, height);
