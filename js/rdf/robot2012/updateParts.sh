@@ -5,7 +5,7 @@ CONVERTER=~/mrdoob-three.js/utils/exporters/obj/convert_obj_three.py
 BASEDIR=~/Webpage/js/rdf/robot2012/bodies
 
 
-cd ~/Webpage/blender
+cd ~/Uni/Fumanoids/RobotDescription/RobotDescription2012/bodies
 
 for OBJ in *.obj
 do

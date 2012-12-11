@@ -28,6 +28,7 @@ init = ->
     renderer.setSize width, height
     renderer.domElement.id = 'robotCanvas'
     renderer.domElement.style.position = 'absolute'
+    renderer.domElement.style.border = 'solid'
     renderer.domElement.style.top = '150px'
     renderer.domElement.style.left = '50px'
     document.body.appendChild renderer.domElement
@@ -35,17 +36,21 @@ init = ->
     scene = new THREE.Scene()
     
     # ambient light
-    ambient = new THREE.AmbientLight( 0xaaaaaa )
+    ambient = new THREE.AmbientLight( 0xffffff )
     scene.add ambient
             
     # direct lights
-    directionalLight = new THREE.DirectionalLight( 0xffeedd )
-    directionalLight.position.set( 0, -70, 100 ).normalize()
+    directionalLight = new THREE.DirectionalLight 0xffeedd, 0.6
+    directionalLight.position.set( 0, 10, 10 ).normalize()
+    scene.add directionalLight
+    
+    directionalLight = new THREE.DirectionalLight 0xffeedd, 0.6
+    directionalLight.position.set( 0, -10, 10 ).normalize()
     scene.add directionalLight
     
     camera = new THREE.PerspectiveCamera( 35, 800 / 600, 0.1, 10000 )
-    camera.position.set 0, 0, 50
-    camera.lookAt scene.position
+    camera.position.set 0, -20, 10
+    camera.lookAt 0, 10, 0
     scene.add camera
     
     # controls
