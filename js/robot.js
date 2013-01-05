@@ -6,51 +6,132 @@ baseUrl = 'js/rdf/robot2012/';
 
 Robot = (function() {
 
+  Robot.prototype.description = null;
+
+  Robot.prototype.bodies = {};
+
+  Robot.prototype.joints = {};
+
+  Robot.prototype.links = {};
+
+  Robot.prototype.motors = {};
+
+  Robot.prototype.sensors = {};
+
+  Robot.prototype.bodyQueue = [];
+
+  Robot.prototype.loader = null;
+
   function Robot() {
+    this.createJoints = __bind(this.createJoints, this);
+
+    this.loadSensors = __bind(this.loadSensors, this);
+
     this.addBody = __bind(this.addBody, this);
 
-    this.loadNextBody = __bind(this.loadNextBody, this);
+    this.loadBody = __bind(this.loadBody, this);
 
     this.rdfLoadingCallback = __bind(this.rdfLoadingCallback, this);
-    this.bodies = [];
-    this.joints = [];
-    this.isInitialized = false;
-    this.bodyQueue = [];
-    this.loader = null;
+
   }
 
-  Robot.prototype.loadRdf = function(rdfUrl) {
+  Robot.prototype.loadRdf = function(rdfUrl, callback) {
+    this.callback = callback;
     return $.getJSON(rdfUrl, this.rdfLoadingCallback);
   };
 
   Robot.prototype.rdfLoadingCallback = function(description) {
-    console.log('loading description \"' + description.name + '\"');
+    console.log('Loading description \"' + description.name + '\" created on ' + description.timestamp);
+    this.description = description;
     this.bodyQueue = this.bodyQueue.concat(description.bodies);
     this.loader = new THREE.JSONLoader();
-    return this.loadNextBody();
+    console.log('Loading bodies...');
+    return this.loadBody();
   };
 
-  Robot.prototype.loadNextBody = function() {
+  Robot.prototype.loadBody = function() {
     var path;
     if (this.bodyQueue.length > 0) {
       path = baseUrl + this.bodyQueue[0]['de.fumanoids.message.BodyExternal.path'];
-      console.log('adding body #' + this.bodyQueue[0].id);
-      this.bodyQueue[0].id + ' loaded from ' + path;
       return this.loader.load(path, this.addBody);
+    } else {
+      this.loadSensors();
+      console.log('...done.\n Creating joints...');
+      scene.updateMatrixWorld();
+      this.createJoints();
+      console.log('...done.\n Loading description complete.');
+      return this.callback();
     }
   };
 
   Robot.prototype.addBody = function(geometry) {
-    var body, mesh;
+    var body, matrix, mesh;
     body = this.bodyQueue[0];
     this.bodyQueue.shift();
+    this.bodies[body.id] = body;
     mesh = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial());
     body.mesh = mesh;
-    mesh.matrix = matrixFromProto(body.position);
-    mesh.matrixAutoUpdate = false;
-    mesh.updateMatrixWorld(true);
+    matrix = matrixFromProto(body.position);
+    mesh.rotation.getRotationFromMatrix(matrix, mesh.scale);
+    mesh.position.getPositionFromMatrix(matrix);
     scene.add(mesh);
-    return this.loadNextBody();
+    return this.loadBody();
+  };
+
+  Robot.prototype.loadSensors = function() {
+    var sensor, _i, _len, _ref, _results;
+    _ref = this.description.sensors;
+    _results = [];
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      sensor = _ref[_i];
+      switch (sensor.type) {
+        case 'MOTOR':
+          _results.push(this.motors[sensor.id] = sensor);
+          break;
+        default:
+          _results.push(this.sensors[sensor.id] = sensor);
+      }
+    }
+    return _results;
+  };
+
+  Robot.prototype.createJoints = function() {
+    var body, childID, id, joint, link, _i, _j, _len, _len1, _ref, _ref1, _ref2, _results;
+    _ref = this.description.links;
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      link = _ref[_i];
+      joint = new Joint(link.id, link.name, vectorFromProto(link.axis), vectorFromProto(link.position), link.bodyIsChild);
+      joint.setBody(link.bodyID != null ? this.bodies[link.bodyID].mesh : null);
+      joint.motor = link.motorID != null ? this.motors[link.motorID] : null;
+      this.joints[link.id] = joint;
+    }
+    _ref1 = this.bodies;
+    for (id in _ref1) {
+      body = _ref1[id];
+      if (body.parentID != null) {
+        this.joints[body.parentID].addBodyChild(body.mesh);
+      }
+    }
+    _ref2 = this.description.links;
+    _results = [];
+    for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
+      link = _ref2[_j];
+      if (link.childIDs != null) {
+        _results.push((function() {
+          var _k, _len2, _ref3, _results1;
+          _ref3 = link.childIDs;
+          _results1 = [];
+          for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
+            childID = _ref3[_k];
+            _results1.push(this.joints[link.id].addJointChild(this.joints[childID]));
+          }
+          return _results1;
+        }).call(this));
+      } else {
+        _results.push(void 0);
+      }
+    }
+    return _results;
   };
 
   return Robot;

@@ -12,6 +12,8 @@ mouseY = 0
 
 robot = null
 
+i = 0
+
 document.addEventListener  'mousemove', onDocumentMouseMove, false
 
 onDocumentMouseMove = (event) ->
@@ -19,10 +21,6 @@ onDocumentMouseMove = (event) ->
     mouseY = event.clientY - height/2
 
 init = ->
-    
-    robot = new Robot()
-    robot.loadRdf 'js/rdf/robot2012/Robot2012.js'
-	
     canvas = document.getElementById 'robotCanvas'
     renderer = new THREE.WebGLRenderer()
     renderer.setSize width, height
@@ -34,6 +32,19 @@ init = ->
     document.body.appendChild renderer.domElement
     
     scene = new THREE.Scene()
+    robot = new Robot()
+    robot.loadRdf 'js/rdf/robot2012/Robot2012.js', robotInitCallback
+
+test = ->
+	joint1 = robot.joints[1]
+	joint2 = robot.joints[2]
+	
+#	joint1.sceneNode.position.set 0, 0, 0
+#	joint2.sceneNode.position.set 0, 0, 0
+	
+	scene.add joint2.sceneNode
+
+robotInitCallback = ->
     
     # ambient light
     ambient = new THREE.AmbientLight( 0xffffff )
@@ -48,9 +59,17 @@ init = ->
     directionalLight.position.set( 0, -10, 10 ).normalize()
     scene.add directionalLight
     
+    directionalLight = new THREE.DirectionalLight 0xffeedd, 0.3
+    directionalLight.position.set( 10, 0, 10 ).normalize()
+    scene.add directionalLight
+    
+    directionalLight = new THREE.DirectionalLight 0xffeedd, 0.3
+    directionalLight.position.set( -10, 0, 10 ).normalize()
+    scene.add directionalLight
+    
     camera = new THREE.PerspectiveCamera( 35, 800 / 600, 0.1, 10000 )
-    camera.position.set 0, -20, 10
-    camera.lookAt 0, 10, 0
+    camera.position.set 0, 0, 10
+    camera.lookAt 0, 0, 0
     scene.add camera
     
     # controls
@@ -65,13 +84,19 @@ init = ->
     controls.dynamicDampingFactor = 0.3
     # keys "A", "S", "D"
     controls.keys = [ 65, 83, 68 ]
-    controls.addEventListener( 'change', render ) 
+    controls.addEventListener( 'change', render )
+    
+#    test()
+    
+    animate()
 
 render = ->
     renderer.render scene, camera
 
 # animation loop
 animate = ->
+    robot.joints[1].rotate 0.1 * i
+    i++
     requestAnimationFrame animate
     controls.update()
     render()

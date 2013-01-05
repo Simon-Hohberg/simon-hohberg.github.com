@@ -3,23 +3,87 @@ var Joint;
 
 Joint = (function() {
 
-  function Joint() {}
+  Joint.prototype.body = null;
 
-  Joint.bodies = new THREE.Object3D();
+  Joint.prototype.motor = null;
+
+  Joint.prototype.children = {};
+
+  function Joint(id, name, axis, position, bodyIsChild) {
+    this.id = id;
+    this.name = name;
+    this.axis = axis;
+    this.bodyIsChild = bodyIsChild;
+    this.sceneNode = new THREE.Object3D();
+    this.sceneNode.position.set(position.x, position.y, position.z);
+    this.axis.normalize();
+    scene.add(this.sceneNode);
+    scene.updateMatrixWorld();
+  }
+
+  Joint.prototype.rotate = function(radians) {
+    var matrix;
+    matrix = new THREE.Matrix4().makeRotationAxis(this.axis, radians);
+    this.sceneNode.matrix.multiplySelf(matrix);
+    return this.sceneNode.rotation.getRotationFromMatrix(matrix, this.sceneNode.scale);
+  };
+
+  Joint.prototype.addBodyChild = function(bodyMesh) {
+    var bodyMatrixWorld, invSceneNodeMatrixWorld;
+    bodyMatrixWorld = new THREE.Matrix4();
+    bodyMatrixWorld.copy(bodyMesh.matrixWorld);
+    if (bodyMesh.parent != null) {
+      bodyMesh.parent.remove(bodyMesh);
+    }
+    invSceneNodeMatrixWorld = new THREE.Matrix4();
+    invSceneNodeMatrixWorld.getInverse(this.sceneNode.matrixWorld);
+    bodyMesh.matrix.multiply(invSceneNodeMatrixWorld, bodyMatrixWorld);
+    bodyMesh.rotation.getRotationFromMatrix(bodyMesh.matrix, bodyMesh.scale);
+    bodyMesh.position.getPositionFromMatrix(bodyMesh.matrix);
+    this.sceneNode.add(bodyMesh);
+    return scene.updateMatrixWorld();
+  };
+
+  Joint.prototype.addJointChild = function(joint) {
+    var childMatrixWorld, invSceneNodeMatrixWorld;
+    childMatrixWorld = new THREE.Matrix4();
+    childMatrixWorld.copy(joint.sceneNode.matrixWorld);
+    this.children[joint.id] = joint;
+    if (joint.sceneNode.parent != null) {
+      joint.sceneNode.parent.remove(joint.sceneNode);
+    }
+    invSceneNodeMatrixWorld = new THREE.Matrix4();
+    invSceneNodeMatrixWorld.getInverse(this.sceneNode.matrixWorld);
+    joint.sceneNode.matrix.multiply(invSceneNodeMatrixWorld, childMatrixWorld);
+    joint.sceneNode.rotation.getRotationFromMatrix(joint.sceneNode.matrix, joint.sceneNode.scale);
+    joint.sceneNode.position.getPositionFromMatrix(joint.sceneNode.matrix);
+    this.sceneNode.add(joint.sceneNode);
+    if (joint.hasBody() && !joint.bodyIsChild) {
+      return this.addBodyChild(joint.body);
+    } else {
+      return scene.updateMatrixWorld();
+    }
+  };
+
+  Joint.prototype.setBody = function(bodyMesh) {
+    this.body = bodyMesh;
+    if (this.bodyIsChild) {
+      return this.addBodyChild(bodyMesh);
+    }
+  };
+
+  Joint.prototype.hasBody = function() {
+    return this.body != null;
+  };
+
+  Joint.prototype.hasMotor = function() {
+    return this.motor != null;
+  };
+
+  Joint.prototype.hasParent = function() {
+    return this.sceneNode.parent != null;
+  };
 
   return Joint;
 
 })();
-
-({
-  constructor: function(axis, motorID) {
-    var rotate;
-    this.axis = axis;
-    this.motorID = motorID;
-    return rotate = function(radiants) {
-      var matrix;
-      matrix = new THREE.Matrix4().makeRotationAxis(axis, radiants);
-      return bodies.setRotationFromMatrix(matrix);
-    };
-  }
-});
