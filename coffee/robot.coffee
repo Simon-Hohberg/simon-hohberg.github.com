@@ -1,7 +1,7 @@
 baseUrl = 'js/rdf/robot2012/'
 
 class Robot
-	
+    
     description  : null
     bodies       : {}       # maps body.id  => body
     joints       : {}       # maps joint.id => joint
@@ -10,12 +10,12 @@ class Robot
     sensors      : {}
     bodyQueue    : []
     loader       : null
-	
+    
     constructor: ->
     
     loadRdf: (rdfUrl, @callback) ->
-    	# load robot desciption from url
-    	$.getJSON rdfUrl, @rdfLoadingCallback
+        # load robot desciption from url
+        $.getJSON rdfUrl, @rdfLoadingCallback
     
     
     rdfLoadingCallback: (description) =>
@@ -47,8 +47,8 @@ class Robot
     
     
     addBody: (geometry) =>
-    	
-    	# pop first element
+        
+        # pop first element
         body = @bodyQueue[0]
         @bodyQueue.shift()
         
@@ -67,29 +67,37 @@ class Robot
     
     
     loadSensors: =>
-    	for sensor in @description.sensors
-    		switch sensor.type
+        for sensor in @description.sensors
+            switch sensor.type
                 when 'MOTOR' then @motors[sensor.id] = sensor
                 else @sensors[sensor.id] = sensor
     
     
     createJoints: =>
-    	
-    	# create a joint for each link
-    	for link in @description.links
+        
+        # create a joint for each link
+        for link in @description.links
             joint = new Joint link.id, link.name, vectorFromProto(link.axis), vectorFromProto(link.position), link.bodyIsChild
             joint.setBody( if link.bodyID? then @bodies[link.bodyID].mesh else null )
-            joint.motor = if link.motorID? then @motors[link.motorID] else null
+            if link.motorID?
+                @motors[link.motorID].joint = joint
             @joints[link.id] = joint
-    	
+        
+        for link in @description.links
+            if link.parallelLinkIDs?
+                for id in link.parallelLinkIDs
+                    @joints[link.id].parallelJoints.push @joints[id]
+            if link.parallelOponentLinkID?
+                @joints[link.id].opposingJoints.push @joints[link.parallelOponentLinkID]
+        
         # add bodies
         for id, body of @bodies
-        	if body.parentID?
+            if body.parentID?
                 @joints[body.parentID].addBodyChild body.mesh
-    	
-    	# create kinematic chain
+        
+        # create kinematic chain
         for link in @description.links
             if link.childIDs?
-            	for childID in link.childIDs
+                for childID in link.childIDs
                     @joints[link.id].addJointChild @joints[childID]
       

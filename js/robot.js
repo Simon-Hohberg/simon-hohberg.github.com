@@ -96,33 +96,49 @@ Robot = (function() {
   };
 
   Robot.prototype.createJoints = function() {
-    var body, childID, id, joint, link, _i, _j, _len, _len1, _ref, _ref1, _ref2, _results;
+    var body, childID, id, joint, link, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3, _ref4, _results;
     _ref = this.description.links;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       link = _ref[_i];
       joint = new Joint(link.id, link.name, vectorFromProto(link.axis), vectorFromProto(link.position), link.bodyIsChild);
       joint.setBody(link.bodyID != null ? this.bodies[link.bodyID].mesh : null);
-      joint.motor = link.motorID != null ? this.motors[link.motorID] : null;
+      if (link.motorID != null) {
+        this.motors[link.motorID].joint = joint;
+      }
       this.joints[link.id] = joint;
     }
-    _ref1 = this.bodies;
-    for (id in _ref1) {
-      body = _ref1[id];
+    _ref1 = this.description.links;
+    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+      link = _ref1[_j];
+      if (link.parallelLinkIDs != null) {
+        _ref2 = link.parallelLinkIDs;
+        for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+          id = _ref2[_k];
+          this.joints[link.id].parallelJoints.push(this.joints[id]);
+        }
+      }
+      if (link.parallelOponentLinkID != null) {
+        this.joints[link.id].opposingJoints.push(this.joints[link.parallelOponentLinkID]);
+      }
+    }
+    _ref3 = this.bodies;
+    for (id in _ref3) {
+      body = _ref3[id];
       if (body.parentID != null) {
         this.joints[body.parentID].addBodyChild(body.mesh);
       }
     }
-    _ref2 = this.description.links;
+    _ref4 = this.description.links;
     _results = [];
-    for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
-      link = _ref2[_j];
+    for (_l = 0, _len3 = _ref4.length; _l < _len3; _l++) {
+      link = _ref4[_l];
       if (link.childIDs != null) {
         _results.push((function() {
-          var _k, _len2, _ref3, _results1;
-          _ref3 = link.childIDs;
+          var _len4, _m, _ref5, _results1;
+          _ref5 = link.childIDs;
           _results1 = [];
-          for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
-            childID = _ref3[_k];
+          for (_m = 0, _len4 = _ref5.length; _m < _len4; _m++) {
+            childID = _ref5[_m];
             _results1.push(this.joints[link.id].addJointChild(this.joints[childID]));
           }
           return _results1;

@@ -1,11 +1,10 @@
 class Joint
-	
-	body     : null # body mesh object
-	motor    : null # proto motor object
-	children : {}   # map of child joints: joint.id => joint
     
+    body          : null # body mesh object
+    motor         : null # proto motor object
+    children      : {}   # map of child joints: joint.id => joint
     
-	constructor : (@id, @name, @axis, position, @bodyIsChild) ->
+    constructor: (@id, @name, @axis, position, @bodyIsChild, @parallelJoints = [], @opposingJoints = []) ->
         @sceneNode = new THREE.Object3D()
         @sceneNode.position.set position.x, position.y, position.z
         @axis.normalize()
@@ -19,10 +18,16 @@ class Joint
         matrix = new THREE.Matrix4().makeRotationAxis @axis, radians
         @sceneNode.matrix.multiplySelf matrix
         @sceneNode.rotation.getRotationFromMatrix matrix, @sceneNode.scale
+        
+        for joint in @parallelJoints
+            joint.rotate radians
+        
+        for joint in @opposingJoints
+            joint.rotate -radians
     
     
     addBodyChild: (bodyMesh) ->
-    	
+        
         bodyMatrixWorld = new THREE.Matrix4()
         bodyMatrixWorld.copy bodyMesh.matrixWorld
         
@@ -41,13 +46,13 @@ class Joint
         @sceneNode.add bodyMesh
         
         scene.updateMatrixWorld()
-	
-	
-	addJointChild: (joint) ->
-		
+    
+    
+    addJointChild: (joint) ->
+        
         childMatrixWorld = new THREE.Matrix4()
         childMatrixWorld.copy joint.sceneNode.matrixWorld
-		
+        
         @children[joint.id] = joint
         
         # remove from last parent
@@ -65,9 +70,9 @@ class Joint
         @sceneNode.add joint.sceneNode
         
         if joint.hasBody() and not joint.bodyIsChild
-        	@addBodyChild joint.body
+            @addBodyChild joint.body
         else
-        	scene.updateMatrixWorld()
+            scene.updateMatrixWorld()
     
     
     setBody: (bodyMesh) ->

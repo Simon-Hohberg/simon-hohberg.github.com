@@ -9,11 +9,13 @@ Joint = (function() {
 
   Joint.prototype.children = {};
 
-  function Joint(id, name, axis, position, bodyIsChild) {
+  function Joint(id, name, axis, position, bodyIsChild, parallelJoints, opposingJoints) {
     this.id = id;
     this.name = name;
     this.axis = axis;
     this.bodyIsChild = bodyIsChild;
+    this.parallelJoints = parallelJoints != null ? parallelJoints : [];
+    this.opposingJoints = opposingJoints != null ? opposingJoints : [];
     this.sceneNode = new THREE.Object3D();
     this.sceneNode.position.set(position.x, position.y, position.z);
     this.axis.normalize();
@@ -22,10 +24,22 @@ Joint = (function() {
   }
 
   Joint.prototype.rotate = function(radians) {
-    var matrix;
+    var joint, matrix, _i, _j, _len, _len1, _ref, _ref1, _results;
     matrix = new THREE.Matrix4().makeRotationAxis(this.axis, radians);
     this.sceneNode.matrix.multiplySelf(matrix);
-    return this.sceneNode.rotation.getRotationFromMatrix(matrix, this.sceneNode.scale);
+    this.sceneNode.rotation.getRotationFromMatrix(matrix, this.sceneNode.scale);
+    _ref = this.parallelJoints;
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      joint = _ref[_i];
+      joint.rotate(radians);
+    }
+    _ref1 = this.opposingJoints;
+    _results = [];
+    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+      joint = _ref1[_j];
+      _results.push(joint.rotate(-radians));
+    }
+    return _results;
   };
 
   Joint.prototype.addBodyChild = function(bodyMesh) {
