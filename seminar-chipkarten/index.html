@@ -67,33 +67,36 @@
                 
                 <li>Der Personalausweis
                   <ol>
-                    <li>Warum ein neuer?</li>
+                    <li>Gesetzliche Regelung</li>
+                    <li>Motivation für den nPa</li>
                   </ol>
                 </li>
                 
-                <li>Der neue Personalausweis
+                <li>Überblick über den nPa
                   <ol>
-                    <li>Daten</li>
-                    <li>Funktionen</li>
-                    <li>Technische Spezifikation</li>
+                    <li>Äußere Eigenschaften</li>
+                    <li>Integrierter Chip</li>
                   </ol>
                 </li>
                 
                 <li>Die eID Funktion
                   <ol>
+                    <li>eID Infrastruktur</li>
                     <li>PACE</li>
                     <li>Terminal Authentication</li>
                     <li>Chip Authentication</li>
-                    <li>Restricted Identification</li>
                   </ol>
                 </li>
                 
-                <li>Kritik am neuen Personalausweis</li>
+                <li>Demo</li>
+                
+                <li>Kritik am nPa</li>
                 
                 <li>Fazit</li>
                 
               </ol>
             </div>
+            <div style="font-size: 0.7em; text-align: right; padding-right: 5%; color: rgba( 95,  95,  95, 1);">[ nPa ... neuer Personalausweis ]</div>
 
           <aside class="notes">
           </aside>
@@ -102,7 +105,14 @@
 
         <!-- ------------ Der Personalausweis im Allgemeinen -------------- -->
         <section>
+            <h1 class="new-chapter">Der Personalausweis</h1>
+            <aside class="notes">
+            </aside>
+        </section>
+        
+        <section>
             <h3>Der Personalausweis</h3>
+            <h4>Gesetzliche Regelung</h4>
               <div class= "main">
               <cite>Deutsche [...] sind verpflichtet, einen Ausweis zu besitzen, sobald sie 16 Jahre alt sind [...].</cite><p class="cite-source">Gesetz
   über Personalausweise und den elektronischen Identitätsnachweis</p>
@@ -134,7 +144,7 @@
         <!-- ------------ Motivation -------------- -->
         <section>
             <h3>Der Personalausweis</h3>
-            <h4>Warum ein neuer?</h4>
+            <h4>Motivation für den nPa</h4>
             <div class= "main">
               <ul>
 
@@ -174,18 +184,19 @@
         
         <!-- ------------ Neuer Personalausweis -------------- -->
         <section>
-            <h3>Der Neue Personalausweis</h3>
+            <h1 class="new-chapter">Überblick über den nPa</h1>
+            <aside class="notes">
+            </aside>
+        </section>
+        
+        <section>
+            <h3>Überblick über den nPa</h3>
+            <h4>Äußere Eigenschaften</h4>
             <div class= "main">
               <ul>
 
                 <li>Einführung 1. November 2010</li>
                 <li>Abschluss der Einführung bis 2020</li>
-                
-                <li>Einführung des biometrischen Reisepasses (1. November 2005)
-                  <ul>
-                    <li>Ausweis darf in Bezug auf Fälschungssicherheit nicht schwächer sein<br> &rarr; benötigt ebenfalls biometrische Merkmale</li>
-                  </ul>
-                </li>
                 
                 <div style="margin: 0 10% 0 5%; padding: auto;">
                   <img style="height: 2em;"src="images/Logo_Personalausweis_mit_Text.png">
@@ -203,10 +214,10 @@
             
         </section>
         
-        <!-- ------------ Daten -------------- -->
+        <!-- ------------ Äußeres -------------- -->
         <section>
-            <h3>Der Neue Personalausweis</h3>
-            <h4>Daten</h4>
+            <h3>Überblick über den nPa</h3>
+            <h4>Äußere Eigenschaften</h4>
             <div class= "main">
               <ul>
                 <li>Aufgedruckte Daten
@@ -255,12 +266,13 @@
             
         </section>
         
-        <!-- ------------ Chip Daten -------------- -->
+        <!-- ------------ Chip -------------- -->
         <section>
-            <h3>Der Neue Personalausweis</h3>
-            <h4>Daten</h4>
+            <h3>Überblick über den nPa</h3>
+            <h4>Integrierter Chip</h4>
             <div class= "main">
               <ul>
+                <li>kontaktloser Chip nach ISO/IEC 14443</li>
                 <li>Chip enhält alle aufgedruckten Daten bis auf
                   <ul>
                     <li>Ausweisnummer</li>
@@ -272,6 +284,12 @@
                     <li>ausstellende Behörde</li>
                   </ul>
                 </li>
+                <li>Zusätzlich biometrische Daten
+                  <ul>
+                    <li>digitales Foto</li>
+                    <li>optional Fingerabdrücke</li>
+                  </ul>
+                </li>
               </ul>
             </div>
             
@@ -283,77 +301,30 @@
             
         </section>
         
-        <!-- ------------ Funktionen -------------- -->
         <section>
-            <h3>Der Neue Personalausweis</h3>
-            <h4>Funktionen</h4>
+            <h3>Überblick über den nPa</h3>
+            <h4>Integrierter Chip</h4>
             <div class= "main">
               <ul>
-                <li>ePass Anwendung (hoheitlich)
+                <li>Kommunikation nach ISO/IEC 7816
                   <ul>
-                    <li>Daten der MRZ</li>
-                    <li>Biometrische Daten</li>
+                    <li>Teil 4: <span class="doc-title">Interindustry commands for interchange</span>
+                      <ul>
+                        <li>Application Protocol Data Unit (APDU)</li>
+                        <li>Kommando-Antwort-Paare</li>
+                        <li>Secure Messaging</li>
+                        <li>Struktur von Anwendungen und Daten</li>
+                        <li>Dateiorganisation</li>
+                        <li>Zugriffsrechte</li>
+                      </ul>
+                    </li>
                   </ul>
                 </li>
-                <li>eID Anwendung (Online-Ausweisfunktion, nicht-hoheitlich)
-                  <ul>
-                    <li>personen- und dokumentenbezogene Daten</li>
-                    <li>kein Zugriff auf biometrische Daten</li>
-                  </ul>
-                </li>
-                <li>Qualifizierte elektronische Signatur (nicht-hoheitlich)</li>
-              </ul>
-            </div>
-            
-            <aside class="notes">
-              <ul>
-                <li></li>
-              </ul>
-            </aside>
-            
-        </section>
-        
-        <!-- ------------ Technische Spezifikation -------------- -->
-        <section>
-            <h3>Technische Spezifikation</h3>
-            <h4>Internationale Standards</h4>
-            <div class= "main">
-              <ul>
-                <div style="width: 45%; float: left;">
-                  <li>ISO/IEC 14443
-                    <ul>
-                      <li>kontaklose Chipkarten
-                        <ul>
-                          <li>physikalisch</li>
-                          <li>Modulation und Kodierung</li>
-                          <li>Initialisierung und Antikollision</li>
-                          <li>Übertragunsprotokoll</li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>ISO 24727
+                <li>ISO 24727
                     <ul>
                       <li>Teil 3: </li>
                     </ul>
                   </li>
-                </div>
-                <div style="width: 55%; float: left;">
-                  <li>ISO/IEC 7816 (Grundlage ist ISO/IEC 7810)
-                    <ul>
-                      <li>Teil 4: <span class="doc-title">Interindustry commands for interchange</span>
-                        <ul>
-                          <li>Application Protocol Data Unit (APDU)</li>
-                          <li>Kommando-Antwort-Paare</li>
-                          <li>Secure Messaging</li>
-                          <li>Struktur von Anwendungen und Daten</li>
-                          <li>Dateiorganisation</li>
-                          <li>Zugriffsrechte</li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </div>
               </ul>
             </div>
             
@@ -366,23 +337,25 @@
         </section>
         
         <section>
-            <h3>Technische Spezifikation</h3>
-            <h4>BSI Technische Richtlinien</h4>
+            <h3>Überblick über den nPa</h3>
+            <h4>Integrierter Chip</h4>
             <div class= "main">
               <ul>
-                <li>BSI TR-03127: <span class="doc-title">Architektur elektronischer Personalausweis und elektronischer Aufenthaltstitel</span></li>
-                <li>BSI TR-03110: <span class="doc-title">Advanced Security Mechanisms for Machine Readable Travel Documents</span>
+                <li>Anwendungen
                   <ul>
-                    <li>Sicherheitsmechanismen zum Zugriff auf Daten/Funktionen</li>
-                    <li>Password Authenticated Connection Establishment (PACE)</li>
-                    <li>Terminal Authentication</li>
-                    <li>Chip Authentication</li>
-                  </ul>
-                </li>
-                <li>BSI TR-03112: <span class="doc-title">eCard API Framework</span>
-                  <ul>
-                    <li>Standardisiertes Interface für die verschiedenen Smartcard Anwendungen (eGK, ePA, ePass, ELSTER, ELENA)</li>
-                    <li>Vereinheitlichte Kommunikation von Anwendungen und Chipkarten</li>
+                    <li>ePass Anwendung (hoheitlich)
+                      <ul>
+                        <li>Daten der MRZ</li>
+                        <li>Biometrische Daten</li>
+                      </ul>
+                    </li>
+                    <li>eID Anwendung (Online-Ausweisfunktion, nicht-hoheitlich)
+                      <ul>
+                        <li>personen- und dokumentenbezogene Daten</li>
+                        <li>kein Zugriff auf biometrische Daten</li>
+                      </ul>
+                    </li>
+                    <li>Qualifizierte elektronische Signatur (nicht-hoheitlich)</li>
                   </ul>
                 </li>
               </ul>
@@ -395,10 +368,48 @@
             </aside>
             
         </section>
-
+        
         <!-- ------------ eID Funktion -------------- -->
         <section>
+            <h1 class="new-chapter">eID Funktion</h1>
+            <aside class="notes">
+            </aside>
+        </section>
+        
+<!--        <section>-->
+<!--            <h3>Technische Spezifikation</h3>-->
+<!--            <h4>BSI Technische Richtlinien</h4>-->
+<!--            <div class= "main">-->
+<!--              <ul>-->
+<!--                <li>BSI TR-03127: <span class="doc-title">Architektur elektronischer Personalausweis und elektronischer Aufenthaltstitel</span></li>-->
+<!--                <li>BSI TR-03110: <span class="doc-title">Advanced Security Mechanisms for Machine Readable Travel Documents</span>-->
+<!--                  <ul>-->
+<!--                    <li>Sicherheitsmechanismen zum Zugriff auf Daten/Funktionen</li>-->
+<!--                    <li>Password Authenticated Connection Establishment (PACE)</li>-->
+<!--                    <li>Terminal Authentication</li>-->
+<!--                    <li>Chip Authentication</li>-->
+<!--                  </ul>-->
+<!--                </li>-->
+<!--                <li>BSI TR-03112: <span class="doc-title">eCard API Framework</span>-->
+<!--                  <ul>-->
+<!--                    <li>Standardisiertes Interface für die verschiedenen Smartcard Anwendungen (eGK, ePA, ePass, ELSTER, ELENA)</li>-->
+<!--                    <li>Vereinheitlichte Kommunikation von Anwendungen und Chipkarten</li>-->
+<!--                  </ul>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--            -->
+<!--            <aside class="notes">-->
+<!--              <ul>-->
+<!--                <li></li>-->
+<!--              </ul>-->
+<!--            </aside>-->
+<!--            -->
+<!--        </section>-->
+        
+        <section>
             <h3>eID Funktion</h3>
+            <h4>eID Infrastruktur</h4>
             <div class= "main">
               <ul>
                 <li>Übertragung perönlicher Daten für behördliche und <i>eCommerce</i> Zwecke</li>
@@ -417,10 +428,10 @@
         
         <section>
             <h3>eID Funktion</h3>
-            <h4>Architektur</h4>
+            <h4>PACE</h4>
             <div class= "main">
               <ul>
-                <li>Übertragung perönlicher Daten zu <i>eCommerce</i> Zwecken</li>
+                <li></li>
               </ul>
             </div>
             
@@ -432,9 +443,9 @@
             
         </section>
         
-        <!-- ------------  -------------- -->
         <section>
-            <h3>Der Neue Personalausweis</h3>
+            <h3>eID Funktion</h3>
+            <h4>Terminal Authentication</h4>
             <div class= "main">
               <ul>
                 <li></li>
@@ -448,7 +459,99 @@
             </aside>
             
         </section>
+        
+        <section>
+            <h3>eID Funktion</h3>
+            <h4>Chip Authentication</h4>
+            <div class= "main">
+              <ul>
+                <li></li>
+              </ul>
+            </div>
+            
+            <aside class="notes">
+              <ul>
+                <li></li>
+              </ul>
+            </aside>
+            
+        </section>
+        
+        <section>
+            <h1 class="new-chapter">Demo</h1>
 
+            <aside class="notes">
+              <ul>
+                <li></li>
+              </ul>
+            </aside>
+            
+        </section>
+        
+        <section>
+          <h3>Demo</h3>
+            <div class= "main" style="height: 17em; width: 92% ">
+              <iframe src="https://www.ccepa.de/testportal/download.jsp?file=0" style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </section>
+        
+        <!-- ------------ Kritik -------------- -->
+        
+        <section>
+            <h1 class="new-chapter">Kritik</h1>
+
+            <aside class="notes">
+              <ul>
+                <li></li>
+              </ul>
+            </aside>
+            
+        </section>
+        
+        <section>
+            <h3>Kritik</h3>
+            <div class= "main">
+              <ul>
+                <li></li>
+              </ul>
+            </div>
+            
+            <aside class="notes">
+              <ul>
+                <li></li>
+              </ul>
+            </aside>
+            
+        </section>
+        
+        <!-- ------------ Fazit -------------- -->
+        
+        <section>
+            <h1 class="new-chapter">Fazit</h1>
+
+            <aside class="notes">
+              <ul>
+                <li></li>
+              </ul>
+            </aside>
+            
+        </section>
+        
+        <section>
+            <h3>Fazit</h3>
+            <div class= "main">
+              <ul>
+                <li></li>
+              </ul>
+            </div>
+            
+            <aside class="notes">
+              <ul>
+                <li></li>
+              </ul>
+            </aside>
+            
+        </section>
       </div>
 
     </div>

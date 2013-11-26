@@ -257,7 +257,12 @@ body {
   margin-left: 1%;
   font-weight: bolder;
   vertical-align: top;
-  
+}
+
+.reveal .new-chapter {
+  position: absolute;
+  top: 650%;
+  left: 5%;
 }
 
 /*.reveal h1:before,
