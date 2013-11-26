@@ -26,7 +26,6 @@ body {
   font-family: arial !important;
   font-size: 2em;
   font-weight: 200;
-  letter-spacing: -0.02em;
   color: black; }
 
 ::selection {
@@ -39,10 +38,9 @@ body {
 }
 
 .reveal section .main {
-  margin-top: 3%;
-  margin-left: 6%;
-  margin-right: 6%;
-  width: 82%;
+  padding-top: 5%;
+  padding-left: 10%;
+  padding-right: 8%;
 }
 
 .reveal .title {
@@ -54,7 +52,7 @@ body {
   color: rgba(128, 128, 128, 1);
   margin-top: -0.7em;
   font-family: times !important;
-  font-size: 50%;
+  font-size: 0.4em;
   line-height: 1.2em;
 }
 
@@ -78,22 +76,25 @@ body {
   counter-reset: item;
 }
 
-.outline ol > li {
+.outline ol li {
   list-style: none; /* Disable the normal item numbering */
   font-size: 1.1em;
   line-height: 1.4em;
   margin: -4px 0px -4px 0px;
   padding: 0px 0px 0px 0px;
+  font-weight: bold;
 }
 
-.outline ol ol {
-  font-size: 0.7em;
+.outline ol ol li {
+  font-size: 0.8em;
+  line-height: 1.3em;
+  font-weight: normal;
 }
 
 .outline li:before {
+  font-weight: normal;
   content: counters(item, ".") " ";
   counter-increment: item;
-  font-weight: bold;
   margin-right: 0.2em;
 }
 
@@ -118,14 +119,15 @@ body {
 }
 
 .reveal ul ul {
+  width: 90%;
   list-style: none !important;
-  margin-top: 0.2em;
+  margin-top: 0.4em;
   margin-bottom: 0.4em;
   margin-left: 0;
   padding-left: 1em;
-  text-indent: -1em;
-  font-size: 0.9em;
-  line-height: 1.1em;
+  text-indent: -0.7em;
+  font-size: 0.8em;
+  line-height: 1em;
 }
 
 .reveal ul ul li {
@@ -147,18 +149,18 @@ body {
 }
 
 .reveal ul ul li:before {
-  content: "\2013";
+  content: "\25cb";
   margin-right: 0.4em;
-  font-size: 0.9em;
+  font-size: 0.7em;
   line-height: 1.1em;
+  vertical-align: middle;
 }
 
 .reveal ul ul ul li:before {
-  content: "\25cb";
-  margin-right: 0.4em;
+  content: "\25a1";
+  font-size: 0.6em;
+  margin-right: 0.6em;
   vertical-align: middle;
-  ;
-  
 }
 
 .doc-title {
@@ -178,7 +180,7 @@ body {
   display: block;
   font-family: times !important;
   font-style: italic !important;
-  padding-left: 5% !important;
+  padding-left: 0.2em !important;
   padding-right: 5% !important;
 }
 
@@ -192,7 +194,7 @@ body {
 
 .reveal .cite-source {
   font-size: 60%;
-  padding-left: 5%;
+  padding-left: 3.9em;
   padding-bottom: 0.4em;
 }
 
@@ -210,7 +212,8 @@ body {
 .reveal .title h2,
 .reveal .title h3,
 .reveal .title h4 {
-  margin: 0 0 0 0;
+  margin: 0 0 0 0 !important;
+  padding: 0 0 0 0 !important;
   color: rgba(  0,  51, 102, 1);
   font-family: arial !important;
   line-height: 1em;
@@ -231,14 +234,13 @@ body {
 .reveal h2,
 .reveal h3,
 .reveal h4 {
-  margin: 0 0 20px 0;
   color: rgba(  0,  51, 102, 1);
   font-family: arial !important;
   line-height: 0.9em;
   letter-spacing: 0.02em;
   text-transform: none;
   text-shadow: none;
-  margin-left: 1% !important;
+  margin-left: 5% !important;
   font-weight: bold !important;
 }
 
@@ -260,9 +262,9 @@ body {
 }
 
 .reveal .new-chapter {
-  position: absolute;
-  top: 650%;
-  left: 5%;
+  text-align: center;
+  margin: 25% 0 0 0 !important;
+  padding: 0 0 0 0 !important;
 }
 
 /*.reveal h1:before,
