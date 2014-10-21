@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>DDD</title>
+    
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    
+    <!-- 3D rendering -->
+    <script type="text/javascript" src="js/engine3D/sylvester.js"></script>
+    <script type="text/javascript" src="js/engine3D/util.js"></script>
+    <script type="text/javascript" src="js/engine3D/cube.js"></script>
+    <script type="text/javascript" src="js/engine3D/camera.js"></script>
+    <script type="text/javascript" src="js/engine3D/renderingPipeline.js"></script>
+    <script type="text/javascript" src="js/engine3D/sphere.js"></script>
+    <script type="text/javascript" src="js/engine3D/directLight.js"></script>
+    <script type="text/javascript" src="js/engine3D/texture.js"></script>
+
+  </head>
+  <body id="indexBody" onLoad="initRender('renderCanvas');">
+    <table style="position: absolute; left: 100px; top: 100px">
+    <tr>
+       <td colspan = "2">Use <b>W</b>, <b>A</b>, <b>S</b>, <b>D</b> to move around. Click and drag the mouse to turn.</td>
+    </tr>
+    <tr>
+       <td colspan = "2"><canvas id="renderCanvas" name="render" style="border: solid 1px; cursor: default">I'm sorry your browser doesn't support HTML canvas.</canvas></td>
+    </tr>
+    <tr>
+       <td>Camera</td>
+       <td>Cube</td>
+       <td>Interpolation Error</td>
+       <td>Tasks</td>
+    </tr>
+    <tr>
+       <td>x <input type="text" id = "cameraX" size = "4">, y <input type="text" id = "cameraY" size = "4">, z <input type="text" id = "cameraZ" size = "4"></td>
+       <td>x <input type="text" id = "cubeX" size = "4">, y <input type="text" id = "cubeY" size = "4">, z <input type="text" id = "cubeZ" size = "4"></td>
+       <td rowspan = "3">line1 <input type = "text" id = "line1Error"><br />line2 <input type = "text" id = "line2Error"><br />line3 <input type = "text" id = "line3Error"></td>
+       <td><input type="button" id = "task26" value = "26." onclick="loadTask(26);"></td>
+    </tr>
+    <tr>
+       <td>nX <input type="text" id = "nX" size = "4">, nY <input type="text" id = "nY" size = "4">, nZ <input type="text" id = "nZ" size = "4"></td>
+       <td></td>
+       <td><input type="button" id = "task27" value = "27." onclick="loadTask(27);"></td>
+    </tr>
+    <tr>
+       <td>nNear <input type="text" id = "nNear"></td>
+    </tr>
+    <tr>
+       <td>nFar <input type="text" id = "nFar"></td>
+    </tr>
+    <tr>
+       <td>openingAngleH <input type="text" id = "openingAngleH"></td>
+    </tr>
+    <tr>
+       <td>openingAngleV <input type="text" id = "openingAngleV"></td>
+    </tr>
+    <tr>
+       <td><input type="button" onclick="updateParameters();" value = "update"></td>
+    </tr>
+    </table>
+  </body>
+</html>

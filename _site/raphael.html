@@ -1,0 +1,57 @@
+<html>
+<head>
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/raphael-min.js"></script>
+<script type="text/javascript" src="js/raphael-utils.js"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
+</head>
+<body>
+<script type="text/javascript">
+  mathJaxRendered = function() {
+    var svg = $("svg");
+    addMathToSvg("mathJaxSource", svg);
+  }
+  MathJax.Hub.Register.StartupHook("End Typeset", mathJaxRendered);
+  var raphael = Raphael(10, 50, 700, 200);
+  
+  gridPath = raphael.path(createGrid(100, 100, 8, 8, 10, 10));
+  // skew by -10rad around x, scale x by 0.5 and translate by 50
+  var m = Raphael.matrix(0.5, Math.tan(-10), 0, 1, 80, 50);
+  gridPath.attr({"transform": m.toTransformString()});
+  
+  var neurons = [];
+  raphael.circle(200, 100, 5);
+  neurons.push(raphael.path(createPill(300, 50, 60, 20)));
+  t = raphael.text(310,60, "1");
+  neurons.push(raphael.path(createPill(300, 150, 60, 20)));
+  neurons.push(raphael.path(createPill(500, 50, 60, 20)));
+  neurons.push(raphael.path(createPill(500, 150, 60, 20)));
+  
+  connections = []
+  connections.push(['M', 180, 100]);
+  connections.push(['L', 195, 100]);
+  
+  connections.push(['M', 205, 100]);
+  connections.push(['L', 300, 60]);
+  connections.push(['M', 205, 100]);
+  connections.push(['L', 300, 160]);
+  
+  connections.push(['M', 360, 60]);
+  connections.push(['L', 500, 60]);
+  connections.push(['M', 360, 60]);
+  connections.push(['L', 500, 160]);
+  connections.push(['M', 360, 160]);
+  connections.push(['L', 500, 60]);
+  connections.push(['M', 360, 160]);
+  connections.push(['L', 500, 160]);
+  raphael.path(connections);
+  
+<!--  var math = new MathJaxObject("mathJaxSource");-->
+<!--  math.appendTo(svg);-->
+<!--  math.translate(100, 200);-->
+</script>
+<div id="mathJaxSource" style="display: none">
+  <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>&#8721;</mo><mi>c</mi></math>
+</div>
+</body>
+</html>

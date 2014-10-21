@@ -1,0 +1,39 @@
+td.score {
+  color: white;
+  background-color: black;
+  font-family: Monospace, Courier New;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px;
+  text-align: center;
+}
+
+td.options {
+  color: white;
+  background-color: black;
+  font-family: Monospace, Courier New;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button {
+  color: black;
+  background-color: white;
+  font-family: Monospace, Courier New;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 4px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid;
+}
+
+/*style of options div and upgrades div*/
+.overlayDiv {
+  background-color: black;
+  filter: alpha(opacity=90); /*for IE < 9*/
+  opacity: 0.9;
+}
