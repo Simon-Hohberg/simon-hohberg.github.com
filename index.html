@@ -1,5 +1,4 @@
 ---
-layout: default
 ---
 <!DOCTYPE HTML>
 <html>
@@ -19,7 +18,18 @@ layout: default
         <ul class="post-list">
             {% for post in site.posts %}
             <li>
-                <a href="{{ post.url }}"><h4>{{ post.title }}</h4></a>
+                <div style="text-align: right; width: 100%">
+                  {% assign d = post.date | date: "%-d"  %}
+                  {{ post.date | date: "%B" }} 
+                  {% case d %}
+                    {% when '1' or '21' or '31' %}{{ d }}st
+                    {% when '2' or '22' %}{{ d }}nd
+                    {% when '3' or '23' %}{{ d }}rd
+                    {% else %}{{ d }}th
+                  {% endcase %},
+                  {{ post.date | date: "%Y" }}
+                </div>
+                <a href="{{ post.url }}"><h4 >{{ post.title }}</h4></a>
                 {{ post.excerpt }}
             </li>
             <hr />

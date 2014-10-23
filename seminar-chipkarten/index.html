@@ -58,6 +58,9 @@
           <h1><b>Der neue Personalausweis</b></h1>
           <h4>Seminar Chipkartentechnologie &ndash; 10. Dezember 2013 &ndash; Simon Hohberg</h4>
           <img src="images/perso.png" style="height: 18%; margin-top: 5%;">
+          <div>
+            <a href="Seminararbeit-nPa.pdf">Schriftliche Ausarbeitung</a>
+          </div>
           
           <aside class="notes">
           </aside>
@@ -144,8 +147,8 @@
                 </li>
               </ul>
               <div style="display: block; margin: 0 auto 0 auto; width: 75%;">
-                <img style="margin-right: 2%; height: 6.3em;" src="images/Mustermann_PA_2007.jpg">
-                <img style="height: 6.3em;"src="images/Mustermann_PA_2007_RS.jpg">
+                <img style="margin-right: 2%; height: 6em;" src="images/Mustermann_PA_2007.jpg">
+                <img style="height: 6em;"src="images/Mustermann_PA_2007_RS.jpg">
                 <div class="image-source">http://commons.wikimedia.org/wiki/File%3AMustermann_PA_2007.jpg, http://commons.wikimedia.org/wiki/File%3AMustermann_PA_2007_RS.jpg</div>
               </div>
             </div>
@@ -191,9 +194,9 @@
               </ul>
               
               <div style="float: right; width: 45%; margin-left: -10%; height: 100%;">
-                <img src="images/Fingerprint_picture.svg" style="height: 20%; display: block; margin: 0 auto 2% auto; padding-left: 12%;">
+                <img src="images/Fingerprint_picture.svg" style="height: 7em; display: block; margin: 0 auto 2% auto; padding-left: 12%;">
                 <div class="image-source" style="margin: 0 0 4% 12%;">http://upload.wikimedia.org/wikipedia/commons/<div style="display: inline-block"></div>b/bf/<div style="display: inline-block"></div>Fingerprint_picture.svg</div>
-                <img src="images/passbild-schablone.jpg" style="height: 36%; display: block; margin: auto; padding-left: 4%;">
+                <img src="images/passbild-schablone.jpg" style="height: 7em; display: block; margin: auto; padding-left: 4%;">
                 <div class="image-source" style="margin: 2% 0 0 6%">http://download.chip.eu/ii/15181220_63bc58c901.jpg</div>
               </div>
               
@@ -913,64 +916,64 @@
         
         <!-- ------------Demo ----------------- -->
         
-        <section>
-            <h1 class="new-chapter">Demo</h1>
+<!--        <section>-->
+<!--            <h1 class="new-chapter">Demo</h1>-->
 
-            <aside class="notes">
-              <ul>
-                <li></li>
-              </ul>
-            </aside>
-            
-        </section>
-        
-        <section>
-          <h2>Demo</h2>
-            <div class= "main" style="height: 17em; width: 90% ">
-              <iframe id="demo" src="https://elanpa.fokus.fraunhofer.de/wahl/main.stadtportalAction" style="width: 100%; height: 100%;"></iframe>
-              <button id="overlay-button" style="padding: 0 2px 0 1px;" onclick="doOverlay();">&#x21F1;</button>
-              <div id="console" style="visibility: hidden; margin-top: -1.3em;background-color: rgba(0,0,0,0.8); position: fixed; top: 66.1%; left: 0; width: 100%; height: 40%; overflow: scroll; padding: 0.5em 0.5em 0.5em 0.5em; font-size: 0.5em; color: rgba(0, 200, 0, 1); line-height: 1.3em;">
-              </div>
-              <button id="stop-loading" style="z-index: 2; visibility: hidden; position: fixed; top: 63%; right: 0;" onclick="window.clearInterval(timer);">Stop</button>
-              </script>
-              <script>
-                isOverlay = false;
-                overlayButton = document.getElementById('overlay-button');
-                stopButton = document.getElementById('stop-loading');
-                console = document.getElementById('console');
-                function doOverlay() {
-                  if (!isOverlay) {
-                    document.getElementById('demo').className += ' overlay';
-                    overlayButton.className += ' close-overlay';
-                    overlayButton.innerHTML = '&#x21F2;';
-                    console.style.setProperty('visibility', 'visible');
-                    stopButton.style.setProperty('visibility', 'visible');
-                    timer = setInterval(loadLog, 100);
-                  } else {
-                    window.clearInterval(timer);
-                    document.getElementById('demo').className = document.getElementById('demo').className.replace( /(?:^|\s)overlay(?!\S)/g, '' );
-                    overlayButton.className = overlayButton.className.replace( /(?:^|\s)close-overlay(?!\S)/g , '' );
-                    overlayButton.innerHTML = '&#x21F1;';
-                    console.style.setProperty('visibility', 'hidden');
-                    stopButton.style.setProperty('visibility', 'hidden');
-                  }
-                  isOverlay = !isOverlay;
-                }
-                
-                function loadLog() {
-                  var req = new XMLHttpRequest();
-                  req.onreadystatechange = function() {
-                    if (req.readyState == 4 && req.status == 200) {
-                      console.innerText = req.responseText;
-                      console.scrollTop = console.scrollHeight;
-                    }
-                  };
-                  req.open("GET", "eid.log", true);
-                  req.send()
-                }
-              </script>
-            </div>
-        </section>
+<!--            <aside class="notes">-->
+<!--              <ul>-->
+<!--                <li></li>-->
+<!--              </ul>-->
+<!--            </aside>-->
+<!--            -->
+<!--        </section>-->
+<!--        -->
+<!--        <section>-->
+<!--          <h2>Demo</h2>-->
+<!--            <div class= "main" style="height: 17em; width: 90% ">-->
+<!--              <iframe id="demo" src="https://elanpa.fokus.fraunhofer.de/wahl/main.stadtportalAction" style="width: 100%; height: 100%;"></iframe>-->
+<!--              <button id="overlay-button" style="padding: 0 2px 0 1px;" onclick="doOverlay();">&#x21F1;</button>-->
+<!--              <div id="console" style="visibility: hidden; margin-top: -1.3em;background-color: rgba(0,0,0,0.8); position: fixed; top: 66.1%; left: 0; width: 100%; height: 40%; overflow: scroll; padding: 0.5em 0.5em 0.5em 0.5em; font-size: 0.5em; color: rgba(0, 200, 0, 1); line-height: 1.3em;">-->
+<!--              </div>-->
+<!--              <button id="stop-loading" style="z-index: 2; visibility: hidden; position: fixed; top: 63%; right: 0;" onclick="window.clearInterval(timer);">Stop</button>-->
+<!--              </script>-->
+<!--              <script>-->
+<!--                isOverlay = false;-->
+<!--                overlayButton = document.getElementById('overlay-button');-->
+<!--                stopButton = document.getElementById('stop-loading');-->
+<!--                console = document.getElementById('console');-->
+<!--                function doOverlay() {-->
+<!--                  if (!isOverlay) {-->
+<!--                    document.getElementById('demo').className += ' overlay';-->
+<!--                    overlayButton.className += ' close-overlay';-->
+<!--                    overlayButton.innerHTML = '&#x21F2;';-->
+<!--                    console.style.setProperty('visibility', 'visible');-->
+<!--                    stopButton.style.setProperty('visibility', 'visible');-->
+<!--                    timer = setInterval(loadLog, 100);-->
+<!--                  } else {-->
+<!--                    window.clearInterval(timer);-->
+<!--                    document.getElementById('demo').className = document.getElementById('demo').className.replace( /(?:^|\s)overlay(?!\S)/g, '' );-->
+<!--                    overlayButton.className = overlayButton.className.replace( /(?:^|\s)close-overlay(?!\S)/g , '' );-->
+<!--                    overlayButton.innerHTML = '&#x21F1;';-->
+<!--                    console.style.setProperty('visibility', 'hidden');-->
+<!--                    stopButton.style.setProperty('visibility', 'hidden');-->
+<!--                  }-->
+<!--                  isOverlay = !isOverlay;-->
+<!--                }-->
+<!--                -->
+<!--                function loadLog() {-->
+<!--                  var req = new XMLHttpRequest();-->
+<!--                  req.onreadystatechange = function() {-->
+<!--                    if (req.readyState == 4 && req.status == 200) {-->
+<!--                      console.innerText = req.responseText;-->
+<!--                      console.scrollTop = console.scrollHeight;-->
+<!--                    }-->
+<!--                  };-->
+<!--                  req.open("GET", "eid.log", true);-->
+<!--                  req.send()-->
+<!--                }-->
+<!--              </script>-->
+<!--            </div>-->
+<!--        </section>-->
         
         <!-- ------------ Kritik -------------- -->
         
@@ -1040,7 +1043,7 @@
                 <li>sehr lange Gültigkeit von 10 Jahren (ab 24 Jahren, sonst 6 Jahre)</li>
                 <li>Akzeptanzproblem</li>
               </ul>
-              <div style="height: 6em">
+              <div style="height: 5em">
                 <img src="images/Preussischer_Personalausweis.jpg" style="padding: 5% 0.1em;">
                 <img src="images/Mustermann_PA_2007.jpg" style="padding: 5% 0.1em;">
                 <img src="images/Elektronischer-Personalausweis.jpg" style="padding: 5% 0.1em;">
@@ -1130,8 +1133,8 @@
           paceGraph.connect({
             source: "picc1",
             target: "pcd1",
-            anchors: ["Right", "Left" ],
-            endpoints: ["Blank", "Dot"],
+            anchors: [ [1, 1, 0, 0], [0, 1, 0, 0] ],
+            endpoints: ["Blank", "Blank"],
             overlays : [
               ["Label", {
                 cssClass: "graph-label",
@@ -1151,7 +1154,7 @@
           paceGraph.connect({
             source: "picc2",
             target: "pcd2",
-            anchors: [ [1, 0.3, 0, 0], [0, 0.3, 0, 0] ],
+            anchors: [ [1, 0.5, 0, 0], [0, 0.5, 0, 0] ],
             endpoints: ["Blank", "Blank"],
             overlays : [
               ["Label", {
@@ -1172,7 +1175,7 @@
           paceGraph.connect({
             source: "pcd2",
             target: "picc2",
-            anchors: [ [0, 0.7, 0, 0], [1, 0.7, 0, 0] ],
+            anchors: [ [0, 0.9, 0, 0], [1, 0.9, 0, 0] ],
             endpoints: ["Blank", "Blank"],
             overlays : [
               ["Label", {
@@ -1193,7 +1196,7 @@
           paceGraph.connect({
             source: "picc3",
             target: "pcd3",
-            anchors: [ [1, 0.3, 0, 0], [0, 0.3, 0, 0] ],
+            anchors: [ [1, 0.8, 0, 0], [0, 0.8, 0, 0] ],
             endpoints: ["Blank", "Blank"],
             overlays : [
               ["Label", {
@@ -1214,7 +1217,7 @@
           paceGraph.connect({
             source: "pcd3",
             target: "picc3",
-            anchors: [ [0, 0.7, 0, 0], [1, 0.7, 0, 0] ],
+            anchors: [ [0, 1.3, 0, 0], [1, 1.3, 0, 0] ],
             endpoints: ["Blank", "Blank"],
             overlays : [
               ["Label", {
@@ -1252,7 +1255,7 @@
           taGraph.connect({
             source: "pcd4",
             target: "picc4",
-            anchors: ["Left", "Right" ],
+            anchors: [ [0, 0.6, 0, 0], [1, 0.5, 0, 0] ],
             endpoints: ["Blank", "Blank"],
             overlays : [
               ["Label", {
@@ -1273,7 +1276,7 @@
           taGraph.connect({
             source: "pcd5",
             target: "picc5",
-            anchors: ["Left", "Right" ],
+            anchors: [ [0, 0.5, 0, 0], [1, 0.6, 0, 0] ],
             endpoints: ["Blank", "Blank"],
             overlays : [
               ["Label", {
@@ -1294,7 +1297,7 @@
           taGraph.connect({
             source: "picc6",
             target: "pcd6",
-            anchors: ["Right", "Left" ],
+            anchors: [ [1, 0.8, 0, 0], [0, 0.9, 0, 0] ],
             endpoints: ["Blank", "Blank"],
             overlays : [
               ["Label", {
@@ -1315,7 +1318,7 @@
           taGraph.connect({
             source: "pcd7",
             target: "picc7",
-            anchors: ["Left", "Right" ],
+            anchors: [ [0, 0.6, 0, 0], [1, 0.8, 0, 0] ],
             endpoints: ["Blank", "Blank"],
             overlays : [
               ["Label", {
@@ -1352,7 +1355,7 @@
           caGraph.connect({
             source: "picc8",
             target: "pcd8",
-            anchors: ["Right", "Left" ],
+            anchors: [ [1, 0.55, 0, 0], [0, 0.6, 0, 0] ],
             endpoints: ["Blank", "Blank"],
             overlays : [
               ["Label", {
@@ -1373,7 +1376,7 @@
           caGraph.connect({
             source: "pcd9",
             target: "picc9",
-            anchors: ["Left", "Right" ],
+            anchors: [ [0, 0.8, 0, 0], [1, 0.6, 0, 0] ],
             endpoints: ["Blank", "Blank"],
             overlays : [
               ["Label", {
@@ -1394,7 +1397,7 @@
           caGraph.connect({
             source: "picc10",
             target: "pcd10",
-            anchors: ["Right", "Left" ],
+            anchors: [ [1, 0.8, 0, 0], [0, 0.8, 0, 0] ],
             endpoints: ["Blank", "Blank"],
             overlays : [
               ["Label", {

@@ -47,11 +47,10 @@
 		border-collapse: collapse;
 		border-spacing: 0; }
 
-
 /* #Basic Styles
 ================================================== */
 	body {
-		background: #fff;
+		background: #eee;
 		font: 1em/1.5em "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		color: #444;
 		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
@@ -66,14 +65,14 @@
 		font-family: "Georgia", "Times New Roman", serif;
 		font-weight: normal; }
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
-	h1 { font-size: 3em; line-height: 1.4em; margin: 0.2em 0 0.3em 0;}
-	h2 { font-size: 2.5em; line-height: 1.2em; margin: 0.5em 0 0.7em 0; }
-	h3 { font-size: 2em; line-height: 1em; margin: 1em 0 0.5em 0; }
-	h4 { font-size: 1.5em; line-height: 1em; margin: 0.4em 0 0.2em 0; }
+	h1 { font-size: 3em; line-height: 1.4em; margin: 0 0 0.7em 0;}
+	h2 { font-size: 2.8em; line-height: 1.4em; margin: 0 0 0.7em -0.4em; }
+	h3 { font-size: 2em; line-height: 1em; margin: 1.5em 0 1.2em -0.4em; border-bottom: medium solid #ddd; }
+	h4 { font-size: 1.5em; line-height: 1em; margin: 0.4em 0 0.4em 0; }
 	h5 { font-size: 1.2em; line-height: 1em; }
 	h6 { font-size: 1em; line-height: 1em; }
 	.subheader { color: #777; }
-
+	
 	p { margin: 0 0 20px 0; }
 	p img { margin: 0; }
 	p.lead { font-size: 21px; line-height: 27px; color: #777;  }
@@ -89,7 +88,7 @@
 	blockquote cite:before { content: "\2014 \0020"; }
 	blockquote cite a, blockquote cite a:visited, blockquote cite a:visited { color: #555; }
 
-	hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 10px 0 30px; height: 0; }
+	hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 1.2em 0 1.2em 0; height: 0; }
 
 
 /* #Links
@@ -123,6 +122,10 @@
 		max-width: 100%;
 		height: auto; }
 
+  svg {
+    max-width: 92%;
+    height: auto;
+  }
 
 /* #Buttons
 ================================================== */
@@ -267,9 +270,7 @@
 	.add-bottom { margin-bottom: 20px !important; }
 
 .math-definition {
-  background-color: #F0F0F0;
+  background-color: #FFF7EA;
   padding: 0.2em;
-  margin: 0.4em 5% 0.4em 5%;
-/*  border: 1px solid #ccc;*/
+  margin: 0.8em 5% 0.8em 5%;
 }
-

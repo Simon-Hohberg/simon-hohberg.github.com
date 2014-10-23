@@ -1,5 +1,11 @@
 <meta charset="utf-8">
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  "HTML-CSS": { linebreaks: { automatic: true } },
+         SVG: { linebreaks: { automatic: true } }
+});
+</script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <link rel="stylesheet" href="/css/skeleton.css">
 <link rel="stylesheet" href="/css/base.css">
@@ -40,14 +46,14 @@
 </table>
 
 <h4 id="convolution">Convolution</h4>
-<div>
+<div class="math-definition">
 $$
 v\left(x,y\right) = \sum_{x_{k}=0}^{N_{k}-1}\sum_{y_{k}=0}^{N_{k}-1}i\left(x-x_{k},y-y_{k}\right)k\left(x_{k},y_{k}\right)
 $$
 </div>
 
 <h4 id="cross--correlation">(Cross-) Correlation</h4>
-<div>
+<div class="math-definition">
 $$
 l\left(x,y\right) = \sum_{x_{k}=0}^{N_{k}-1}\sum_{y_{k}=0}^{N_{k}-1}i\left(x+x_{k},y+y_{k}\right)k\left(x_{k},y_{k}\right)
 $$
