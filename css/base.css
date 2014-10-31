@@ -65,7 +65,7 @@
 		font-family: "Georgia", "Times New Roman", serif;
 		font-weight: normal; }
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
-	h1 { font-size: 3em; line-height: 1.4em; margin: 0 0 0.7em 0;}
+	h1 { font-size: 3em; line-height: 1.4em; margin: 0 0 0 0;}
 	h2 { font-size: 2.8em; line-height: 1.4em; margin: 0 0 0.7em -0.4em; }
 	h3 { font-size: 2em; line-height: 1em; margin: 1.5em 0 1.2em -0.4em; border-bottom: medium solid #ddd; }
 	h4 { font-size: 1.5em; line-height: 1em; margin: 0.4em 0 0.4em 0; }
@@ -93,9 +93,9 @@
 
 /* #Links
 ================================================== */
-	a, a:visited { color: #333; text-decoration: underline; outline: 0; }
-	a:hover, a:focus { color: #000; }
-	p a, p a:visited { line-height: inherit; }
+	a, a:visited { color: #333; text-decoration: none; outline: 0; }
+	a:hover, a:focus { background: #eaeaea; }
+	p a, p a:visited { line-height: inherit;background: #fcfcfc; }
 
 
 /* #Lists

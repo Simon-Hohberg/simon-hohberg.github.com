@@ -13,12 +13,16 @@
   </head>
   <body>
     <div class="container">
-      <div class="sixteen columns"><h1>Stuff I'd like to remember</h1></div>
+      <div class="sixteen columns">
+        <h1>Stuff I'd like to remember</h1>
+        <hr style="border: 0.1em solid black; margin: 1em 0 3em 0;" />
+      </div>
       <div class="twelve columns offset-by-two">
         <ul class="post-list">
             {% for post in site.posts %}
             <li>
-                <div style="text-align: right; width: 100%">
+              <a href="{{ post.url }}">
+                <div style="text-align: right; width: 100%; font-size: 90%; font-style: italic">
                   {% assign d = post.date | date: "%-d"  %}
                   {{ post.date | date: "%B" }} 
                   {% case d %}
@@ -29,8 +33,9 @@
                   {% endcase %},
                   {{ post.date | date: "%Y" }}
                 </div>
-                <a href="{{ post.url }}"><h4 >{{ post.title }}</h4></a>
+                <h4 ><u>{{ post.title }}</u></h4>
                 {{ post.excerpt }}
+                </a>
             </li>
             <hr />
             {% endfor %}
