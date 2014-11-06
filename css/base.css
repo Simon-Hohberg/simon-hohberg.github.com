@@ -63,12 +63,14 @@
 	h1, h2, h3, h4, h5, h6 {
 		color: #181818;
 		font-family: "Georgia", "Times New Roman", serif;
-		font-weight: normal; }
+		font-weight: bold;
+		outline: none;
+	}
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
 	h1 { font-size: 3em; line-height: 1.4em; margin: 0 0 0 0;}
 	h2 { font-size: 2.8em; line-height: 1.4em; margin: 0 0 0.7em -0.4em; }
 	h3 { font-size: 2em; line-height: 1em; margin: 1.5em 0 1.2em -0.4em; border-bottom: medium solid #ddd; }
-	h4 { font-size: 1.5em; line-height: 1em; margin: 0.4em 0 0.4em 0; }
+	h4 { font-size: 1.5em; line-height: 1em; margin: 1.5em 0 0.4em 0; }
 	h5 { font-size: 1.2em; line-height: 1em; }
 	h6 { font-size: 1em; line-height: 1em; }
 	.subheader { color: #777; }

@@ -1,5 +1,7 @@
 <meta charset="utf-8">
 
+<script type="text/javascript" src="/js/jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery/jquery-ui.min.js"></script>
 <script type="text/x-mathjax-config">
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   MathJax.Hub.Config({
@@ -18,18 +20,29 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/layout.css">
 <link rel="stylesheet" href="/css/table.css">
+<link rel="stylesheet" href="/css/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="/css/jquery-ui/jquery-ui.structure.min.css">
+<link rel="stylesheet" href="/css/jquery-ui/jquery-ui.theme.css">
 
 <article class="container">
   <header><h2>Convolutional Neural Networks</h2></header>
   <div><p>A formal approach to convolutional neural networks.</p>
 
-<script type="text/javascript" src="/js/raphael-min.js"></script>
+<script type="text/javascript" src="/js/raphael/raphael-min.js"></script>
 
-<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
-
-<script type="text/javascript" src="/js/raphael-utils.js"></script>
+<script type="text/javascript" src="/js/raphael/raphael-utils.js"></script>
 
 <link rel="stylesheet" href="/css/svg.css" />
+
+<script type="text/javascript">
+  $(function() {
+    $( ".explain-accordion" ).accordion({
+      collapsible: true,
+      active: false,
+      heightStyle: "content"
+    });
+  });
+</script>
 
 <h3 id="convolution--cross--correlation">Convolution &amp; (Cross-) Correlation</h3>
 
@@ -43,27 +56,55 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   <tbody>
     <tr>
       <td style="text-align: right">\( i \)</td>
-      <td>Image</td>
+      <td>Input image</td>
     </tr>
     <tr>
       <td style="text-align: right">\( k \)</td>
       <td>Kernel of size \( N_k \times N_k \)</td>
     </tr>
+    <tr>
+      <td style="text-align: right">\( v \)</td>
+      <td>Output image</td>
+    </tr>
   </tbody>
 </table>
 
 <h4 id="convolution">Convolution</h4>
+
 <div class="math-definition">
 $$
 v\left(x,y\right) = \sum_{x_{k}=0}^{N_{k}-1}\sum_{y_{k}=0}^{N_{k}-1}i\left(x-x_{k},y-y_{k}\right)k\left(x_{k},y_{k}\right)
 $$
 </div>
 
+<div class="explain-accordion">
+  <h4>Explain</h4>
+  <div>
+    <p>
+    Important to notice here is that the first pixels in the result are undefined, because \( i\left(x-x_{k},y-y_{k}\right) \) is going out of bounds of \( i \) for \( \left( x,y \right) \in \left\{ \left( 0, 0 \right) \ldots \left( N_k - 1, N_k - 1 \right) \right\}  \). Thus, looking at the valid pixels only, the resulting image will be \( N_k - 1 \) pixels smaller than the input image. So although the actual result image begins at \( \left( N_k - 1, N_k - 1 \right) \) instead of \( \left(0,0\right)\) we won't have the undefined pixles in our result image for convenience, implicitely moving all pixels by \( \left( N_k - 1, N_k - 1 \right) \) to the top left.
+
+<h5>Padding</h5>
+To overcome the undefined pixels issue, the input image could be padded at the left and top giving an output of the same size as the input. The question then is which values should be used for padding. The most common approaches are padding with zeros or wrapping the image around.
+    </p>
+  </div>
+</div>
+
 <h4 id="cross--correlation">(Cross-) Correlation</h4>
+
 <div class="math-definition">
 $$
 l\left(x,y\right) = \sum_{x_{k}=0}^{N_{k}-1}\sum_{y_{k}=0}^{N_{k}-1}i\left(x+x_{k},y+y_{k}\right)k\left(x_{k},y_{k}\right)
 $$
+</div>
+<div class="explain-accordion">
+  <h4>Explain</h4>
+  <div>
+    <p>
+To me correlation is more intuitive than covnolution &ndash; everything is pretty straight forward.
+
+Here we also have the issue with undefined pixels but instead of the top left it is the bottom right. The same padding mechanisms as with convolution can be applied.
+    </p>
+  </div>
 </div>
 
 <h3 id="naming">Naming</h3>
@@ -155,8 +196,33 @@ $$
 $$
 </div>
 
-<p>\( \left( x’-x,\, y’ - y \right) \) will go out of bounds of \( o_{n}^{l-1} \), 
-since \( x’ \) and \( y’ \) run over the smaller \( \delta_{m}^{l} \). We can resolve this by wrapping around the indexes, thus  rewriting \( \left(x’-x,\,y’-y\right) \) to \( \left( N - x + x’,\, N - y + y’ \right)\), where \( N \) is the size of \( o_{n}^{l-1}\). As a result we can apply cross-correlation, when rotating the result by 180°. We can rewrite the weight update as follows:</p>
+<div class="explain-accordion">
+  <h4>Explain</h4>
+  <div>
+    <p>
+      So far so good, but what is this result really? Especially what does this sum mean?
+    </p>
+    <p>
+      We would like to know how we have to change the weight \( w\_{n,m}^{l}\left(x,y\right) \) to reduce the error and are given the \( \delta\_{m}^{l} \) which is how the output of the convolution of \( o\_{n}^{l-1} \) and \( w\_{n,m}^{l} \) has to change. The update for the weight is now the change of the output of the convolution \( \delta\_{m}^{l} \) with regard to the input of the convolution \( o\_{n}^{l-1} \), considering all pixels in \( o\_{n}^{l-1} \) where the weight \( w\_{n,m}^{l}\left(x,y\right) \) is involved.
+    </p>
+
+    <p>
+      How can this be implemented? It looks like a convolution at first glance where \( \delta_{m}^{l} \) is the kernel, since we are iterating over it. However it has got more in common with a correlation, because the kernel is applied in the correct orientation instead of being applied upside down as in a convolution. But there is a negative instead of a positive offset which makes it different.
+    </p>
+
+    <p>
+      We have to go back to the definition of the convolution to get to know how to implement this. We said there that the first valid pixels of the result image do not start at \( \left(0,0\right) \) but with an offset. More importantly we also said that we will implicitely move the valid result pixels by \( \left(N_k-1,N_k-1\right) \) where \( N\_k \) was the kernel size so that the result image starts at \( \left(0,0\right)\) again.
+    </p>
+
+    <p>
+      How is this related to this equation? Well, the \( \delta\_{m}^{l} \) contains the partial derivatives for the complete input (\( c\_{m}^{l}\)) of our neuron. This input \( c\_{m}^{l}\) is the result of a convolution and thus when referencing a pixel in \( c_{m}^{l}\) with regard to \(o\_{n}^{l-1}\) &ndash; which was the input to the convolution &ndash; we have to take into account the implicit offset created by the convolution.
+    </p>
+
+    <p>
+      Looking only at the \( o\_{n}^{l-1} \) in the sum, making the implicit offset explicit again, we get: \( o\_{n}^{l-1}\left( x'-x + N\_w-1,\, y' - y + N\_w-1 \right) \), where \( N\_w \) is the size of the weight kernel. \( \left(x+N\_w-1, y+N\_w-1\right) \) basically references the weight kernel upside down. So when referencing \( o\_{n}^{l-1} \) like \( o\_{n}^{l-1}\left( x'+x,\, y' + y\right) \) the result is the same but upside down &ndash; nice! It's a correlation!
+    </p>
+  </div>
+</div>
 
 <div class="math-definition">
 $$
@@ -167,7 +233,7 @@ $$
 <h4 id="deltas">Deltas</h4>
 <div class="math-definition">
 $$
-\delta_{m}^{l}\left(x,\: y\right) = \frac{\partial E}{\partial c_{m}^{l}\left(x,\, y\right)}=\sum_{o,\, x',\, y'}\underbrace{\frac{\partial E}{\partial c_{o}^{l+1}\left(x',\, y'\right)}}_{\delta_{o}^{l+1}\left(x',\, y'\right)}\cdot\frac{\partial c_{o}^{l+1}\left(x',\, y'\right)}{c_{m}^{l}\left(x,\, y\right)}
+\delta_{m}^{l}\left(x,\: y\right)=\frac{\partial E}{\partial c_{m}^{l}\left(x,\, y\right)}=\sum_{o}\sum_{\, x',\, y'}^{N_{w},N_{w}}\underbrace{\frac{\partial E}{\partial c_{o}^{l+1}\left(x+x',\, y+y'\right)}}_{\delta_{o}^{l+1}\left(x+x',\, y+y'\right)}\cdot\frac{\partial c_{o}^{l+1}\left(x+x',\, y+y'\right)}{c_{m}^{l}\left(x,\, y\right)}
 $$
 </div>
 
@@ -175,25 +241,18 @@ $$
 $$
 \begin{aligned}
 
-\frac{\partial c_{o}^{l+1}\left(x',\, y'\right)}{\partial c_{m}^{l}\left(x,\, y\right)} &amp;= \frac{\partial}{\partial c_{m}^{l}\left(x,\, y\right)}\left(\sum_{m',\, x'',\, y''}w_{m',o}^{l+1}\left(x'',\, y''\right)\cdot a\left(c_{m'}^{l}\left(x'-x'',\, y'-y''\right)\right)\right) \\
-  &amp;= \frac{\partial}{\partial c_{m}^{l}\left(x,\, y\right)}\left(w_{0,o}^{l+1}\left(0,\,0\right)\cdot a\left(c_{0}^{l}\left(x'-0,\, y'-0\right)\right)+\ldots+w_{m,o}^{l+1}\left(x'',\, y''\right)\cdot a\left(c_{m}^{l}\underbrace{\left(x,\, y\right)}_{\left(x' - x'',\, y' - y''\right)}\right)+\ldots\right) \\
-  &amp;= w_{m,o}^{l+1}\left( x'-x,\, y'-y \right) \cdot \frac{\partial a\left( c_{m}^{l}\left(x,\, y\right) \right)}{\partial c_{m}^{l}\left(x,\, y\right)}
-  
+\frac{\partial c_{o}^{l+1}\left(x+x',\, y+y'\right)}{\partial c_{m}^{l}\left(x,\, y\right)} &amp; =\frac{\partial}{\partial c_{m}^{l}\left(x,\, y\right)}\left(\sum_{m'}\sum_{\, x'',\, y''}^{N_{w},N_{w}}o_{m'}^{l}\left(x+x'-x'',\, y+y'-y''\right)\cdot w_{m',o}^{l+1}\left(x'',\, y''\right)\right)\\
+ &amp; =\frac{\partial}{\partial c_{m}^{l}\left(x,\, y\right)}\left(\sum_{m'}\sum_{\, x'',\, y''}^{N_{w},N_{w}}a\left(c_{m'}^{l}\left(x+x'-x'',\, y+y'-y''\right)\right)\cdot w_{m',o}^{l+1}\left(x'',\, y''\right)\right)\\
+ &amp; =\frac{\partial}{\partial c_{m}^{l}\left(x,\, y\right)}\left(w_{0,o}^{l+1}\left(0,\,0\right)\cdot a\left(c_{0}^{l}\left(x'-0,\, y'-0\right)\right)+\ldots+w_{m,o}^{l+1}\left(x'',\, y''\right)\cdot a\left(c_{m}^{l}\left(x,\, y\right)\right)+\ldots\right)\\
+ &amp; =w_{m,o}^{l+1}\left(x+x',\, y+y'\right)\cdot\frac{\partial a\left(c_{m}^{l}\left(x,\, y\right)\right)}{\partial c_{m}^{l}\left(x,\, y\right)}
+
 \end{aligned}
 $$
 </div>
 
 <div class="math-definition">
 $$
-\delta_{m}^{l}\left(x,\: y\right) = \underbrace{\sum_{o,\, x',\, y'} w_{m,o}^{l+1}\left( x'-x,\, y'-y \right) \cdot \delta_{o}^{l+1}\left( x',\, y' \right)}_{\text{backpropagated error}} \cdot \frac{\partial a\left( c_{m}^{l}\left(x,\, y\right) \right)}{\partial c_{m}^{l}\left(x,\, y\right)}
-$$
-</div>
-
-<p>Thinking of \( \left(x’-x,\, y’-y \right) \) as \( \left(N-x+x’,\, N-y-y’ \right) \) we can again rewrite the delta recursion as cross-correlation where the result is rotated by 180°:</p>
-
-<div class="math-definition">
-$$
-\delta_{m}^{l}\left(x,\: y\right) = \operatorname{rot}_{180} \left(\underbrace{\sum_{o,\, x',\, y'} w_{m,o}^{l+1}\left( x+x',\, y+y' \right) \cdot \delta_{o}^{l+1}\left( x',\, y' \right)}_{\text{Cross-Correlation}} \right) \cdot \frac{\partial a\left( c_{m}^{l}\left(x,\, y\right) \right)}{\partial c_{m}^{l}\left(x,\, y\right)}
+\delta_{m}^{l}\left(x,\: y\right)=\underbrace{\sum_{o}\sum_{\, x',\, y'}^{N_{w},N_{w}}\delta_{o}^{l+1}\left(x+x',\, y+y'\right)\cdot w_{m,o}^{l+1}\left(x',\, y'\right)}_{\text{Cross-Correlation, Backpropagated Error}}\cdot\frac{\partial a\left(c_{m}^{l}\left(x,\, y\right)\right)}{\partial c_{m}^{l}\left(x,\, y\right)}
 $$
 </div>
 
