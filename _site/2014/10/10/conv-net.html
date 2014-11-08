@@ -203,7 +203,7 @@ $$
       So far so good, but what is this result really? Especially what does this sum mean?
     </p>
     <p>
-      We would like to know how we have to change the weight \( w\_{n,m}^{l}\left(x,y\right) \) to reduce the error and are given the \( \delta\_{m}^{l} \) which is how the output of the convolution of \( o\_{n}^{l-1} \) and \( w\_{n,m}^{l} \) has to change. The update for the weight is now the change of the output of the convolution \( \delta\_{m}^{l} \) with regard to the input of the convolution \( o\_{n}^{l-1} \), considering all pixels in \( o\_{n}^{l-1} \) where the weight \( w\_{n,m}^{l}\left(x,y\right) \) is involved.
+      We would like to know how we have to change the weight \( w_{n,m}^{l}\left(x,y\right) \) to reduce the error and are given the \( \delta_{m}^{l} \) which is how the output of the convolution of \( o_{n}^{l-1} \) and \( w_{n,m}^{l} \) has to change. The update for the weight is now the change of the output of the convolution \( \delta_{m}^{l} \) with regard to the input of the convolution \( o_{n}^{l-1} \), considering all pixels in \( o_{n}^{l-1} \) where the weight \( w_{n,m}^{l}\left(x,y\right) \) is involved.
     </p>
 
     <p>
@@ -211,15 +211,15 @@ $$
     </p>
 
     <p>
-      We have to go back to the definition of the convolution to get to know how to implement this. We said there that the first valid pixels of the result image do not start at \( \left(0,0\right) \) but with an offset. More importantly we also said that we will implicitely move the valid result pixels by \( \left(N_k-1,N_k-1\right) \) where \( N\_k \) was the kernel size so that the result image starts at \( \left(0,0\right)\) again.
+      We have to go back to the definition of the convolution to get to know how to implement this. We said there that the first valid pixels of the result image do not start at \( \left(0,0\right) \) but with an offset. More importantly we also said that we will implicitely move the valid result pixels by \( \left(N_k-1,N_k-1\right) \) where \( N_k \) was the kernel size so that the result image starts at \( \left(0,0\right)\) again.
     </p>
 
     <p>
-      How is this related to this equation? Well, the \( \delta\_{m}^{l} \) contains the partial derivatives for the complete input (\( c\_{m}^{l}\)) of our neuron. This input \( c\_{m}^{l}\) is the result of a convolution and thus when referencing a pixel in \( c_{m}^{l}\) with regard to \(o\_{n}^{l-1}\) &ndash; which was the input to the convolution &ndash; we have to take into account the implicit offset created by the convolution.
+      How is this related to this equation? Well, the \( \delta_{m}^{l} \) contains the partial derivatives for the complete input (\( c_{m}^{l}\)) of our neuron. This input \( c_{m}^{l}\) is the result of a convolution and thus when referencing a pixel in \( c_{m}^{l}\) with regard to \(o_{n}^{l-1}\) &ndash; which was the input to the convolution &ndash; we have to take into account the implicit offset created by the convolution.
     </p>
 
     <p>
-      Looking only at the \( o\_{n}^{l-1} \) in the sum, making the implicit offset explicit again, we get: \( o\_{n}^{l-1}\left( x'-x + N\_w-1,\, y' - y + N\_w-1 \right) \), where \( N\_w \) is the size of the weight kernel. \( \left(x+N\_w-1, y+N\_w-1\right) \) basically references the weight kernel upside down. So when referencing \( o\_{n}^{l-1} \) like \( o\_{n}^{l-1}\left( x'+x,\, y' + y\right) \) the result is the same but upside down &ndash; nice! It's a correlation!
+      Looking only at the \( o_{n}^{l-1} \) in the sum, making the implicit offset explicit again, we get: \( o_{n}^{l-1}\left( x' + N_w-1 - x,\, y' + N_w-1 - y \right) \), where \( N_w \) is the size of the weight kernel. \( \left(N_w-1-x, N_w-1-y\right) \) basically references the weight kernel upside down. So when referencing \( o_{n}^{l-1} \) like \( o_{n}^{l-1}\left( x'+x,\, y'+y\right) \) the result is the same but upside down &ndash; nice! It's a correlation!
     </p>
   </div>
 </div>
