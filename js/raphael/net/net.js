@@ -1,5 +1,4 @@
 function Net(topo, args) {
-  
   this.nodes = [];
   this.links = [];
 }
