@@ -1,3 +1,5 @@
 workspace/
 _site/
 *~
+
+node_modules/
