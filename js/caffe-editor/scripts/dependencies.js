@@ -1,19 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var ProtoBuf = require("protobufjs");
-var TextFormat = require("protobuf-textformat");
-
-var builder = ProtoBuf.loadProtoFile('./proto/caffe.proto')
-
-var input = require('fs').readFileSync('./proto/lenet.prototxt', 'utf-8');
-
-/* Parse the schema into a ProtoBuf.js messsage object. */
-var result = TextFormat.parse(builder, 'caffe.NetParameter', input);
-
-var canvas = $("canvas");
-
-
-
-},{"fs":17,"protobuf-textformat":2,"protobufjs":13}],2:[function(require,module,exports){
 "use strict";
 
 var parse = require('./src/parser')
@@ -54,7 +39,7 @@ module.exports.parse = function(builder, fqn, input) {
 };
 
 
-},{"./src/encoder":10,"./src/parser":11}],3:[function(require,module,exports){
+},{"./src/encoder":9,"./src/parser":10}],2:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -6843,7 +6828,7 @@ module.exports.parse = function(builder, fqn, input) {
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 var P = require('pjs').P;
 var Parsimmon = {};
 
@@ -7241,11 +7226,11 @@ Parsimmon.Parser = P(function(_, _super, Parser) {
 });
 module.exports = Parsimmon;
 
-},{"pjs":7}],5:[function(require,module,exports){
+},{"pjs":6}],4:[function(require,module,exports){
 module.exports = require('./build/parsimmon.commonjs');
 exports.version = require('./package.json').version;
 
-},{"./build/parsimmon.commonjs":4,"./package.json":9}],6:[function(require,module,exports){
+},{"./build/parsimmon.commonjs":3,"./package.json":8}],5:[function(require,module,exports){
 // pass
 var P = (function(prototype, ownProperty, undefined) {
   return function P(_superclass /* = Object */, definition) {
@@ -7321,11 +7306,11 @@ var P = (function(prototype, ownProperty, undefined) {
 })('prototype', ({}).hasOwnProperty);
 exports.P = P;
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 exports.P = require('./build/p.commonjs').P;
 exports.version = require('./package.json').version;
 
-},{"./build/p.commonjs":6,"./package.json":8}],8:[function(require,module,exports){
+},{"./build/p.commonjs":5,"./package.json":7}],7:[function(require,module,exports){
 module.exports={
   "name": "pjs",
   "version": "5.1.1",
@@ -7372,7 +7357,7 @@ module.exports={
   "_from": "pjs@5.x"
 }
 
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports={
   "name": "parsimmon",
   "version": "0.5.1",
@@ -7421,7 +7406,7 @@ module.exports={
   "_from": "parsimmon@^0.5.1"
 }
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 
 /* Encodes ProtoBuf.js message into the
@@ -7523,7 +7508,7 @@ module.exports = function(message) {
   return lines.join('\n');
 };
 
-},{"lodash":3}],11:[function(require,module,exports){
+},{"lodash":2}],10:[function(require,module,exports){
 "use strict";
 
 /* Parser combinator based parser for the
@@ -7584,7 +7569,7 @@ module.exports = function(input) {
 };
 
 
-},{"parsimmon":5}],12:[function(require,module,exports){
+},{"parsimmon":4}],11:[function(require,module,exports){
 /*
  Copyright 2013 Daniel Wirtz <dcode@dcode.io>
 
@@ -11921,7 +11906,7 @@ module.exports = function(input) {
 
 })(this);
 
-},{"bytebuffer":14,"fs":17,"path":18}],13:[function(require,module,exports){
+},{"bytebuffer":13,"fs":17,"path":18}],12:[function(require,module,exports){
 /*
  Copyright 2013 Daniel Wirtz <dcode@dcode.io>
 
@@ -11941,7 +11926,7 @@ var ProtoBuf = require("./dist/ProtoBuf.js");
 
 module.exports = ProtoBuf;
 
-},{"./dist/ProtoBuf.js":12}],14:[function(require,module,exports){
+},{"./dist/ProtoBuf.js":11}],13:[function(require,module,exports){
 /*
  Copyright 2013-2014 Daniel Wirtz <dcode@dcode.io>
 
@@ -15218,7 +15203,7 @@ module.exports = ProtoBuf;
 
 })(this);
 
-},{"long":16}],15:[function(require,module,exports){
+},{"long":15}],14:[function(require,module,exports){
 /*
  Copyright 2013 Daniel Wirtz <dcode@dcode.io>
  Copyright 2009 The Closure Library Authors. All Rights Reserved.
@@ -16162,7 +16147,7 @@ module.exports = ProtoBuf;
 
 })(this);
 
-},{}],16:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 /*
  Copyright 2013 Daniel Wirtz <dcode@dcode.io>
  Copyright 2009 The Closure Library Authors. All Rights Reserved.
@@ -16182,7 +16167,12 @@ module.exports = ProtoBuf;
 
 module.exports = require("./dist/Long.js");
 
-},{"./dist/Long.js":15}],17:[function(require,module,exports){
+},{"./dist/Long.js":14}],16:[function(require,module,exports){
+window.ProtoBuf = require("protobufjs");
+window.TextFormat = require("protobuf-textformat");
+
+
+},{"protobuf-textformat":1,"protobufjs":12}],17:[function(require,module,exports){
 
 },{}],18:[function(require,module,exports){
 (function (process){
@@ -16471,4 +16461,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[1]);
+},{}]},{},[16]);

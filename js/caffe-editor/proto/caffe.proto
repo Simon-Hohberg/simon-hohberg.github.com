@@ -1,3 +1,7 @@
+// slightly adapted version:
+//  * replaced 1e8 with 0.00000001
+//  * removed decimal dot where not followed by a decimal place
+
 syntax = "proto2";
 
 package caffe;
@@ -154,7 +158,7 @@ message SolverParameter {
   }
   optional SolverType solver_type = 30 [default = SGD];
   // numerical stability for AdaGrad
-  optional float delta = 31 [default = 1e-8];
+  optional float delta = 31 [default = 0.00000001];
 
   // If true, print information about the state of the net that may help with
   // debugging learning problems.
@@ -547,7 +551,7 @@ message InnerProductParameter {
 // Message that stores parameters used by LRNLayer
 message LRNParameter {
   optional uint32 local_size = 1 [default = 5];
-  optional float alpha = 2 [default = 1.];
+  optional float alpha = 2 [default = 1];
   optional float beta = 3 [default = 0.75];
   enum NormRegion {
     ACROSS_CHANNELS = 0;
@@ -719,7 +723,7 @@ message V0LayerParameter {
   optional float dropout_ratio = 12 [default = 0.5]; // dropout ratio
 
   optional uint32 local_size = 13 [default = 5]; // for local response norm
-  optional float alpha = 14 [default = 1.]; // for local response norm
+  optional float alpha = 14 [default = 1]; // for local response norm
   optional float beta = 15 [default = 0.75]; // for local response norm
 
   // For data layers, specify the data source
