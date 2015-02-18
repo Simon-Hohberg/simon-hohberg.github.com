@@ -1,40 +1,56 @@
 function CaffeNet(protobuf) {
-  this.bottomLayers = [];
-  this.graph = {};
+  this.roots = [];
   
   // maps IDs to layer objects
-  var layers = {};
+  this.layers = [];
   var topMapping = {}
-  // map layer names to layer objects
+  // create layer models
   for(var i = 0; i < protobuf.message.layers.length; i++) {
-    var layer = protobuf.message.layers[i];
-    this.layers[i] = new CaffeLayer(i, layer);
-    for(var t = 0; t < layer.top.length; t++) {
-      topMapping[layer.top[t]] = i;
-    }
-  }
-  // create graph
-  layers.forEach(function(layer) {
-    var bottom = layer.layerProto.bottom;
-    for(var b = 0; b < layer.bottom.length; b++) {
-      // get name of layer below, i.e. the layer where top matches this layers
-      // bottom
-      var layerBelow = topMapping[layer.bottom[b]];
-      if (layerBelow === undefined) {
-        this.bottomLayers.push(layerBelow);
-      } else {
-        this.graph[layerBelow].push(layer.name);
+    var layer = new CaffeLayer(i, protobuf.message.layers[i]);
+    this.layers.push(layer);
+    // map top blob names to layer(s)
+    if (layer.proto.top !== undefined) {
+      for(var t = 0; t < layer.proto.top.length; t++) {
+        var topName = layer.proto.top[t];
+        // ignore in-place layers here
+        if ($.inArray(topName, layer.proto.bottom) != -1) {
+          continue;
+        }
+        if (topMapping[topName] === undefined) {
+          topMapping[topName] = [];
+        }
+        topMapping[topName].push(layer);
       }
     }
-  });
-  for(var i = 0; i < protobuf.message.layers.length; i++) {
-    var layer = protobuf.message.layers[i];
-    this.graph[layer.name] = [];
-    if (layer.bottom.length == 0) {
-      this.bottomLayers.push(layer.name);
-    } else {
-    }
   }
+  var self = this;
+  // create graph
+  this.layers.forEach(function(layer) {
+    var bottom = layer.proto.bottom;
+    // check if this layer is a root of the graph
+    if (bottom === undefined) {
+      self.roots.push(layer);
+    } else if (bottom.length == 0) {
+      self.roots.push(layer);
+    }
+    bottom.forEach(function(nameBelow) {
+      // get layers below, i.e. the layers where top matches the layer's bottom
+      var layersBelow = topMapping[nameBelow];
+      // again when there are no layers below, the layer is a root of the graph
+      if (layersBelow === undefined) {
+        self.roots.push(layer);
+      } else {
+        // link layers to form the graph
+        layersBelow.forEach(function(lb) {
+          if ($.inArray(nameBelow, layer.proto.top) != -1) {
+            lb.addInPlace(layer);
+          } else {
+            layer.addBottom(lb);
+          }
+        });
+      }
+    });
+  });
 }
 
 var LayerEnum = {
@@ -111,7 +127,7 @@ var LayerColors = {
   SIGMOID_CROSS_ENTROPY_LOSS: "#000000",
   SILENCE: "#000000",
   SOFTMAX: "#000000",
-  SOFTMAX_LOSS: "#FCF1D1",
+  SOFTMAX_LOSS: "#A61F3D",
   SPLIT: "#000000",
   SLICE: "#000000",
   TANH: "#000000",
@@ -120,44 +136,86 @@ var LayerColors = {
 };
 
 function CaffeNetView(net) {
+  var startX = 10;
+  var startY = 10;
+  var distH = 10;
+  var distV = 10;
+  var width = 100;
+  var height = 20;
   this.net = net;
+  this.layerViews = {};
+  var self = this;
+  this.net.layers.forEach(function(layer) {
+    self.layerViews[layer] = new CaffeLayerView(layer, startX, startY, width, height, distH, distV);
+  });
 }
 
-CaffeNet.prototype.draw = function(paper) {
-    var layersDrawn = [];
-    var startX = 10;
-    var startY = 10;
-    var distH = 10;
-    var distV = 10;
-    var width = 100;
-    var height = 20;
-      
-    var layerQueue = [net.bottomLayers.slice()];
-    var row = 0;
-    var col = 0;
-    while (layerQueue.length > 0) {
-      var nextRow = [];
-      var currRow = layerQueue.shift();
-      currRow.forEach(function(layerName) {
-        if ($.inArray(layerName, layersDrawn) == -1) {
-          var layer = net.layers[layerName];
-          var layersAbove = net.graph[layerName];
-          layersAbove.forEach(function(layerAbove) {
-            if ($.inArray(layerAbove, nextRow) == -1) {
-              nextRow.push(layerAbove);
-            }
-          });
-          rect = paper.rect(startX + col*(width + distH), startY + row*(height + distV), width, height, 5);
-          rect.attr({fill: LayerColors[LayerEnum[layer.type]]});
-          layersDrawn.push(layerName);
-          col++;
-        }
+CaffeNetView.prototype.draw = function(paper) {
+  // find longest path for required number of "rows" of layers
+  var longestPath = [];
+  // queue of paths
+  var paths = [];
+  net.roots.forEach(function(root) {
+    // save each path as list of layers
+    paths.push([root]);
+  });
+  // traverse graph until all paths have been examined
+  while (paths.length > 0) {
+    var path = paths.shift();
+    var lastLayer = path[path.length-1];
+    // check for layers following this layer
+    // if none, the path ends and we check if there was a longer path, yet
+    if (lastLayer.hasTop()) {
+      lastLayer.tops.forEach(function(top) {
+        var newPath = path.slice();
+        newPath.push(top);
+        paths.push(newPath);
       });
-      col = 0;
-      row++;
-      if (nextRow.length > 0) {
-        layerQueue = $.merge(layerQueue, [nextRow]);
+    } else {
+      // save longest path
+      if (path.length > longestPath.length) {
+        longestPath = path;
       }
     }
-  };
-}
+  }
+  
+  var rowMapping = {};
+  var graphTable = [];
+  for (var i = 0; i < longestPath.length; i++) {
+    var layer = longestPath[i];
+    rowMapping[layer] = i;
+    graphTable[i] = [layer];
+    this.layerViews[layer].draw(paper, i, 0);
+  }
+  var self = this;
+  net.roots.forEach(function(root) {
+    if ($.inArray(root, graphTable[0]) == -1) {
+      rowMapping[root] = 0;
+      graphTable[0].push(root);
+      self.layerViews[root].draw(paper, 0, graphTable[0].length-1);
+    }
+  });
+  
+  var layerQueue = net.roots.slice();
+  while (layerQueue.length > 0) {
+    var layer = layerQueue.shift();
+    layer.tops.forEach(function(layerAbove) {
+      layerQueue.push(layerAbove);
+      if (rowMapping[layerAbove] === undefined) {
+        var maxRow = 0;
+        layerAbove.bottoms.forEach(function(l) {
+          if (rowMapping[l] !== undefined) {
+            if (rowMapping[l] > maxRow) {
+              maxRow = rowMapping[l];
+            }
+          }
+        });
+        var row = maxRow + 1;
+        var col = graphTable[row].length;
+        self.layerViews[layerAbove].draw(paper, row, col);
+        rowMapping[layerAbove] = row;
+        graphTable[row].push(layerAbove);
+      }
+    });
+  }
+};
