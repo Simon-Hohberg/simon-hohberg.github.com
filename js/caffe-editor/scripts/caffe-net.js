@@ -1,38 +1,38 @@
 function CaffeNet(protobuf) {
   this.bottomLayers = [];
   this.graph = {};
-  this.layers = {};
   
+  // maps IDs to layer objects
+  var layers = {};
   var topMapping = {}
   // map layer names to layer objects
   for(var i = 0; i < protobuf.message.layers.length; i++) {
     var layer = protobuf.message.layers[i];
-    this.layers[layer.name] = layer;
-  }
-  // map layer's tops to its name
-  for(var i = 0; i < protobuf.message.layers.length; i++) {
-    var layer = protobuf.message.layers[i];
+    this.layers[i] = new CaffeLayer(i, layer);
     for(var t = 0; t < layer.top.length; t++) {
-      topMapping[layer.top[t]] = layer.name;
+      topMapping[layer.top[t]] = i;
     }
   }
   // create graph
+  layers.forEach(function(layer) {
+    var bottom = layer.layerProto.bottom;
+    for(var b = 0; b < layer.bottom.length; b++) {
+      // get name of layer below, i.e. the layer where top matches this layers
+      // bottom
+      var layerBelow = topMapping[layer.bottom[b]];
+      if (layerBelow === undefined) {
+        this.bottomLayers.push(layerBelow);
+      } else {
+        this.graph[layerBelow].push(layer.name);
+      }
+    }
+  });
   for(var i = 0; i < protobuf.message.layers.length; i++) {
     var layer = protobuf.message.layers[i];
     this.graph[layer.name] = [];
     if (layer.bottom.length == 0) {
       this.bottomLayers.push(layer.name);
     } else {
-      for(var b = 0; b < layer.bottom.length; b++) {
-        // get name of layer below, i.e. the layer where top matches this layers
-        // bottom
-        var layerBelow = topMapping[layer.bottom[b]];
-        if (layerBelow === undefined) {
-          this.bottomLayers.push(layerBelow);
-        } else {
-          this.graph[layerBelow].push(layer.name);
-        }
-      }
     }
   }
 }
@@ -121,8 +121,9 @@ var LayerColors = {
 
 function CaffeNetView(net) {
   this.net = net;
-  
-  this.draw = function(paper) {
+}
+
+CaffeNet.prototype.draw = function(paper) {
     var layersDrawn = [];
     var startX = 10;
     var startY = 10;
