@@ -51,7 +51,7 @@
 ================================================== */
 	body {
 		background: #eee;
-		font: 1em/1.5em "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font: 1em/1.5em "Georgia", "Times New Roman", serif;
 		color: #444;
 		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
 		-webkit-text-size-adjust: 100%;
@@ -62,20 +62,20 @@
 ================================================== */
 	h1, h2, h3, h4, h5, h6 {
 		color: #181818;
-		font-family: "Georgia", "Times New Roman", serif;
+		font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans;
 		font-weight: bold;
 		outline: none;
 	}
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
 	h1 { font-size: 3em; line-height: 1.4em; margin: 0 0 0 0;}
-	h2 { font-size: 2.8em; line-height: 1.4em; margin: 0 0 0.7em -0.4em; }
-	h3 { font-size: 2em; line-height: 1em; margin: 1.5em 0 1.2em -0.4em; border-bottom: medium solid #ddd; }
+	h2 { font-size: 2.8em; line-height: 1.4em; margin: 0 0 0.7em 0; }
+	h3 { font-size: 2em; line-height: 1em; margin: 0.5em 0 0.4em 0; border-bottom: medium solid #ddd; }
 	h4 { font-size: 1.5em; line-height: 1em; margin: 1.5em 0 0.4em 0; }
 	h5 { font-size: 1.2em; line-height: 1em; }
 	h6 { font-size: 1em; line-height: 1em; }
 	.subheader { color: #777; }
 	
-	p { margin: 0 0 20px 0; }
+	p { margin: 0 0 0.5em 0; }
 	p img { margin: 0; }
 	p.lead { font-size: 21px; line-height: 27px; color: #777;  }
 
@@ -275,4 +275,15 @@
   background-color: #FFF7EA;
   padding: 0.3em 1.2em 0.3em 1.2em;
   margin: 1em;
+}
+
+.MathJax_SVG_Display {
+  text-align: left !important;
+  padding-left: 2em !important;
+}
+
+.float-container:after {
+  display: block;
+  clear: both;
+  content: "";
 }
