@@ -39,28 +39,3 @@ CaffeLayer.prototype.toString = function() {
   return "" + this.id;
 }
 
-
-function CaffeLayerView(layer, startX, startY, width, height, distH, distV) {
-  this.layer = layer;
-  this.startX = startX;
-  this.startY = startY;
-  this.width = width;
-  this.height = height;
-  this.distH = distH;
-  this.distV = distV;
-}
-
-CaffeLayerView.prototype.draw = function(paper, row, col) {
-  var viewSet = paper.set();
-  var rect = paper.rect(0, 0, this.width, this.height, 5);
-  rect.attr({fill: LayerColors[LayerEnum[this.layer.proto.type]]});
-  viewSet.push(rect);
-  var layerNameText = paper.text(3, 5, this.layer.proto.name);
-  layerNameText.attr({fill: "#ffffff", "text-anchor": "start"});
-  viewSet.push(layerNameText);
-  viewSet.translate(this.startX + col*(this.width + this.distH), this.startY + row*(this.height + this.distV));
-};
-
-CaffeLayerView.prototype.toString = function() {
-  return this.layer.toString();
-}
