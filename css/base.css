@@ -35,8 +35,8 @@
 		display: block; }
 	body {
 		line-height: 1; }
-	ol, ul {
-		list-style: none; }
+/*	ol, ul {
+		list-style: none; } */
 	blockquote, q {
 		quotes: none; }
 	blockquote:before, blockquote:after,
@@ -95,7 +95,7 @@
 
 /* #Links
 ================================================== */
-	a, a:visited { color: #333; text-decoration: none; outline: 0; }
+	a, a:visited { color: #333; text-decoration: underline; outline: 0; }
 	a:hover, a:focus { background: #eaeaea; }
 	p a, p a:visited { line-height: inherit;background: #fcfcfc; }
 
@@ -103,7 +103,7 @@
 /* #Lists
 ================================================== */
 	ul, ol { margin-bottom: 20px; }
-	ul { list-style: none outside; }
+	ul { list-style: disc outside; margin-left: 30px }
 	ol { list-style: decimal; }
 	ol, ul.square, ul.circle, ul.disc { margin-left: 30px; }
 	ul.square { list-style: square outside; }
@@ -286,4 +286,12 @@
   display: block;
   clear: both;
   content: "";
+}
+
+.post-list {
+  list-style: none;
+}
+
+.post-list > li > a {
+  text-decoration: none;
 }

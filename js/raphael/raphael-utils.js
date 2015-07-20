@@ -44,7 +44,7 @@ function addMathToSvg(sourceId, targetSvg) {
   var svg = mathJax.find("svg");
   var g = svg.find("g");
   var group = $(g[0]).clone();
-  group[0].setAttribute("transform", "translate(306 63) scale(0.012) matrix(1 0 0 -1 0 0)");
+  group[0].setAttribute("transform", "translate(306 100) scale(0.5) matrix(1 0 0 -1 0 0)");
   targetSvg.append(group);
 }
 
