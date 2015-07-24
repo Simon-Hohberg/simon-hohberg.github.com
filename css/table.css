@@ -12,7 +12,7 @@ table th, table td {
 }
 
 table td {
-	vertical-align: top;
+	vertical-align: middle;
 	border-top: solid 1px #ddd;
 }
 
