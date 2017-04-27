@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" type="text/css" href="css/global.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <script src="{{ site.url }}/js/jquery-2.1.1.min.js"></script>
+    <script src="{{ site.url }}/js/jquery/jquery-2.1.1.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -24,7 +23,7 @@
               <a href="{{ post.url }}">
                 <div style="text-align: right; width: 100%; font-size: 90%; font-style: italic">
                   {% assign d = post.date | date: "%-d"  %}
-                  {{ post.date | date: "%B" }} 
+                  {{ post.date | date: "%B" }}
                   {% case d %}
                     {% when '1' or '21' or '31' %}{{ d }}st
                     {% when '2' or '22' %}{{ d }}nd
