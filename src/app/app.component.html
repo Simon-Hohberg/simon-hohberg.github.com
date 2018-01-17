@@ -1,0 +1,43 @@
+<div class="filler"></div>
+<div id="main-container">
+  <div id="top-background">
+    <div id="toolbar">
+      <div id="owner">
+        <span>Simon Hohberg</span>
+        <span>Developer</span>
+      </div>
+      <span class="filler"></span>
+      <a href="#">Blog</a>
+      <a href="#">Projects</a>
+      <a href="#" class="icon-button">
+        <fa name="search"></fa>
+      </a>
+      <a href="#" class="icon-button">
+        <fa name="github"></fa>
+      </a>
+      <a href="#" class="icon-button">
+        <fa name="linkedin"></fa>
+      </a>
+    </div>
+    <div id="title">
+      <h1>What I am working on</h1>
+    </div>
+  </div>
+
+  <ul id="posts-container">
+
+    <li *ngFor="let p of posts">
+      <app-post-thumb [id]="p.id" [imgThumbUrl]="p.imgThumbUrl"></app-post-thumb>
+    </li>
+  
+  </ul>
+
+  <!-- <nav>
+    <a routerLink="/blog/2015-07-19-maxout" routerLinkActive="active">Maxout</a>
+    <a routerLink="/blog/2014-10-10-conv-net" routerLinkActive="active">ConvNet</a>
+  </nav>
+  <router-outlet></router-outlet> -->
+</div>
+<div class="filler"></div>
+
+

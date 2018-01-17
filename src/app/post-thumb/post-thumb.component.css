@@ -1,0 +1,52 @@
+.post {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px grey;
+    width: 300px;
+    height: 400px;
+    margin: 20px;
+}
+
+.post:hover {
+    box-shadow: 0px 0px 20px rgb(100,100,100);
+    margin-top: 18px;
+}
+
+.post img {
+    width: 300px;
+    height: 180px;
+    background-color: aqua;
+}
+
+.post .text-container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.post .keywords {
+    margin-right: 3px; 
+    font-size: 12px;
+}
+
+.post .keywords span {
+    text-decoration: underline;
+}
+
+.post .keywords span:not(:last-child):after {
+    content: ',';
+    text-decoration: initial;
+}
+
+.post .info-line {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-size: 14px;
+    color: rgb(150, 150, 150);
+}
+
+.post h2 {
+    align-self: center;
+}
