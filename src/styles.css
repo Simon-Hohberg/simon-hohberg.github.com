@@ -15,3 +15,23 @@ app-root {
     width: 100%;
     min-height: 100%;
 }
+
+.beigeBg {
+    background-color: #F4F6F3;
+}
+
+.yellowBg {
+    background-color: #F3C74A;
+}
+
+.greyBg {
+    background-color: #A1B0C6;
+}
+
+.lightVioletBg {
+    background-color: #947A8B;
+}
+
+.darkVioletBg {
+    background-color: #454678;
+}

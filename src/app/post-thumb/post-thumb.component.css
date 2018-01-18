@@ -1,10 +1,16 @@
 .post {
+    color: rgb(60, 60, 60);
     display: flex;
     flex-direction: column;
     box-shadow: 0px 0px 10px grey;
     width: 300px;
     /* height: 400px; */
     margin: 20px;
+    text-decoration: none;
+}
+
+.post:visited {
+    color: rgb(60,60,60);
 }
 
 .post:hover {
@@ -12,10 +18,20 @@
     margin-top: 18px;
 }
 
-.post img {
+.post #imgThumbContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 300px;
     height: 180px;
-    background-color: aqua;
+    background-color: #464b65;
+}
+
+.post img {
+    width: 250px;
+    height: auto;
+    /* background-color: #464b65; */
 }
 
 .post .text-container {
@@ -29,15 +45,19 @@
 .post .keywords {
     margin-right: 3px; 
     font-size: 12px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.post .keywords span {
-    text-decoration: underline;
+.post .keywords pre {
+    margin: 0;
 }
 
-.post .keywords span:not(:last-child):after {
-    content: ',';
-    text-decoration: initial;
+.post .keywords pre:not(:last-child):after {
+    content: ', ';
+    text-decoration: none;
 }
 
 .post .info-line {
@@ -50,4 +70,13 @@
 
 .post h2 {
     text-align: center;
+    margin-bottom: 10px;
+}
+
+.summary {
+    padding: 0 10px 0 10px;
+}
+
+.summary p {
+    margin: 0;
 }

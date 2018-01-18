@@ -11,14 +11,9 @@ export class AppComponent {
   title = 'Simon Hohberg\'s Web Page';
 
   posts = [
-    {
-      id: "2014-10-10-conv-net",
-      imgThumbUrl: ""
-    },
-    {
-      id: "2015-07-19-maxout",
-      imgThumbUrl: ""
-    }
+    "2015-07-19-maxout",
+    "2014-10-10-conv-net",
+    "2013-12-10-perso"
   ]
 
   constructor() {

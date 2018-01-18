@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, NgZone } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PostLoaderService } from '../post-loader.service';
 import { Post } from '../post';
 
@@ -10,17 +10,25 @@ import { Post } from '../post';
 export class PostThumbComponent implements OnInit {
 
   @Input() id: string;
-  @Input() imgThumbUrl: string;
+  @ViewChild('summary') summary: ElementRef;
 
-  private title: string = "";
-  private summary: string = "";
+  private post: Post;
 
   constructor(private postLoader: PostLoaderService) {}
 
   ngOnInit() {
-    this.postLoader.load(this.id, this.imgThumbUrl).then((post: Post) => {
-      this.title = post.title;
-      this.summary = post.summary;
+    this.postLoader.load(this.id).then((post: Post) => {
+      this.post = post;
+      this.summary.nativeElement.innerHTML = post.summary;
     });
+  }
+
+  getFormattedDate() {
+    if (this.post) {
+      let month = this.post.date.getMonth();
+      let day = this.post.date.getDay();
+      return this.post.date.getFullYear() + "/" + (month > 9 ? month : "0" + month) + "/" + (day > 9 ? day : "0" + day);
+    }
+    return "";
   }
 }

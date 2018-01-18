@@ -87,10 +87,11 @@
 }
 
 #posts-container {
+    height: 100vmax;
     display: flex;
     position: relative;
     width: 100%;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     flex-grow: 1;
     background-color: white;
