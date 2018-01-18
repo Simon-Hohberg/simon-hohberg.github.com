@@ -3,7 +3,7 @@
     flex-direction: column;
     box-shadow: 0px 0px 10px grey;
     width: 300px;
-    height: 400px;
+    /* height: 400px; */
     margin: 20px;
 }
 
@@ -23,6 +23,7 @@
     flex-direction: column;
     box-sizing: border-box;
     padding: 10px;
+    text-align: justify;
 }
 
 .post .keywords {
@@ -48,5 +49,5 @@
 }
 
 .post h2 {
-    align-self: center;
+    text-align: center;
 }

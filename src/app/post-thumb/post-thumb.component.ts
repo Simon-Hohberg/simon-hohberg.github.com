@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, NgZone } from '@angular/core';
 import { PostLoaderService } from '../post-loader.service';
 import { Post } from '../post';
 
@@ -12,10 +12,10 @@ export class PostThumbComponent implements OnInit {
   @Input() id: string;
   @Input() imgThumbUrl: string;
 
-  title: string;
-  summary: string;
+  private title: string = "";
+  private summary: string = "";
 
-  constructor(private postLoader: PostLoaderService) { }
+  constructor(private postLoader: PostLoaderService) {}
 
   ngOnInit() {
     this.postLoader.load(this.id, this.imgThumbUrl).then((post: Post) => {

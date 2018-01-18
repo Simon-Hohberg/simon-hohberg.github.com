@@ -18,19 +18,39 @@ export class Post {
         this._title = title;
     }
 
+    get title(): string {
+        return this._title;
+    }
+
     set summary(summary: string) {
         this._summary = summary;
+    }
+
+    get summary(): string {
+        return this._summary;
     }
 
     set imgThumbUrl(imgThumbUrl: string) {
         this._imgThumbUrl = imgThumbUrl;
     }
 
+    get imgThumbUrl(): string {
+        return this._imgThumbUrl;
+    }
+
     set content(content: string) {
         this._content = content;
     }
 
+    get content(): string {
+        return this._content;
+    }
+
     set layout(layout: string) {
         this._layout = layout;
+    }
+
+    get layout(): string {
+        return this._layout;
     }
 }
