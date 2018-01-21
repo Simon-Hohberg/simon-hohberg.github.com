@@ -8,6 +8,9 @@ export class Post {
     private _date: Date;
     private _keywords: Array<string>;
     private _thumbColor: string;
+    private _thumbImgSrc: string;
+    private _type: string;
+    private _url: string;
 
     constructor(title?: string, summary?: string, imgThumbUrl?: string, content?: string, layout?: string, date?: Date, keywords?: Array<string>, thumbColor?: string) {
         this._title = title;
@@ -15,7 +18,7 @@ export class Post {
         this._imgThumbUrl = imgThumbUrl;
         this._content = content;
         this._layout = layout;
-        this._date = date;
+        this._date = date ? date : new Date();
         this._keywords = keywords;
         this._thumbColor = thumbColor;
     }
@@ -82,5 +85,29 @@ export class Post {
 
     get thumbColor(): string {
         return this._thumbColor;
+    }
+
+    set thumbImgSrc(thumbImgSrc: string) {
+        this._thumbImgSrc = thumbImgSrc;
+    }
+
+    get thumbImgSrc(): string {
+        return this._thumbImgSrc;
+    }
+
+    set type(type: string) {
+        this._type = type;
+    }
+
+    get type(): string {
+        return this._type;
+    }
+
+    set url(url: string) {
+        this._url = url;
+    }
+
+    get url(): string {
+        return this._url;
     }
 }

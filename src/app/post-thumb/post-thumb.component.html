@@ -1,16 +1,14 @@
-<a href="#" class="post">
-  <div id="imgThumbContainer" [style.background-color]="post ? post.thumbColor : '#464b65'" >
-    <img *ngIf="post" src="{{ post.imgThumbUrl }}" alt="">
-  </div>
-  <div class="text-container">
-    <div class="info-line">
-      <div *ngIf="post" class="keywords">
-        <pre *ngFor="let k of post.keywords">{{ k }}</pre>
-      </div>
-      <span class="filler"></span>
-      <span *ngIf="post">{{ getFormattedDate() }}</span>
+<div id="imgThumbContainer" [style.background-color]="post ? post.thumbColor : '#464b65'" >
+  <img src="{{ post.imgThumbUrl }}" alt="">
+</div>
+<div class="text-container">
+  <div class="info-line">
+    <div class="keywords">
+      <pre *ngFor="let k of post.keywords">{{ k }}</pre>
     </div>
-    <h2 *ngIf="post" >{{ post.title }}</h2>
-    <div class="summary" #summary></div>
+    <span class="filler"></span>
+    <span>{{ getFormattedDate() }}</span>
   </div>
-</a>
+  <h2>{{ post.title }}</h2>
+  <div class="summary" #summary></div>
+</div>

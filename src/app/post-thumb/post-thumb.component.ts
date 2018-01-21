@@ -14,19 +14,23 @@ export class PostThumbComponent implements OnInit {
 
   private post: Post;
 
-  constructor(private postLoader: PostLoaderService) {}
+  constructor(private postLoader: PostLoaderService) {
+    this.post = new Post();
+  }
 
   ngOnInit() {
-    this.postLoader.load(this.id).then((post: Post) => {
-      this.post = post;
-      this.summary.nativeElement.innerHTML = post.summary;
-    });
+    if (this.id) {
+      this.postLoader.load(this.id).then((post: Post) => {
+        this.post = post;
+        this.summary.nativeElement.innerHTML = post.summary;
+      });
+    }
   }
 
   getFormattedDate() {
     if (this.post) {
-      let month = this.post.date.getMonth();
-      let day = this.post.date.getDay();
+      let month = this.post.date.getMonth() + 1;
+      let day = this.post.date.getDate();
       return this.post.date.getFullYear() + "/" + (month > 9 ? month : "0" + month) + "/" + (day > 9 ? day : "0" + day);
     }
     return "";

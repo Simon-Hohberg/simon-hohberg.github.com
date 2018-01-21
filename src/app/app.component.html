@@ -1,43 +1,42 @@
-<div class="filler"></div>
-<div id="main-container">
-  <div id="top-background">
-    <div id="toolbar">
-      <div id="owner">
-        <span>Simon Hohberg</span>
-        <span>Developer</span>
-      </div>
-      <span class="filler"></span>
-      <a href="#">Blog</a>
-      <a href="#">Projects</a>
-      <a href="#" class="icon-button">
-        <fa name="search"></fa>
-      </a>
-      <a href="#" class="icon-button">
-        <fa name="github"></fa>
-      </a>
-      <a href="#" class="icon-button">
-        <fa name="linkedin"></fa>
-      </a>
-    </div>
-    <div id="title">
-      <h1>What I am working on</h1>
-    </div>
+<header id="toolbar">
+  <div id="owner">
+    <span>Simon Hohberg</span>
+    <span>Developer</span>
   </div>
+  <span class="filler"></span>
+  <a href="#/blog/" (click)="showBlog()">Blog</a>
+  <a href="#/projects/" (click)="showProjects()">Projects</a>
+  <a href="#/publications/" (click)="showPublications()">Publications</a>
+  <a href="#" class="icon-button">
+    <fa name="search"></fa>
+  </a>
+  <a href="#" class="icon-button">
+    <fa name="github"></fa>
+  </a>
+  <a href="#" class="icon-button">
+    <fa name="linkedin"></fa>
+  </a>
+</header>
+<div id="top-background" *ngIf="onStartpage">
+  <div id="title">
+    <h1>What I am working on</h1>
+  </div>
+</div>
 
-  <ul id="posts-container">
+<div id="main-container" [class.header-margin]="!onStartpage">
 
-    <li *ngFor="let p of posts">
+  <nav id="posts-container">
+    
+    <a *ngFor="let p of posts" routerLink="{{ p }}" routerLinkActive="active" class="post">
       <app-post-thumb [id]="p"></app-post-thumb>
-    </li>
-  
-  </ul>
+    </a>
+  </nav>
 
   <!-- <nav>
     <a routerLink="/blog/2015-07-19-maxout" routerLinkActive="active">Maxout</a>
     <a routerLink="/blog/2014-10-10-conv-net" routerLinkActive="active">ConvNet</a>
-  </nav>
-  <router-outlet></router-outlet> -->
+  </nav> -->
+  <router-outlet></router-outlet>
 </div>
-<div class="filler"></div>
 
 

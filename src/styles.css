@@ -11,7 +11,7 @@ html, body {
 
 app-root {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     min-height: 100%;
 }

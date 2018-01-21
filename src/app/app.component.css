@@ -1,14 +1,17 @@
 #main-container {
     position: relative;
     width: 100%;
-    max-width: 1024px;
+    /* max-width: 1024px; */
     display: flex;
     flex-direction: column;
 }
 
+.header-margin {
+    margin-top: 70px;
+}
+
 #top-background {
     background-image: url('/assets/imgs/stock-photo-layers-of-mountain-148368206.jpg');
-    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -21,12 +24,19 @@
 }
 
 #toolbar {
-    width: 100%;
+    background-image: url('/assets/imgs/stock-photo-layers-of-mountain-148368206.jpg');
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 10px;
     color: white;
+    border-bottom: 1px solid;
+    z-index: 2;
+    height: 70px;
 }
 
 #toolbar > a {
@@ -62,6 +72,7 @@
 #owner span:nth-of-type(1) {
     font-size: 20px;
     font-weight: bolder;
+    margin-top: 5px;
 }
 #owner span:nth-of-type(2) {
     font-size: 12px;
@@ -87,18 +98,34 @@
 }
 
 #posts-container {
-    height: 100vmax;
+    /* height: 100vmax; */
     display: flex;
     position: relative;
-    width: 100%;
-    flex-direction: column;
+    /* width: 100%; */
+    flex-direction: row;
     flex-wrap: wrap;
     flex-grow: 1;
     background-color: white;
     margin: 0;
     padding: 0;
+    justify-content: center;
 }
 
 #posts-container > li {
     list-style: none;
+}
+
+.post {
+    text-decoration: none;
+    padding: 0;
+    margin: 20px;
+}
+
+.post:visited {
+    color: rgb(60,60,60);
+}
+
+.post:hover {
+    box-shadow: 0px 0px 20px rgb(100,100,100);
+    margin-top: 18px;
 }

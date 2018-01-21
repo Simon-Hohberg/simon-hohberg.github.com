@@ -6,8 +6,8 @@ import { Post } from "./post";
 @Injectable()
 export class PostLoaderService {
 
-  readonly postRegex: RegExp = /\-+\n((?:(?:title|layout|thumbImg|keywords|thumbColor)\:\s*.+\n)+)\-+\n\n\#\s*(.+)\n\n((?:.+\n)+)\n((?:.+\n*)+)/;
-  readonly metaInfoRegex: RegExp = /^(title|layout|thumbImg|keywords|thumbColor)\:\s*(.+)$/gm;
+  readonly postRegex: RegExp = /\-+\n((?:(?:title|layout|thumbImg|keywords|thumbColor|thumbImgSrc|type|url|subtitle)\:\s*.+\n)+)\-+\n\n\#\s*(.+)\n\n((?:.+\n?)+)\n?((?:.+\n*)*)/;
+  readonly metaInfoRegex: RegExp = /^(title|layout|thumbImg|keywords|thumbColor|thumbImgSrc|type|url|subtitle)\:\s*(.+)$/gm;
   readonly idRegex: RegExp = /(\d\d\d\d)-(\d\d)-(\d\d)-.+/;
 
   private cache: Map<string, Post> = new Map<string, Post>();
@@ -20,12 +20,12 @@ export class PostLoaderService {
           resolve(this.cache.get(id));
           return;
         }
-        this.http.get('./assets/_posts/' + id + '.md', { responseType: 'text' }).subscribe(data => {
+        this.http.get('./assets/' + id + '.md', { responseType: 'text' }).subscribe(data => {
           let idParts = this.idRegex.exec(id);
           let postDate = new Date();
           postDate.setFullYear(parseInt(idParts[1]));
-          postDate.setMonth(parseInt(idParts[2]));
-          postDate.setMonth(parseInt(idParts[3]));
+          postDate.setMonth(parseInt(idParts[2])-1);
+          postDate.setDate(parseInt(idParts[3]));
           let postParts: RegExpExecArray = this.postRegex.exec(data);
           let title: string = postParts[2]
           let summary: string = postParts[3];
@@ -60,6 +60,9 @@ export class PostLoaderService {
                 break;
               case "thumbColor":
                 post.thumbColor = metaValue;
+                break;
+              case "type":
+                post.type = metaValue;
                 break;
               default:
                 console.warn("Unknown meta info " + metaKey + ": " + metaValue);

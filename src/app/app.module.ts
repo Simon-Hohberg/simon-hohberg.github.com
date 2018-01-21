@@ -44,7 +44,9 @@ import { PostThumbComponent } from './post-thumb/post-thumb.component';
 import { PostLoaderService } from './post-loader.service';
 
 const appRoutes: Routes = [
-  { path: 'blog/:id',      component: PostComponent }
+  { path: '_posts/:id',        component: PostComponent },
+  { path: '_projects/:id',     component: PostComponent },
+  { path: '_publications/:id', component: PostComponent }
 ];
 
 @NgModule({
