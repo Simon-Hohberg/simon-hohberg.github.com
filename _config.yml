@@ -1,8 +1,0 @@
-markdown: kramdown
-safe: true
-lsi: false
-highlighter: pygments
-
-kramdown:
-  input: GFM
-  hard_wrap: false

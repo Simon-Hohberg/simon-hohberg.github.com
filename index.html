@@ -1,45 +1,31 @@
----
----
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <title>Simon Hohberg's Web page</title>
-    <link rel="stylesheet" href="/css/skeleton.css">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <script src="{{ site.url }}/js/jquery/jquery-2.1.1.min.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="sixteen columns">
-        <h1>Stuff I'd like to remember</h1>
-        <hr style="border: 0.1em solid black; margin: 1em 0 3em 0;" />
-      </div>
-      <div class="twelve columns offset-by-two">
-        <ul class="post-list">
-            {% for post in site.posts %}
-            <li>
-              <a href="{{ post.url }}">
-                <div style="text-align: right; width: 100%; font-size: 90%; font-style: italic">
-                  {% assign d = post.date | date: "%-d"  %}
-                  {{ post.date | date: "%B" }}
-                  {% case d %}
-                    {% when '1' or '21' or '31' %}{{ d }}st
-                    {% when '2' or '22' %}{{ d }}nd
-                    {% when '3' or '23' %}{{ d }}rd
-                    {% else %}{{ d }}th
-                  {% endcase %},
-                  {{ post.date | date: "%Y" }}
-                </div>
-                <h4 ><u>{{ post.title }}</u></h4>
-                {{ post.excerpt }}
-                </a>
-            </li>
-            <hr />
-            {% endfor %}
-        </ul>
-      </div>
-    </div>
-  </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SimonHohberg</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
+  <script type="text/x-mathjax-config">
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      MathJax.Hub.Config({
+      "HTML-CSS": { linebreaks: { automatic: true } },
+             SVG: { linebreaks: { automatic: true }, scale: 90 }
+      });
+    } else {
+      MathJax.Hub.Config({
+        "HTML-CSS": { linebreaks: { automatic: true } },
+               SVG: { linebreaks: { automatic: true } }
+      });
+    }
+  </script>
+  <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+  <app-root></app-root>
+<script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="scripts.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
 </html>
