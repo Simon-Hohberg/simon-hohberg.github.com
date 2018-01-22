@@ -25,7 +25,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#main-container {\n    position: relative;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n\n.header-margin {\n    margin-top: 70px;\n}\n\n#top-background {\n    background-image: url('/assets/imgs/main-background.jpeg');\n    background-size: 100% 400px;\n    background-repeat: no-repeat;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    width: 100%;\n    height: 400px;\n    overflow: hidden;\n    box-sizing: border-box;\n    padding: 20px;\n    text-align: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n\n.filler {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n}\n\n#toolbar {\n    background-image: url('/assets/imgs/main-background.jpeg');\n    background-size: 100% 400px;\n    background-repeat: no-repeat;\n    position: fixed;\n    top: 0;\n    left: 0;\n    right: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    box-sizing: border-box;\n    padding: 10px;\n    color: white;\n    border-bottom: 1px solid;\n    z-index: 2;\n    height: 70px;\n}\n\n#toolbar > a {\n    background-color: rgba(0,0,0,0);\n    border: none;\n    color: white;\n    font-weight: bold;\n    text-decoration: underline;\n    border-radius: 10px;\n    -ms-flex-item-align: center;\n        -ms-grid-row-align: center;\n        align-self: center;\n    padding: 10px;\n    margin-right: 5px;\n}\n\n#toolbar > a:hover {\n    background-color: rgba(255,255,255,0.3);\n}\n\n.selected {\n    background-color: rgba(255,255,255,0.3) !important;\n    outline: none !important;\n    font-weight: bolder !important;\n}\n\n.icon-button {\n    font-size: 22px;\n}\n\n#owner {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n\n#owner span:nth-of-type(1) {\n    font-size: 20px;\n    font-weight: bolder;\n    margin-top: 5px;\n}\n#owner span:nth-of-type(2) {\n    font-size: 12px;\n    -ms-flex-item-align: end;\n        align-self: flex-end;\n}\n\n#title {\n    font-size: 40px;\n    font-weight: bolder;\n    color: white;\n    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;\n    text-shadow: 2px 2px 2px grey;\n}\n\n#posts-container {\n    /* height: 100vmax; */\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: relative;\n    /* width: 100%; */\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    background-color: white;\n    margin: 0;\n    padding: 0;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n\n#posts-container > li {\n    list-style: none;\n}\n\n.post {\n    box-shadow: 0px 0px 10px grey;\n    width: 300px;\n    text-decoration: none;\n    padding: 0;\n    margin: 20px;\n    height: -webkit-min-content;\n    height: -moz-min-content;\n    height: min-content;\n}\n\n.post:visited {\n    color: rgb(60,60,60);\n}\n\n.post:hover {\n    box-shadow: 0px 0px 20px rgb(100,100,100);\n    margin-top: 18px;\n}", ""]);
+exports.push([module.i, "#main-container {\n    position: relative;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n\n.header-margin {\n    margin-top: 70px;\n}\n\n#top-background {\n    position: relative;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    width: 100%;\n    overflow: hidden;\n    text-align: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n\n#top-background img {\n    width: 100%;\n    height: auto;\n}\n\n.filler {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n}\n\n#toolbar {\n    background-image: url('/assets/imgs/main-background.jpeg');\n    background-size: 100% auto;\n    background-repeat: no-repeat;\n    position: fixed;\n    top: 0;\n    left: 0;\n    right: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    box-sizing: border-box;\n    padding: 10px;\n    color: white;\n    border-bottom: 1px solid;\n    z-index: 2;\n    height: 70px;\n}\n\n#toolbar > a {\n    background-color: rgba(0,0,0,0);\n    border: none;\n    color: white;\n    font-weight: bold;\n    text-decoration: underline;\n    border-radius: 10px;\n    -ms-flex-item-align: center;\n        -ms-grid-row-align: center;\n        align-self: center;\n    padding: 10px;\n    margin-right: 5px;\n}\n\n#toolbar > a:hover {\n    background-color: rgba(255,255,255,0.3);\n}\n\n.selected {\n    background-color: rgba(255,255,255,0.3) !important;\n    outline: none !important;\n    font-weight: bolder !important;\n}\n\n.icon-button {\n    font-size: 22px;\n}\n\n#owner {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n\n#owner span:nth-of-type(1) {\n    font-size: 20px;\n    font-weight: bolder;\n    margin-top: 5px;\n}\n#owner span:nth-of-type(2) {\n    font-size: 12px;\n    -ms-flex-item-align: end;\n        align-self: flex-end;\n}\n\n#title {\n    position: absolute;\n    top: calc(50% - 20px);\n    width: 100%;\n    text-align: center;\n    margin: 0;\n    font-size: 40px;\n    font-weight: bolder;\n    color: white;\n    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;\n    text-shadow: 2px 2px 2px grey;\n}\n\n#posts-container {\n    /* height: 100vmax; */\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: relative;\n    /* width: 100%; */\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    background-color: white;\n    margin: 0;\n    padding: 0;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n\n#posts-container > li {\n    list-style: none;\n}\n\n.post {\n    box-shadow: 0px 0px 10px grey;\n    width: 300px;\n    text-decoration: none;\n    padding: 0;\n    margin: 20px;\n    height: -webkit-min-content;\n    height: -moz-min-content;\n    height: min-content;\n}\n\n.post:visited {\n    color: rgb(60,60,60);\n}\n\n.post:hover {\n    box-shadow: 0px 0px 20px rgb(100,100,100);\n    margin-top: 18px;\n}", ""]);
 
 // exports
 
@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header id=\"toolbar\">\n  <div id=\"owner\">\n    <span>Simon Hohberg</span>\n    <span>Developer</span>\n  </div>\n  <span class=\"filler\"></span>\n  <a href=\"#all\" (click)=\"showAll()\" [class.selected]=\"selected === 'all'\">All</a>\n  <a href=\"#blog\" (click)=\"showBlog()\" [class.selected]=\"selected === 'blog'\">Blog</a>\n  <a href=\"#projects\" (click)=\"showProjects()\" [class.selected]=\"selected === 'projects'\">Projects</a>\n  <a href=\"#publications\" (click)=\"showPublications()\" [class.selected]=\"selected === 'publications'\">Publications</a>\n  <!-- <a href=\"#\" class=\"icon-button\">\n    <fa name=\"search\"></fa>\n  </a> -->\n  <a href=\"https://github.com/Simon-Hohberg\" class=\"icon-button\">\n    <fa name=\"github\"></fa>\n  </a>\n  <a href=\"https://www.linkedin.com/in/simon-hohberg-42b1b2156\" class=\"icon-button\">\n    <fa name=\"linkedin\"></fa>\n  </a>\n</header>\n\n<div id=\"top-background\" *ngIf=\"onStartpage\">\n  <h1 id=\"title\">Excited about Web & Machine Learning</h1>\n</div>\n\n<div id=\"main-container\" [class.header-margin]=\"!onStartpage || showsPost\">\n  <nav id=\"posts-container\">\n    <a *ngFor=\"let p of posts\" (click)=\"showPost()\" routerLink=\"{{ p }}\" routerLinkActive=\"active\" class=\"post\">\n      <app-post-thumb [id]=\"p\"></app-post-thumb>\n    </a>\n  </nav>\n  <router-outlet></router-outlet>\n</div>\n\n\n"
+module.exports = "<header id=\"toolbar\">\n  <div id=\"owner\">\n    <span>Simon Hohberg</span>\n    <span>Developer</span>\n  </div>\n  <span class=\"filler\"></span>\n  <a href=\"#all\" (click)=\"showAll()\" [class.selected]=\"selected === 'all'\">All</a>\n  <a href=\"#blog\" (click)=\"showBlog()\" [class.selected]=\"selected === 'blog'\">Blog</a>\n  <a href=\"#projects\" (click)=\"showProjects()\" [class.selected]=\"selected === 'projects'\">Projects</a>\n  <a href=\"#publications\" (click)=\"showPublications()\" [class.selected]=\"selected === 'publications'\">Publications</a>\n  <!-- <a href=\"#\" class=\"icon-button\">\n    <fa name=\"search\"></fa>\n  </a> -->\n  <a href=\"https://github.com/Simon-Hohberg\" class=\"icon-button\">\n    <fa name=\"github\"></fa>\n  </a>\n  <a href=\"https://www.linkedin.com/in/simon-hohberg-42b1b2156\" class=\"icon-button\">\n    <fa name=\"linkedin\"></fa>\n  </a>\n</header>\n\n<div id=\"top-background\" *ngIf=\"onStartpage\">\n  <img src=\"/assets/imgs/main-background.jpeg\" alt=\"\">\n  <h1 id=\"title\">Excited about Web & Machine Learning</h1>\n</div>\n\n<div id=\"main-container\" [class.header-margin]=\"!onStartpage || showsPost\">\n  <nav id=\"posts-container\">\n    <a *ngFor=\"let p of posts\" (click)=\"showPost()\" routerLink=\"{{ p }}\" routerLinkActive=\"active\" class=\"post\">\n      <app-post-thumb [id]=\"p\"></app-post-thumb>\n    </a>\n  </nav>\n  <router-outlet></router-outlet>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -60,7 +60,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var AppComponent = (function () {
+var AppComponent = /** @class */ (function () {
     function AppComponent(router) {
         this.router = router;
         this.title = 'Simon Hohberg\'s Web Page';
@@ -187,7 +187,7 @@ var appRoutes = [
     { path: 'projects/:id', component: __WEBPACK_IMPORTED_MODULE_7__blog_post_post_component__["a" /* PostComponent */] },
     { path: 'publications/:id', component: __WEBPACK_IMPORTED_MODULE_7__blog_post_post_component__["a" /* PostComponent */] }
 ];
-var AppModule = (function () {
+var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
@@ -224,7 +224,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n\narticle {\n    color: rgb(60, 60, 60);\n    padding: 40px;\n    box-sizing: border-box;\n    width: 1024px;\n    background-color: white;\n}\n\narticle h1 {\n    font-size: 40px;\n}\n\narticle .summary {\n    font-weight: bold;\n}\n\narticle h3 {\n    border-bottom: 1px solid;\n}", ""]);
+exports.push([module.i, ":host {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n\narticle {\n    color: rgb(60, 60, 60);\n    padding: 40px;\n    box-sizing: border-box;\n    max-width: 1024px;\n    background-color: white;\n}\n\narticle h1 {\n    font-size: 40px;\n}\n\narticle .summary {\n    font-weight: bold;\n}\n\narticle h3 {\n    border-bottom: 1px solid;\n}", ""]);
 
 // exports
 
@@ -267,7 +267,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var PostComponent = (function () {
+var PostComponent = /** @class */ (function () {
     function PostComponent(postLoader, route, router) {
         this.postLoader = postLoader;
         this.route = route;
@@ -338,7 +338,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var PostLoaderService = (function () {
+var PostLoaderService = /** @class */ (function () {
     function PostLoaderService(http) {
         this.http = http;
         this.postRegex = /\-+\n((?:(?:title|layout|thumbImg|keywords|thumbColor|thumbImgSrc|type|url|subtitle)\:\s*.+\n)+)\-+\n\n\#\s*(.+)\n\n((?:.+\n?)+)\n?((?:.+\n*)*)/;
@@ -483,7 +483,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var PostThumbComponent = (function () {
+var PostThumbComponent = /** @class */ (function () {
     function PostThumbComponent(postLoader) {
         this.postLoader = postLoader;
         this.post = new __WEBPACK_IMPORTED_MODULE_2__post__["a" /* Post */]();
@@ -534,7 +534,7 @@ var PostThumbComponent = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Post; });
-var Post = (function () {
+var Post = /** @class */ (function () {
     function Post() {
         this.title = "";
         this.subtitle = "";
