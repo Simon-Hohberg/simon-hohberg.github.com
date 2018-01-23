@@ -25,7 +25,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#main-container {\n    position: relative;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n\n.header-margin {\n    margin-top: 50px;\n}\n\n#top-background {\n    position: relative;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    width: 100%;\n    height: 400px;\n    overflow: hidden;\n    text-align: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n\n#top-background img {\n    width: 100%;\n    height: 400px;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n\n.filler {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n}\n\n#toolbar {\n    position: fixed;\n    top: 0;\n    left: 0;\n    right: 0;\n    border-bottom: 1px solid white;\n    z-index: 2;\n    height: 50px;\n    overflow: hidden;\n}\n\n#toolbar-content {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    box-sizing: border-box;\n    padding: 10px;\n    color: white;\n}\n\n#toolbar img {\n    width: 100%;\n    height: 400px;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n\n#toolbar-content > a {\n    font-size: 12px;\n    background-color: rgba(0,0,0,0);\n    border: none;\n    color: white;\n    font-weight: bold;\n    text-decoration: underline;\n    border-radius: 5px;\n    -ms-flex-item-align: center;\n        -ms-grid-row-align: center;\n        align-self: center;\n    padding: 5px;\n    margin-right: 3px;\n}\n\n#toolbar-content > a:hover {\n    background-color: rgba(255,255,255,0.3);\n}\n\n#owner {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    text-shadow: 1px 1px hsla(201, 37%, 27%, 1);\n}\n\n#owner span:nth-of-type(1) {\n    display: none;\n}\n#owner span:nth-of-type(2) {\n    font-size: 14px;\n    font-weight: bolder;\n    margin-top: 5px;\n}\n#owner span:nth-of-type(3) {\n    font-size: 8px;\n    -ms-flex-item-align: end;\n        align-self: flex-end;\n}\n\n@media only screen and (min-width: 600px) {\n    \n    .header-margin {\n        margin-top: 70px;\n    }\n\n    #toolbar {\n        position: fixed;\n        top: 0;\n        left: 0;\n        right: 0;\n        border-bottom: 1px solid white;\n        z-index: 2;\n        height: 70px;\n        overflow: hidden;\n    }\n\n    #toolbar-content > a {\n        font-size: 18px;\n        background-color: rgba(0,0,0,0);\n        border: none;\n        color: white;\n        font-weight: bold;\n        text-decoration: underline;\n        border-radius: 10px;\n        -ms-flex-item-align: center;\n            -ms-grid-row-align: center;\n            align-self: center;\n        padding: 10px;\n        margin-right: 5px;\n    }\n    \n    #toolbar-content > a:hover {\n        background-color: rgba(255,255,255,0.3);\n    }\n\n    #owner span:nth-of-type(1) {\n        display: block;\n        font-size: 20px;\n        font-weight: bolder;\n        margin-top: 5px;\n    }\n\n    #owner span:nth-of-type(2) {\n        display: none;\n    }\n    #owner span:nth-of-type(3) {\n        font-size: 12px;\n        -ms-flex-item-align: end;\n            align-self: flex-end;\n    }\n}\n\n.selected {\n    background-color: rgba(255,255,255,0.3) !important;\n    outline: none !important;\n    font-weight: bolder !important;\n}\n\n.icon-button {\n    font-size: 22px;\n}\n\n\n#title {\n    position: absolute;\n    top: calc(50% - 20px);\n    width: 100%;\n    text-align: center;\n    margin: 0;\n    font-size: 40px;\n    font-weight: bolder;\n    color: white;\n    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;\n    text-shadow: 2px 2px 2px grey;\n    box-sizing: border-box;\n    padding: 10px;\n}\n\n#posts-container {\n    /* height: 100vmax; */\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: relative;\n    /* width: 100%; */\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    background-color: white;\n    margin: 0;\n    padding: 0;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n\n#posts-container > li {\n    list-style: none;\n}\n\n.post {\n    box-shadow: 0px 0px 10px grey;\n    width: 300px;\n    text-decoration: none;\n    padding: 0;\n    margin: 20px;\n    height: -webkit-min-content;\n    height: -moz-min-content;\n    height: min-content;\n}\n\n.post:visited {\n    color: rgb(60,60,60);\n}\n\n.post:hover {\n    box-shadow: 0px 0px 20px rgb(100,100,100);\n    margin-top: 18px;\n}", ""]);
+exports.push([module.i, "#main-container {\n    position: relative;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n\n#main-container > div {\n    max-width: 1024px;\n}\n\n.header-margin {\n    margin-top: 50px;\n}\n\n#top-background {\n    position: relative;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    width: 100%;\n    height: 400px;\n    overflow: hidden;\n    text-align: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n\n#top-background img {\n    width: 100%;\n    height: 400px;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n\n.filler {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n}\n\n#toolbar {\n    position: fixed;\n    top: 0;\n    left: 0;\n    right: 0;\n    border-bottom: 1px solid white;\n    z-index: 2;\n    height: 50px;\n    overflow: hidden;\n    max-width: 100vw;\n}\n\n#toolbar-content {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    box-sizing: border-box;\n    padding: 10px;\n    color: white;\n    height: 50px;\n}\n\n#toolbar img {\n    width: 100%;\n    height: 400px;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n\n#toolbar-content nav {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n\n#toolbar-content a {\n    font-size: 12px;\n    background-color: rgba(0,0,0,0);\n    border: none;\n    color: white;\n    font-weight: bold;\n    text-decoration: underline;\n    border-radius: 5px;\n    -ms-flex-item-align: center;\n        -ms-grid-row-align: center;\n        align-self: center;\n    padding: 5px;\n    margin-right: 3px;\n}\n\n#toolbar-content a:hover {\n    background-color: rgba(255,255,255,0.3);\n}\n\n#owner {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    text-shadow: 1px 1px hsla(201, 37%, 27%, 1);\n}\n\n#owner span:nth-of-type(1) {\n    display: none;\n}\n#owner span:nth-of-type(2) {\n    font-size: 14px;\n    font-weight: bolder;\n    margin-top: 5px;\n}\n#owner span:nth-of-type(3) {\n    font-size: 8px;\n    -ms-flex-item-align: end;\n        align-self: flex-end;\n}\n\n@media only screen and (min-width: 600px) {\n    \n    .header-margin {\n        margin-top: 70px;\n    }\n\n    #toolbar {\n        position: fixed;\n        top: 0;\n        left: 0;\n        right: 0;\n        border-bottom: 1px solid white;\n        z-index: 2;\n        height: 70px;\n        overflow: hidden;\n    }\n\n    #toolbar-content {\n        height: 70px;\n    }\n\n    #toolbar-content a {\n        font-size: 18px;\n        background-color: rgba(0,0,0,0);\n        border: none;\n        color: white;\n        font-weight: bold;\n        text-decoration: underline;\n        border-radius: 10px;\n        -ms-flex-item-align: center;\n            -ms-grid-row-align: center;\n            align-self: center;\n        padding: 10px;\n        margin-right: 5px;\n    }\n    \n    #toolbar-content a:hover {\n        background-color: rgba(255,255,255,0.3);\n    }\n\n    #owner span:nth-of-type(1) {\n        display: block;\n        font-size: 20px;\n        font-weight: bolder;\n        margin-top: 5px;\n    }\n\n    #owner span:nth-of-type(2) {\n        display: none;\n    }\n    #owner span:nth-of-type(3) {\n        font-size: 12px;\n        -ms-flex-item-align: end;\n            align-self: flex-end;\n    }\n}\n\n.selected {\n    background-color: rgba(255,255,255,0.3) !important;\n    outline: none !important;\n    font-weight: bolder !important;\n}\n\n.icon-button {\n    font-size: 22px;\n}\n\n\n#title {\n    position: absolute;\n    top: calc(50% - 20px);\n    width: 100%;\n    text-align: center;\n    margin: 0;\n    font-size: 40px;\n    font-weight: bolder;\n    color: white;\n    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;\n    text-shadow: 2px 2px 2px grey;\n    box-sizing: border-box;\n    padding: 10px;\n}", ""]);
 
 // exports
 
@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header id=\"toolbar\">\n  <img src=\"/assets/imgs/main-background_reduced.jpeg\" alt=\"\">\n  <div id=\"toolbar-content\">\n    <div id=\"owner\">\n      <span>Simon Hohberg</span>\n      <span>SH</span>\n      <span>Developer</span>\n    </div>\n    <span class=\"filler\"></span>\n    <a href=\"#all\" (click)=\"showAll()\" [class.selected]=\"selected === 'all'\">All</a>\n    <a href=\"#blog\" (click)=\"showBlog()\" [class.selected]=\"selected === 'blog'\">Blog</a>\n    <a href=\"#projects\" (click)=\"showProjects()\" [class.selected]=\"selected === 'projects'\">Projects</a>\n    <a href=\"#publications\" (click)=\"showPublications()\" [class.selected]=\"selected === 'publications'\">Publications</a>\n    <!-- <a href=\"#\" class=\"icon-button\">\n      <fa name=\"search\"></fa>\n    </a> -->\n    <a href=\"https://github.com/Simon-Hohberg\" class=\"icon-button\">\n      <fa name=\"github\"></fa>\n    </a>\n    <a href=\"https://www.linkedin.com/in/simon-hohberg-42b1b2156\" class=\"icon-button\">\n      <fa name=\"linkedin\"></fa>\n    </a>\n  </div>\n</header>\n\n<div id=\"top-background\" *ngIf=\"onStartpage\">\n  <img src=\"/assets/imgs/main-background_reduced.jpeg\" alt=\"\">\n  <h1 id=\"title\">Excited about Web & Machine Learning</h1>\n</div>\n\n<div id=\"main-container\" [class.header-margin]=\"!onStartpage || showsPost\">\n  <nav id=\"posts-container\">\n    <a *ngFor=\"let p of posts\" (click)=\"showPost()\" routerLink=\"{{ p }}\" routerLinkActive=\"active\" class=\"post\">\n      <app-post-thumb [id]=\"p\"></app-post-thumb>\n    </a>\n  </nav>\n  <router-outlet></router-outlet>\n</div>\n\n\n"
+module.exports = "<header id=\"toolbar\">\n  <img src=\"/assets/imgs/main-background_reduced.jpeg\" alt=\"\">\n  <div id=\"toolbar-content\">\n    <div id=\"owner\">\n      <span>Simon Hohberg</span>\n      <span>SH</span>\n      <span>Developer</span>\n    </div>\n    <span class=\"filler\"></span>\n    <nav>\n      <a routerLink=\"/\"             routerLinkActive=\"active\" [class.selected]=\"selected === 'all'\">All</a>\n      <a routerLink=\"blog/\"         routerLinkActive=\"active\" [class.selected]=\"selected === 'blog'\">Blog</a>\n      <a routerLink=\"project/\"     routerLinkActive=\"active\" [class.selected]=\"selected === 'projects'\">Projects</a>\n      <a routerLink=\"publication/\" routerLinkActive=\"active\" [class.selected]=\"selected === 'publications'\">Publications</a>\n    </nav>\n    <!-- <a href=\"#\" class=\"icon-button\">\n      <fa name=\"search\"></fa>\n    </a> -->\n    <a href=\"https://github.com/Simon-Hohberg\" class=\"icon-button\">\n      <fa name=\"github\"></fa>\n    </a>\n    <a href=\"https://www.linkedin.com/in/simon-hohberg-42b1b2156\" class=\"icon-button\">\n      <fa name=\"linkedin\"></fa>\n    </a>\n  </div>\n</header>\n\n<div id=\"top-background\" *ngIf=\"onStartpage\">\n  <img src=\"/assets/imgs/main-background_reduced.jpeg\" alt=\"\">\n  <h1 id=\"title\">Excited about Web & Machine Learning</h1>\n</div>\n\n<div id=\"main-container\" [class.header-margin]=\"!onStartpage || showsPost\">\n  <div>\n    <router-outlet></router-outlet>\n  </div>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -48,7 +48,7 @@ module.exports = "<header id=\"toolbar\">\n  <img src=\"/assets/imgs/main-backgr
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_service__ = __webpack_require__("../../../../../src/app/config.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,88 +60,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var AppComponent = (function () {
-    function AppComponent(router) {
-        this.router = router;
-        this.title = 'Simon Hohberg\'s Web Page';
-        this.articles = [
-            "blog/2015-07-19-maxout",
-            "blog/2014-10-10-conv-net",
-        ];
-        this.projects = [
-            "projects/2014-07-16-mr-ensemble",
-            "projects/2014-01-01-viola-jones"
-        ];
-        this.publications = [
-            "publications/2015-09-20-master-thesis",
-            "publications/2012-05-01-traffic-eval",
-            "publications/2012-02-27-bachelor-thesis"
-        ];
-        this.posts = [];
+var AppComponent = /** @class */ (function () {
+    function AppComponent(config) {
+        this.config = config;
         this.onStartpage = true;
         this.showsPost = false;
-        this.selected = "all";
-        var path = /^(?:.+)\/\#([a-z]+)$/.exec(window.location.href);
-        if (path) {
-            switch (path[1]) {
-                case "all":
-                    this.showAll();
-                    break;
-                case "blog":
-                    this.showBlog();
-                    break;
-                case "projects":
-                    this.showProjects();
-                    break;
-                case "publications":
-                    this.showPublications();
-                    break;
-                default:
-                    console.warn("Unknown reference: " + path[2]);
-                    break;
-            }
-        }
-        else {
-            this.showAll();
-        }
     }
-    AppComponent.prototype.showAll = function () {
-        this.selected = "all";
-        this.posts = [].concat(this.articles).concat(this.projects).concat(this.publications);
-        this.onStartpage = true;
-        this.showsPost = false;
-    };
-    AppComponent.prototype.showBlog = function () {
-        this.selected = "blog";
-        this.posts = this.articles;
-        this.onStartpage = false;
-        this.showsPost = false;
-    };
-    AppComponent.prototype.showProjects = function () {
-        this.selected = "projects";
-        this.posts = this.projects;
-        this.onStartpage = false;
-        this.showsPost = false;
-    };
-    AppComponent.prototype.showPublications = function () {
-        this.selected = "publications";
-        this.posts = this.publications;
-        this.onStartpage = false;
-        this.showsPost = false;
-    };
-    AppComponent.prototype.showPost = function () {
-        this.selected = "";
-        this.posts = [];
-        this.showsPost = true;
-        this.onStartpage = false;
-    };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__config_service__["a" /* ConfigService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__config_service__["a" /* ConfigService */]) === "function" && _a || Object])
     ], AppComponent);
     return AppComponent;
     var _a;
@@ -163,9 +94,11 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/esm5/animations.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular_font_awesome__ = __webpack_require__("../../../../angular-font-awesome/dist/angular-font-awesome.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blog_post_post_component__ = __webpack_require__("../../../../../src/app/blog/post/post.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__post_post_component__ = __webpack_require__("../../../../../src/app/post/post.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__post_thumb_post_thumb_component__ = __webpack_require__("../../../../../src/app/post-thumb/post-thumb.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__post_loader_service__ = __webpack_require__("../../../../../src/app/post-loader.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__config_service__ = __webpack_require__("../../../../../src/app/config.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__post_list_post_list_component__ = __webpack_require__("../../../../../src/app/post-list/post-list.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -182,20 +115,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 var appRoutes = [
-    { path: 'blog/:id', component: __WEBPACK_IMPORTED_MODULE_7__blog_post_post_component__["a" /* PostComponent */] },
-    { path: 'projects/:id', component: __WEBPACK_IMPORTED_MODULE_7__blog_post_post_component__["a" /* PostComponent */] },
-    { path: 'publications/:id', component: __WEBPACK_IMPORTED_MODULE_7__blog_post_post_component__["a" /* PostComponent */] }
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_11__post_list_post_list_component__["a" /* PostListComponent */] },
+    { path: 'blog', component: __WEBPACK_IMPORTED_MODULE_11__post_list_post_list_component__["a" /* PostListComponent */] },
+    { path: 'project', component: __WEBPACK_IMPORTED_MODULE_11__post_list_post_list_component__["a" /* PostListComponent */] },
+    { path: 'publication', component: __WEBPACK_IMPORTED_MODULE_11__post_list_post_list_component__["a" /* PostListComponent */] },
+    { path: 'blog/:id', component: __WEBPACK_IMPORTED_MODULE_7__post_post_component__["a" /* PostComponent */] },
+    { path: 'project/:id', component: __WEBPACK_IMPORTED_MODULE_7__post_post_component__["a" /* PostComponent */] },
+    { path: 'publication/:id', component: __WEBPACK_IMPORTED_MODULE_7__post_post_component__["a" /* PostComponent */] }
 ];
-var AppModule = (function () {
+var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_7__blog_post_post_component__["a" /* PostComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__post_thumb_post_thumb_component__["a" /* PostThumbComponent */]
+                __WEBPACK_IMPORTED_MODULE_7__post_post_component__["a" /* PostComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__post_thumb_post_thumb_component__["a" /* PostThumbComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__post_list_post_list_component__["a" /* PostListComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -205,7 +145,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_5_angular_font_awesome__["a" /* AngularFontAwesomeModule */]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_9__post_loader_service__["a" /* PostLoaderService */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_9__post_loader_service__["a" /* PostLoaderService */], __WEBPACK_IMPORTED_MODULE_10__config_service__["a" /* ConfigService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -216,7 +156,51 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/blog/post/post.component.css":
+/***/ "../../../../../src/app/config.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfigService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ConfigService = /** @class */ (function () {
+    function ConfigService() {
+        this.title = 'Simon Hohberg\'s Web Page';
+        this.blogPosts = [
+            "2015-07-19-maxout",
+            "2014-10-10-conv-net",
+        ];
+        this.projectPosts = [
+            "2014-07-16-mr-ensemble",
+            "2014-01-01-viola-jones"
+        ];
+        this.publicationPosts = [
+            "2015-09-20-master-thesis",
+            "2012-05-01-traffic-eval",
+            "2012-02-27-bachelor-thesis"
+        ];
+    }
+    ConfigService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [])
+    ], ConfigService);
+    return ConfigService;
+}());
+
+//# sourceMappingURL=config.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/post-list/post-list.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -224,7 +208,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n\narticle {\n    color: rgb(60, 60, 60);\n    padding: 40px;\n    box-sizing: border-box;\n    max-width: 1024px;\n    background-color: white;\n}\n\narticle h1 {\n    font-size: 40px;\n}\n\narticle .summary {\n    font-weight: bold;\n}\n\narticle h3 {\n    border-bottom: 1px solid;\n}", ""]);
+exports.push([module.i, "#posts-container {\n    /* height: 100vmax; */\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: relative;\n    /* width: 100%; */\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    background-color: white;\n    margin: 0;\n    padding: 0;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n\n#posts-container > li {\n    list-style: none;\n}\n\n.post {\n    box-shadow: 0px 0px 10px grey;\n    width: 300px;\n    text-decoration: none;\n    padding: 0;\n    margin: 20px;\n    height: -webkit-min-content;\n    height: -moz-min-content;\n    height: min-content;\n}\n\n.post:visited {\n    color: rgb(60,60,60);\n}\n\n.post:hover {\n    box-shadow: 0px 0px 20px rgb(100,100,100);\n    margin-top: 18px;\n}", ""]);
 
 // exports
 
@@ -234,24 +218,22 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/blog/post/post.component.html":
+/***/ "../../../../../src/app/post-list/post-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<meta *ngIf=\"post.url !== ''\" http-equiv=\"refresh\" content=\"0; url={{ post.url }}\" />\n<article>\n    <h1>{{ post.title }}</h1>\n    <p class=\"summary\" #summary></p>\n    <div #mainContent>\n    </div>\n</article>"
+module.exports = "<nav id=\"posts-container\">\n  <a *ngFor=\"let p of posts\" [routerLink]=\"getPath(p)\" routerLinkActive=\"active\" class=\"post\">\n    <app-post-thumb [id]=\"getType(p) + '/' + p\"></app-post-thumb>\n  </a>\n</nav>\n<router-outlet></router-outlet>"
 
 /***/ }),
 
-/***/ "../../../../../src/app/blog/post/post.component.ts":
+/***/ "../../../../../src/app/post-list/post-list.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__lib_maxout__ = __webpack_require__("../../../../../src/lib/maxout.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__lib_maxout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__lib_maxout__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_loader_service__ = __webpack_require__("../../../../../src/app/post-loader.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__post_loader_service__ = __webpack_require__("../../../../../src/app/post-loader.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__post__ = __webpack_require__("../../../../../src/app/post.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_service__ = __webpack_require__("../../../../../src/app/config.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -265,53 +247,89 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-var PostComponent = (function () {
-    function PostComponent(postLoader, route, router) {
-        this.postLoader = postLoader;
-        this.route = route;
-        this.router = router;
-        this.post = new __WEBPACK_IMPORTED_MODULE_4__post__["a" /* Post */]();
-    }
-    PostComponent.prototype.ngOnInit = function () {
+var PostListComponent = /** @class */ (function () {
+    function PostListComponent(postLoader, config, router, route) {
         var _this = this;
-        this.route.paramMap.subscribe(function (params) {
-            var id = params.get('id');
-            var path = /^\/([a-z]+)\/.+$/.exec(_this.router.url);
-            _this.postLoader.load(path[1] + "/" + id).then(function (post) {
-                _this.post = post;
-                _this.postInner.nativeElement.innerHTML = post.content;
-                _this.summary.nativeElement.innerHTML = post.summary;
-                MathJax.Hub.Typeset(_this.postInner.nativeElement, undefined);
-                if (id === '2015-07-19-maxout') {
-                    __WEBPACK_IMPORTED_MODULE_1__lib_maxout__["net0"]();
-                    __WEBPACK_IMPORTED_MODULE_1__lib_maxout__["net1"]();
-                }
-            });
+        this.postLoader = postLoader;
+        this.config = config;
+        this.router = router;
+        this.posts = [];
+        this.path = "";
+        route.url.subscribe(function (url) {
+            if (url.length > 0) {
+                _this.path = url[0].path;
+            }
+            else {
+                _this.path = "";
+            }
         });
+    }
+    PostListComponent.prototype.ngOnInit = function () {
+        this.updatePosts();
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('mainContent'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
-    ], PostComponent.prototype, "postInner", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('summary'),
-        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _b || Object)
-    ], PostComponent.prototype, "summary", void 0);
-    PostComponent = __decorate([
+    PostListComponent.prototype.updatePosts = function () {
+        switch (this.path) {
+            case "":
+                this.showAll();
+                break;
+            case "blog":
+                this.showBlog();
+                break;
+            case "project":
+                this.showProjects();
+                break;
+            case "publication":
+                this.showPublications();
+                break;
+            default:
+                console.warn("Unknown reference: " + this.path);
+                break;
+        }
+    };
+    PostListComponent.prototype.showAll = function () {
+        this.posts = [].concat(this.config.blogPosts).concat(this.config.projectPosts).concat(this.config.publicationPosts);
+    };
+    PostListComponent.prototype.showBlog = function () {
+        this.posts = this.config.blogPosts;
+    };
+    PostListComponent.prototype.showProjects = function () {
+        this.posts = this.config.projectPosts;
+    };
+    PostListComponent.prototype.showPublications = function () {
+        this.posts = this.config.publicationPosts;
+    };
+    PostListComponent.prototype.getPath = function (postId) {
+        if (this.path != "") {
+            return postId;
+        }
+        var type = this.getType(postId);
+        return type + '/' + postId;
+    };
+    PostListComponent.prototype.getType = function (postId) {
+        if (this.config.blogPosts.indexOf(postId) !== -1) {
+            return 'blog';
+        }
+        else if (this.config.projectPosts.indexOf(postId) !== -1) {
+            return 'project';
+        }
+        else if (this.config.publicationPosts.indexOf(postId) !== -1) {
+            return 'publication';
+        }
+        return '';
+    };
+    PostListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'app-post',
-            template: __webpack_require__("../../../../../src/app/blog/post/post.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/blog/post/post.component.css")]
+            selector: 'app-post-list',
+            template: __webpack_require__("../../../../../src/app/post-list/post-list.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/post-list/post-list.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__post_loader_service__["a" /* PostLoaderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__post_loader_service__["a" /* PostLoaderService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _e || Object])
-    ], PostComponent);
-    return PostComponent;
-    var _a, _b, _c, _d, _e;
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__post_loader_service__["a" /* PostLoaderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__post_loader_service__["a" /* PostLoaderService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* ConfigService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* ConfigService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
+    ], PostListComponent);
+    return PostListComponent;
+    var _a, _b, _c, _d;
 }());
 
-//# sourceMappingURL=post.component.js.map
+//# sourceMappingURL=post-list.component.js.map
 
 /***/ }),
 
@@ -338,7 +356,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var PostLoaderService = (function () {
+var PostLoaderService = /** @class */ (function () {
     function PostLoaderService(http) {
         this.http = http;
         this.postRegex = /\-+\n((?:(?:title|layout|thumbImg|keywords|thumbColor|thumbImgSrc|type|url|subtitle)\:\s*.+\n)+)\-+\n\n\#\s*(.+)\n\n((?:.+\n?)+)\n?((?:.+\n*)*)/;
@@ -483,7 +501,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var PostThumbComponent = (function () {
+var PostThumbComponent = /** @class */ (function () {
     function PostThumbComponent(postLoader) {
         this.postLoader = postLoader;
         this.post = new __WEBPACK_IMPORTED_MODULE_2__post__["a" /* Post */]();
@@ -534,7 +552,7 @@ var PostThumbComponent = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Post; });
-var Post = (function () {
+var Post = /** @class */ (function () {
     function Post() {
         this.title = "";
         this.subtitle = "";
@@ -553,6 +571,105 @@ var Post = (function () {
 }());
 
 //# sourceMappingURL=post.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/post/post.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n\narticle {\n    color: rgb(60, 60, 60);\n    padding: 40px;\n    box-sizing: border-box;\n    background-color: white;\n    font-size: 14px;\n    line-height: 16px;\n    max-width: 100vw;\n}\n\narticle h1 {\n    font-size: 20px;\n}\n\narticle .summary {\n    font-weight: bold;\n}\n\narticle h3 {\n    border-bottom: 1px solid;\n}\n\n@media only screen and (min-width: 600px) {\n\n    article {\n        font-size: 16px;\n        line-height: 22px;\n    }\n\n    article h1 {\n        font-size: 24px;\n    }\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/post/post.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<meta *ngIf=\"post.url !== ''\" http-equiv=\"refresh\" content=\"0; url={{ post.url }}\" />\n<article>\n    <h1>{{ post.title }}</h1>\n    <p class=\"summary\" #summary></p>\n    <div #mainContent>\n    </div>\n</article>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/post/post.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__lib_maxout__ = __webpack_require__("../../../../../src/lib/maxout.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__lib_maxout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__lib_maxout__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__post_loader_service__ = __webpack_require__("../../../../../src/app/post-loader.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__post__ = __webpack_require__("../../../../../src/app/post.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var PostComponent = /** @class */ (function () {
+    function PostComponent(postLoader, route, router) {
+        this.postLoader = postLoader;
+        this.route = route;
+        this.router = router;
+        this.post = new __WEBPACK_IMPORTED_MODULE_4__post__["a" /* Post */]();
+    }
+    PostComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.paramMap.subscribe(function (params) {
+            var id = params.get('id');
+            var path = /^\/([a-z]+)\/.+$/.exec(_this.router.url);
+            _this.postLoader.load(path[1] + "/" + id).then(function (post) {
+                _this.post = post;
+                _this.postInner.nativeElement.innerHTML = post.content;
+                _this.summary.nativeElement.innerHTML = post.summary;
+                MathJax.Hub.Typeset(_this.postInner.nativeElement, undefined);
+                if (id === '2015-07-19-maxout') {
+                    __WEBPACK_IMPORTED_MODULE_1__lib_maxout__["net0"]();
+                    __WEBPACK_IMPORTED_MODULE_1__lib_maxout__["net1"]();
+                }
+            });
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('mainContent'),
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
+    ], PostComponent.prototype, "postInner", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('summary'),
+        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _b || Object)
+    ], PostComponent.prototype, "summary", void 0);
+    PostComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-post',
+            template: __webpack_require__("../../../../../src/app/post/post.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/post/post.component.css")]
+        }),
+        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__post_loader_service__["a" /* PostLoaderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__post_loader_service__["a" /* PostLoaderService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _e || Object])
+    ], PostComponent);
+    return PostComponent;
+    var _a, _b, _c, _d, _e;
+}());
+
+//# sourceMappingURL=post.component.js.map
 
 /***/ }),
 
