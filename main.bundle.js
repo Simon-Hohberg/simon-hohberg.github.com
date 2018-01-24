@@ -60,7 +60,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var AppComponent = /** @class */ (function () {
+var AppComponent = (function () {
     function AppComponent(config) {
         this.config = config;
         this.onStartpage = true;
@@ -126,7 +126,7 @@ var appRoutes = [
     { path: 'project/:id', component: __WEBPACK_IMPORTED_MODULE_7__post_post_component__["a" /* PostComponent */] },
     { path: 'publication/:id', component: __WEBPACK_IMPORTED_MODULE_7__post_post_component__["a" /* PostComponent */] }
 ];
-var AppModule = /** @class */ (function () {
+var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
@@ -172,7 +172,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var ConfigService = /** @class */ (function () {
+var ConfigService = (function () {
     function ConfigService() {
         this.title = 'Simon Hohberg\'s Web Page';
         this.blogPosts = [
@@ -247,7 +247,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var PostListComponent = /** @class */ (function () {
+var PostListComponent = (function () {
     function PostListComponent(postLoader, config, router, route) {
         var _this = this;
         this.postLoader = postLoader;
@@ -356,7 +356,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var PostLoaderService = /** @class */ (function () {
+var PostLoaderService = (function () {
     function PostLoaderService(http) {
         this.http = http;
         this.postRegex = /\-+\n((?:(?:title|layout|thumbImg|keywords|thumbColor|thumbImgSrc|type|url|subtitle)\:\s*.+\n)+)\-+\n\n\#\s*(.+)\n\n((?:.+\n?)+)\n?((?:.+\n*)*)/;
@@ -501,7 +501,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var PostThumbComponent = /** @class */ (function () {
+var PostThumbComponent = (function () {
     function PostThumbComponent(postLoader) {
         this.postLoader = postLoader;
         this.post = new __WEBPACK_IMPORTED_MODULE_2__post__["a" /* Post */]();
@@ -552,7 +552,7 @@ var PostThumbComponent = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Post; });
-var Post = /** @class */ (function () {
+var Post = (function () {
     function Post() {
         this.title = "";
         this.subtitle = "";
@@ -625,7 +625,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var PostComponent = /** @class */ (function () {
+var PostComponent = (function () {
     function PostComponent(postLoader, route, router) {
         this.postLoader = postLoader;
         this.route = route;
@@ -678,12 +678,8 @@ var PostComponent = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
-// The file contents for the current environment will overwrite these during build.
-// The build system defaults to the dev environment which uses `environment.ts`, but if you do
-// `ng build --env=prod` then `environment.prod.ts` will be used instead.
-// The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
-    production: false
+    production: true
 };
 //# sourceMappingURL=environment.js.map
 
